@@ -1,0 +1,6 @@
+{"menu": [
+    {"url":"/", "name":"Content Layout", "i18n":"nav.content_layout", "icon":"feather icon-layout"},
+    {"url":"full", "name":"Full Layout", "i18n":"nav.full_layout", "icon":"feather icon-file-text"},
+    {"url":"https://pixinvent.com/demo/vuesax-html-admin-dashboard-template/documentation/documentation-laravel.html","name":"Documentation","slug":"documentation","icon":"feather icon-folder"}
+]
+}
