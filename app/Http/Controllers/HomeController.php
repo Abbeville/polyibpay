@@ -15,11 +15,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $pageConfigs = [
-        'bodyClass' => 'bg-full-screen-image'
-    ];
-            return view('landingpage.index', [
-            'pageConfigs' => $pageConfigs
-        ]);
+       return view('landingpage.index');
     }
 }

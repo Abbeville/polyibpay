@@ -1,77 +1,105 @@
-@extends('auth.master')
+@extends('layouts.master')
 
-@section('content')
-    <div class="col-lg-6 col-12 p-0">
-        <div class="card rounded-0 mb-0 p-2">
-            <div class="card-header pt-50 pb-1">
-                <div class="card-title">
-                    <h4 class="mb-0">Create Account</h4>
-                </div>
-            </div>
-            <p class="px-2">Fill the below form to create a new account.</p>
-            <div class="card-content">
-                <div class="card-body pt-0">
-                    @if(session()->has('success'))
-                        <div class="alert alert-success">
-                            {{ session()->get('success') }}
-                        </div>
-                    @endif
-                    @if(session()->has('error'))
-                        <div class="alert alert-warning">
-                            {{ session()->get('error') }}
-                        </div>
-                    @endif
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
+@section('contents')
 
 
-                    <form action="{{ route('register') }}" method="POST">
-                        @csrf
-                        <div class="form-label-group">
-                            <input type="text" id="inputName" name="name" class="form-control" placeholder="Name" required>
-                            <label for="inputName">Name</label>
-                        </div>
-                        <div class="form-label-group">
-                            <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email" required>
-                            <label for="inputEmail">Email</label>
-                        </div>
-                        <div class="form-label-group">
-                            <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password"
-                                   required>
-                            <label for="inputPassword">Password</label>
-                        </div>
-                        <div class="form-label-group">
-                            <input type="password" id="inputConfPassword" name="password_confirmation" class="form-control"
-                                   placeholder="Confirm Password" required>
-                            <label for="inputConfPassword">Confirm Password</label>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-12">
-                                <fieldset class="checkbox">
-                                    <div class="vs-checkbox-con vs-checkbox-primary">
-                                        <input type="checkbox" checked>
-                                        <span class="vs-checkbox">
-                                                                        <span class="vs-checkbox--check">
-                                                                            <i class="vs-icon feather icon-check"></i>
-                                                                        </span>
-                                                                    </span>
-                                        <span class=""> I accept the terms & conditions.</span>
-                                    </div>
-                                </fieldset>
-                            </div>
-                        </div>
-                        <a href="{{ route('login') }}" class="btn btn-outline-primary float-left btn-inline mb-50">Login</a>
-                        <button type="submit" class="btn btn-primary float-right btn-inline mb-50">Register</button>
-                    </form>
-                </div>
-            </div>
+    <!-- page-title stary -->
+    <div class="page-title mg-top-50">
+        <div class="container">
+            <a class="float-left" href="{{ route('home') }}">Home</a>
+            <span class="float-right">Sign Up</span>
         </div>
     </div>
+    <div class="ba-page-name text-center mg-bottom-40">
+        <h3>Sign Up</h3>
+    </div>
+    <!-- page-title end -->
+
+    <!-- singin-area start -->
+    <div class="signin-area">
+        <div class="container">
+            <form class="contact-form-inner" method="post" action="{{ route('register') }}">
+                @csrf
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label class=" text-gray-600" for="leadCapFirstName">
+                            First Name
+                        </label>
+                        <input name="firstname" class="form-control rounded-pill " id="firstname" type="text"
+                               value="{{ old('firstname') }}" autofocus="" required=""/>
+                        @if ($errors->has('firstname'))
+                            <span class="invalida" role="alert">
+                                                <strong>{{ $errors->first('firstname') }}</strong>
+                                            </span>
+                        @endif
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class=" text-gray-600" for="leadCapLastName">
+                            Last Name <span class="text-danger">*</span>
+                        </label>
+                        <input name="lastname" class="form-control rounded-pill" id="lastname" type="text"
+                               value="{{ old('lastname') }}" required=""/>
+
+                        @if ($errors->has('lastname'))
+                            <span class="invalida" role="alert">
+                                                <strong>{{ $errors->first('lastname') }}</strong>
+                                            </span>
+                        @endif
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class=" text-gray-600" for="email">Email address <span class="text-danger">*</span></label>
+                    <input name="email" class="form-control rounded-pill" id="email" type="email"
+                           value="{{ old('email') }} " required=""/>
+                    @if ($errors->has('email'))
+                        <span class="invalida" role="alert">
+                                            <strong>{{ $errors->first('email') }}</strong>
+                                        </span>
+                    @endif
+                </div>
+                <div class="form-group">
+                    <label class=" text-gray-600" for="phone">Phone Number <span class="text-danger">*</span></label>
+                    <input name="phone" class="form-control rounded-pill" id="phone" type="phone"
+                           value="{{ old('phone') }} " required=""/>
+                    @if ($errors->has('phone'))
+                        <span class="invalida" role="alert">
+                                            <strong>{{ $errors->first('phone') }}</strong>
+                                        </span>
+                    @endif
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label class=" text-gray-600" for="password">Password <span class="text-danger">*</span></label>
+                        <input name="password" class="form-control rounded-pill" id="password" type="password"
+                               required=""/>
+                        @if ($errors->has('password'))
+                            <span class="invalida" role="alert">
+                                            <strong>{{ $errors->first('password') }}</strong>
+                                        </span>
+                        @endif
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class=" text-gray-600" for="confirm-password">Confirm Password <span class="text-danger">*</span></label>
+                        <input name="password_confirmation" class="form-control rounded-pill" id="confirm-password"
+                               type="password" required=""/>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label class=" text-gray-600" for="referral">Referred By</label>
+                        <input name="referral" class="form-control rounded-pill" id="referral" type="text"
+                               required=""/>
+                    </div>
+                </div>
+
+                <button class="btn btn-purple" type="submit">CREATE AN ACCOUNT</button>
+                <a class="forgot-btn" href="{{ route('password.request') }}">Forgot password?</a>
+                <a class="forgot-btn" href="{{ route('login') }}">Login</a>
+            </form>
+        </div>
+    </div>
+    <!-- singin-area End -->
+
+
+
 @endsection
