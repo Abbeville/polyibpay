@@ -10,9 +10,11 @@
     "require": {
         "php": "^7.1.3",
         "fideloper/proxy": "^4.0",
+        "guzzlehttp/guzzle": "^7.2",
         "kingflamez/laravelrave": "^3.0",
         "laravel/framework": "^6.0",
         "laravel/tinker": "^1.0",
+        "spatie/laravel-activitylog": "^3.16",
         "spatie/laravel-permission": "^3.16"
     },
     "require-dev": {

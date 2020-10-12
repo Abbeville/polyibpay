@@ -19,8 +19,8 @@ Auth::routes();
 
 
 
-Route::group(['prefix' => 'app', 'middleware' => ['auth']], function () {
-  Route::get('/', 'LayoutController@content');
+Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
 
-  Route::get('full', 'LayoutController@full');
+  Route::get('/', 'Users\DashboardController@index');
+
 });

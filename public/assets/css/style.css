@@ -1039,7 +1039,8 @@ ul {
     color: #fff; }
   .header-area .logo {
     margin-top: 5px;
-    display: inline-block; }
+    display: inline-block;
+  }
   .header-area .menu-back-page {
     margin-top: 6px;
     color: #fff;
@@ -1452,7 +1453,8 @@ ul {
 
 .balance-area-bg-home:after {
   background-image: url("../img/bg/8.png") !important;
-  background-size: cover; }
+  background-size: cover;
+}
 
 .balance-area-bg-home .balance-title h6 {
   color: #fff; }

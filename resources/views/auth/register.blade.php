@@ -18,6 +18,29 @@
     <!-- singin-area start -->
     <div class="signin-area">
         <div class="container">
+
+            @if(session()->has('success'))
+                <div class="alert alert-success">
+                    {{ session()->get('success') }}
+                </div>
+            @endif
+            @if(session()->has('error'))
+                <div class="alert alert-warning">
+                    {{ session()->get('error') }}
+                </div>
+            @endif
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+
+
             <form class="contact-form-inner" method="post" action="{{ route('register') }}">
                 @csrf
                 <div class="form-row">
@@ -59,7 +82,7 @@
                 </div>
                 <div class="form-group">
                     <label class=" text-gray-600" for="phone">Phone Number <span class="text-danger">*</span></label>
-                    <input name="phone" class="form-control rounded-pill" id="phone" type="phone"
+                    <input name="phone_number" class="form-control rounded-pill" id="phone" type="phone"
                            value="{{ old('phone') }} " required=""/>
                     @if ($errors->has('phone'))
                         <span class="invalida" role="alert">
@@ -79,16 +102,16 @@
                         @endif
                     </div>
                     <div class="form-group col-md-6">
-                        <label class=" text-gray-600" for="confirm-password">Confirm Password <span class="text-danger">*</span></label>
+                        <label class="text-gray-600" for="confirm-password">Confirm Password <span class="text-danger">*</span></label>
                         <input name="password_confirmation" class="form-control rounded-pill" id="confirm-password"
                                type="password" required=""/>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label class=" text-gray-600" for="referral">Referred By</label>
+                        <label class="text-gray-600" for="referral">Referred By (User ID)</label>
                         <input name="referral" class="form-control rounded-pill" id="referral" type="text"
-                               required=""/>
+                               />
                     </div>
                 </div>
 
