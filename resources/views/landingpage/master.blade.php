@@ -7,27 +7,11 @@
     <meta name="description" content/>
     <meta name="author" content/>
     <title>BillsPay</title>
-    @include('landingpage.partials.css')
+
 </head>
 <body>
-<div id="layoutDefault">
-    <div id="layoutDefault_content">
-        <main>
 
-            @include('landingpage.partials.nav')
-            @include('landingpage.partials.hero')
-            @yield('content')
-
-        </main>
-    </div>
-    <div id="layoutDefault_footer">
-
-        @include('landingpage.partials.footer')
-
-    </div>
-</div>
-
-@include('landingpage.partials.scripts')
+@yield('content')
 
 
 </body>

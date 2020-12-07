@@ -2,252 +2,192 @@
 
 @section('contents')
 
-    <!-- navbar end -->
-    <div class="ba-navbar">
-        <div class="ba-navbar-user">
-            <div class="menu-close">
-                <i class="la la-times"></i>
-            </div>
-            <div class="thumb">
-                <img src="assets/img/user.png" alt="user">
-            </div>
-            <div class="details">
-                <h5>Raduronto kelax</h5>
-                <p>ID: 99883323</p>
-            </div>
-        </div>
-        <div class="ba-add-balance-title">
-            <h5>Add Balance</h5>
-            <p>$458786.00</p>
-        </div>
-        <div class="ba-add-balance-title style-two">
-            <h5>Deposit</h5>
-            <i class="fa fa-plus"></i>
-        </div>
-        <div class="ba-main-menu">
-            <h5>Menu</h5>
-            <ul>
-                <li><a href="home.html">Bankapp Display</a></li>
-                <li><a href="all-page.html">Pages</a></li>
-                <li><a href="component.html">Components</a></li>
-                <li><a href="carts.html">My Cart</a></li>
-                <li><a href="user-setting.html">Setting</a></li>
-                <li><a href="notiFication-2.html">Notification</a></li>
-                <li><a href="signup.html">Logout</a></li>
-            </ul>
-            <a class="btn btn-purple" href="#">View Profile</a>
-        </div>
-    </div>
-    <!-- navbar end -->
 
-    <!-- navbar end -->
-    <div class="add-balance-inner-wrap">
+    <div class="wrapper homepage">
+
+        <!-- header -->
+    @include('partials.header')
+
+
+    <!-- header ends -->
+
         <div class="container">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Add Balance</h5>
-                    </div>
-                    <div class="modal-body">
-                        <div class="action-sheet-content">
-                            <form action="http://www.s7template.com/tf/bankapp/index.html">
-                                <div class="form-group basic">
-                                    <div class="input-wrapper">
-                                        <label class="label" for="account1">From</label>
-                                        <select class="form-control custom-select" id="account1">
-                                            <option value="0">Investment (*** 7284)</option>
-                                            <option value="1">Savings (*** 5078)</option>
-                                            <option value="2">Deposit (*** 2349)</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="form-group basic">
-                                    <label class="label">Enter Amount</label>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="input1">$</span>
-                                        </div>
-                                        <input type="text" class="form-control form-control-lg" value="768">
-                                    </div>
-                                </div>
-
-                                <div class="form-group basic">
-                                    <button type="button" class="btn-c btn-primary btn-block btn-lg"
-                                            data-dismiss="modal">Deposit
-                                    </button>
-                                </div>
-                            </form>
+            <div class="card bg-template shadow mt-4 h-190">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-auto">
+                            <figure class="avatar avatar-60"><img
+                                        src="https://ui-avatars.com/api/?name={{ auth()->user()->firstname.'+'.auth()->user()->lastname }}"
+                                        alt=""></figure>
+                        </div>
+                        <div class="col pl-0 align-self-center">
+                            <h5 class="mb-1">{{  auth()->user()->firstname.' '.auth()->user()->lastname }}</h5>
+                            <p class="text-mute small">Good morning</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- navbar end -->
-
-    <!-- balance start -->
-    <div class="balance-area pd-top-40 mg-top-50">
-        <div class="container">
-            <div class="balance-area-bg balance-area-bg-home">
-                <div class="balance-title text-center">
-                    <h6>Welcome! <br> Dear Mr Suvro - Bankapp Wallet</h6>
+        <div class="container top-100">
+            <div class="card mb-4 shadow">
+                <div class="card-body border-bottom">
+                    <div class="row">
+                        <div class="col">
+                            <h3 class="mb-0 font-weight-normal"> ₦ 0</h3>
+                            <p class="text-mute">My Balance</p>
+                        </div>
+                        <div class="col-auto">
+                            <button class="btn btn-default btn-rounded-54 shadow" data-toggle="modal"
+                                    data-target="#addmoney"><i class="material-icons">add</i></button>
+                        </div>
+                    </div>
                 </div>
-                <div class="ba-balance-inner text-center" style="background-image: url(assets/img/bg/2.png);">
-                    <div class="icon">
-                        <img src="assets/img/icon/1.png" alt="img">
-                    </div>
-                    <h5 class="title">Total Balance</h5>
-                    <h5 class="amount">$56,985.00</h5>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- balance End -->
+                <div class="card-footer bg-none">
 
-    <!-- add balance start -->
-    <div class="add-balance-area pd-top-40">
-        <div class="container">
-            <div class="ba-add-balance-title ba-add-balance-btn">
-                <h5>Add Balance</h5>
-                <i class="fa fa-plus"></i>
-            </div>
-            <div class="ba-add-balance-inner mg-top-40">
-                <div class="row custom-gutters-20">
-                    <div class="col-6">
-                        <a class="btn btn-blue ba-add-balance-btn" href="#">Withdraw <i
-                                    class="fa fa-arrow-down"></i></a>
-                    </div>
-                    <div class="col-6">
-                        <a class="btn btn-red ba-add-balance-btn" href="#">Send <i class="fa fa-arrow-right"></i></a>
-                    </div>
-                    <div class="col-6">
-                        <a class="btn btn-purple ba-add-balance-btn" href="#">Cards <i
-                                    class="fa fa-credit-card-alt "></i></a>
-                    </div>
-                    <div class="col-6">
-                        <a class="btn btn-green ba-add-balance-btn" href="#">Exchange <i
-                                    class="fa fa-arrow-down"></i></a>
-                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- add balance End -->
-
-
-
-    <!-- transaction start -->
-    <div class="transaction-area pd-top-40">
         <div class="container">
-            <div class="section-title">
-                <h3 class="title">Transactions</h3>
-                <a href="#">View All</a>
-            </div>
-            <ul class="transaction-inner">
-                <li class="ba-single-transaction">
-                    <div class="thumb">
-                        <img src="assets/img/icon/2.png" alt="img">
+            <div class="row">
+                <div class="swiper-container icon-slide mb-4">
+                    <div class="swiper-wrapper">
+                        <a href="#" class="swiper-slide text-center" data-toggle="modal" data-target="#paymodal">
+                            <div class="avatar avatar-60 no-shadow border-0">
+                                <div class="overlay bg-template"></div>
+                                <i class="material-icons text-template">phone</i>
+                            </div>
+                            <p class="small mt-2">Airtime</p>
+                        </a>
+                        <a href="#" class="swiper-slide text-center" data-toggle="modal" data-target="#sendmoney">
+                            <div class="avatar avatar-60 no-shadow border-0">
+                                <div class="overlay bg-template"></div>
+                                <i class="material-icons text-template">language</i>
+                            </div>
+                            <p class="small mt-2">Data</p>
+                        </a>
+                        <a href="#" class="swiper-slide text-center" data-toggle="modal" data-target="#bookmodal">
+                            <div class="avatar avatar-60 no-shadow border-0">
+                                <div class="overlay bg-template"></div>
+                                <i class="material-icons text-template">receipt</i>
+                            </div>
+                            <p class="small mt-2">Bills</p>
+                        </a>
+                        <a href="#" class="swiper-slide text-center">
+                            <div class="avatar avatar-60 no-shadow border-0">
+                                <div class="overlay bg-template"></div>
+                                <i class="material-icons text-template">monetization_on</i>
+                            </div>
+                            <p class="small mt-2">Bitcoin</p>
+                        </a>
                     </div>
-                    <div class="details">
-                        <h5>Namecheap Inc.</h5>
-                        <p>Domain Purchase</p>
-                        <h5 class="amount">-$130</h5>
-                    </div>
-                </li>
-                <li class="ba-single-transaction">
-                    <div class="thumb">
-                        <img src="assets/img/icon/3.png" alt="img">
-                    </div>
-                    <div class="details">
-                        <h5>Namecheap Inc.</h5>
-                        <p>Domain Purchase</p>
-                        <h5 class="amount">-$130</h5>
-                    </div>
-                </li>
-                <li class="ba-single-transaction">
-                    <div class="thumb">
-                        <img src="assets/img/icon/4.png" alt="img">
-                    </div>
-                    <div class="details">
-                        <h5>Namecheap Inc.</h5>
-                        <p>Domain Purchase</p>
-                        <h5 class="amount">-$130</h5>
-                    </div>
-                </li>
-                <li class="ba-single-transaction">
-                    <div class="thumb">
-                        <img src="assets/img/icon/5.png" alt="img">
-                    </div>
-                    <div class="details">
-                        <h5>Namecheap Inc.</h5>
-                        <p>Domain Purchase</p>
-                        <h5 class="amount">-$130</h5>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <!-- transaction End -->
-
-
-    <!-- bill-pay start -->
-    <div class="bill-pay-area pd-top-36">
-        <div class="container">
-            <div class="section-title style-three text-center">
-                <h3 class="title">Pay Your Monthly Bill</h3>
-            </div>
-            <div class="ba-bill-pay-inner">
-                <div class="ba-single-bill-pay">
-                    <div class="thumb">
-                        <img src="assets/img/icon/6.png" alt="img">
-                    </div>
-                    <div class="details">
-                        <h5>Envato.com</h5>
-                        <p>Standard Elements Services Subscribtion</p>
-                    </div>
+                    <div class="swiper-pagination"></div>
                 </div>
-                <div class="amount-inner">
-                    <h5>$169</h5>
-                    <a class="btn btn-blue" href="#">Pay Now</a>
-                </div>
-            </div>
-            <div class="ba-bill-pay-inner">
-                <div class="ba-single-bill-pay">
-                    <div class="thumb">
-                        <img src="assets/img/icon/3.png" alt="img">
-                    </div>
-                    <div class="details">
-                        <h5>Apple.com</h5>
-                        <p>Apple Laptop Monthly Pay System.</p>
-                    </div>
-                </div>
-                <div class="amount-inner">
-                    <h5>$130</h5>
-                    <a class="btn btn-blue" href="#">Pay Now</a>
-                </div>
-            </div>
-            <div class="ba-bill-pay-inner">
-                <div class="ba-single-bill-pay">
-                    <div class="thumb">
-                        <img src="assets/img/icon/4.png" alt="img">
-                    </div>
-                    <div class="details">
-                        <h5>Amazon.com</h5>
-                        <p>Standard Domain Services Subscribtion</p>
-                    </div>
-                </div>
-                <div class="amount-inner">
-                    <h5>$130</h5>
-                    <a class="btn btn-blue" href="#">Pay Now</a>
-                </div>
-            </div>
-            <div class="btn-wrap text-center mt-4">
-                <a class="readmore-btn" href="#">View All</a>
             </div>
         </div>
+
+        <div class="container">
+            <!-- page content here -->
+            <h6 class="subtitle">Today</h6>
+            <div class="row">
+                <div class="col-12 px-0">
+                    <ul class="list-group list-group-flush border-top border-bottom">
+                        <li class="list-group-item">
+                            <div class="row align-items-center">
+                                <div class="col-auto pr-0">
+                                    <div class="avatar avatar-50 no-shadow border-0">
+                                        <div class="overlay bg-template"></div>
+                                        <i class="material-icons text-template">phone</i>
+                                    </div>
+                                </div>
+                                <div class="col align-self-center pr-0">
+                                    <h6 class="font-weight-normal mb-1">Ms. Shivani Dilux</h6>
+                                    <p class="text-mute small text-secondary">15-1-2020, 8:00 am</p>
+                                </div>
+                                <div class="col-auto">
+                                    <h6 class="text-success">$154.0</h6>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <h6 class="subtitle">Yesterday</h6>
+            <div class="row">
+                <div class="col-12 px-0">
+                    <ul class="list-group list-group-flush border-top border-bottom">
+                        <li class="list-group-item">
+                            <div class="row align-items-center">
+                                <div class="col-auto pr-0">
+                                    <div class="avatar avatar-50 no-shadow border-0">
+                                        <div class="overlay bg-template"></div>
+                                        <i class="material-icons text-template">phone</i>
+                                    </div>
+                                </div>
+                                <div class="col align-self-center pr-0">
+                                    <h6 class="font-weight-normal mb-1">Ms. Shivani Dilux</h6>
+                                    <p class="text-mute small text-secondary">15-1-2020, 8:00 am</p>
+                                </div>
+                                <div class="col-auto">
+                                    <h6 class="text-success">$154.0</h6>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="col-12 px-0">
+                    <ul class="list-group list-group-flush border-top border-bottom">
+                        <li class="list-group-item">
+                            <div class="row align-items-center">
+                                <div class="col-auto pr-0">
+                                    <div class="avatar avatar-50 no-shadow border-0">
+                                        <div class="overlay bg-template"></div>
+                                        <i class="material-icons text-template">phone</i>
+                                    </div>
+                                </div>
+                                <div class="col align-self-center pr-0">
+                                    <h6 class="font-weight-normal mb-1">Ms. Shivani Dilux</h6>
+                                    <p class="text-mute small text-secondary">15-1-2020, 8:00 am</p>
+                                </div>
+                                <div class="col-auto">
+                                    <h6 class="text-success">$154.0</h6>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <h6 class="subtitle">3 DEC 2020</h6>
+            <div class="row">
+                <div class="col-12 px-0">
+                    <ul class="list-group list-group-flush border-top border-bottom">
+                        <li class="list-group-item">
+                            <div class="row align-items-center">
+                                <div class="col-auto pr-0">
+                                    <div class="avatar avatar-50 no-shadow border-0">
+                                        <div class="overlay bg-template"></div>
+                                        <i class="material-icons text-template">phone</i>
+                                    </div>
+                                </div>
+                                <div class="col align-self-center pr-0">
+                                    <h6 class="font-weight-normal mb-1">Ms. Shivani Dilux</h6>
+                                    <p class="text-mute small text-secondary">15-1-2020, 8:00 am</p>
+                                </div>
+                                <div class="col-auto">
+                                    <h6 class="text-success">$154.0</h6>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <!-- page content ends -->
+        </div>
+        <!-- footer-->
+    @include('partials.footer')
+    <!-- footer ends-->
     </div>
-    <!-- bill-pay End -->
-
-
 @endsection

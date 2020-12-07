@@ -1,46 +1,30 @@
-<!-- Footer Area -->
-<div class="footer-area mg-top-40">
-    <div class="footer-top text-center" style="background-image: url(assets/img/bg/7.png);">
-        <div class="container">
-            <p>Copyright © Bankapp 2020. All Rights Reserved. Designed By S7template</p>
+<div class="footer">
+    <div class="no-gutters">
+        <div class="col-auto mx-auto">
+            <div class="row no-gutters justify-content-center">
+                <div class="col-auto">
+                    <a href="{{ route('users.dashboard') }}" class="btn btn-link-default active">
+                        <i class="material-icons">home</i>
+                    </a>
+                </div>
+                <div class="col-auto">
+                    <a href="{{ route('users.vcard') }}" class="btn btn-link-default">
+                        <i class="material-icons">credit_card</i>
+                    </a>
+
+                </div>
+                <div class="col-auto">
+                    <a href="{{ route('users.transactions') }}" class="btn btn-link-default">
+                        <i class="material-icons">assessment</i>
+                    </a>
+                </div>
+
+                <div class="col-auto">
+                    <a href="#." class="btn btn-link-default menu-btn">
+                        <i class="material-icons">subject</i>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
-    @auth
-    <div class="container">
-        <div class="footer-bottom text-center">
-            <ul>
-                <li>
-                    <a href="home.html">
-                        <i class="fa fa-home"></i>
-                        <p>Home</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="all-page.html">
-                        <i class="fa fa-file-text"></i>
-                        <p>Pages</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="component.html">
-                        <i class="fa fa-plus"></i>
-                        <p>Components</p>
-                    </a>
-                </li>
-                <li>
-                    <a class="menu-bar" href="#">
-                        <i class="fa fa-bars"></i>
-                        <p>Menu</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="carts.html">
-                        <i class="fa fa-home"></i>
-                        <p>My Card</p>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    @endauth
 </div>

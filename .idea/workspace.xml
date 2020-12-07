@@ -20,28 +20,102 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="16bfd71f-e91a-42d6-bc60-21af61c80471" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/users/dashboard/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/partials/breadcrumbs.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/partials/header.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/partials/navs.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/users/profile/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/users/profile/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/users/profile/password.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/users/vcard/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/breadcrumbs.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/billspay.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/billspay.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/ResetPasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/ResetPasswordController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/VerificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/VerificationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/helpers.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_03_223407_create_user_data_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_03_223407_create_user_data_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_03_223804_create_user_organizations_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_03_224634_create_departments_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_03_224729_create_organizations_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/images/ui-icons_444444_256x240.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/images/ui-icons_555555_256x240.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/images/ui-icons_777620_256x240.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/images/ui-icons_777777_256x240.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/images/ui-icons_cc0000_256x240.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/images/ui-icons_ffffff_256x240.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/owl.video.play.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/responsive.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/vendor.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fonts/fontawesome-webfont3e6e.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fonts/fontawesome-webfont3e6e.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fonts/fontawesome-webfont3e6e.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fonts/fontawesome-webfont3e6e.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fonts/fontawesome-webfont3e6e.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fonts/fontawesome-webfontd41d.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fonts/la-brands-400.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fonts/la-brands-400.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fonts/la-brands-400.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fonts/la-brands-400.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fonts/la-brands-400d41d.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fonts/la-brands-401.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fonts/la-regular-400.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fonts/la-regular-400.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fonts/la-regular-400.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fonts/la-regular-400.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fonts/la-regular-400d41d.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fonts/la-regular-401.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fonts/la-solid-900.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fonts/la-solid-900.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fonts/la-solid-900.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fonts/la-solid-900.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fonts/la-solid-900d41d.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fonts/la-solid-901.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/bg/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/bg/10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/bg/11.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/bg/12.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/bg/13.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/bg/14.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/bg/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/bg/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/bg/4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/bg/5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/bg/6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/bg/7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/bg/8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/bg/9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/blog/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/blog/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/blog/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/blog/4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/blog/5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/blog/6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/blog/7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/icon/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/icon/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/icon/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/icon/4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/icon/5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/icon/6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/icon/7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/img/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/other/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/other/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/send-money/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/send-money/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/send-money/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/send-money/4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/user.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/notifications/notifications.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/noty/noty.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/vendor.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/landingpage/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/landingpage/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/landingpage/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/landingpage/master.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/partials/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/footer.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/partials/meta.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/meta.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/partials/scripts.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/scripts.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/partials/styles.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/styles.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/users/dashboard/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/dashboard/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -155,6 +229,8 @@
       <path value="$PROJECT_DIR$/vendor/psr/http-client" />
       <path value="$PROJECT_DIR$/vendor/psr/http-message" />
       <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/vendor/davejamesmiller/laravel-breadcrumbs" />
+      <path value="$PROJECT_DIR$/vendor/facade/ignition-contracts" />
     </include_path>
   </component>
   <component name="ProjectId" id="1eYCxGwnyHvvhfT2qJKYd3nVjBz" />
@@ -213,6 +289,7 @@
       <workItem from="1601056354138" duration="275000" />
       <workItem from="1601916230392" duration="35000" />
       <workItem from="1601916275872" duration="25580000" />
+      <workItem from="1607202704013" duration="16449000" />
     </task>
     <servers />
   </component>
@@ -229,32 +306,6 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="-1222" y="305" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1602333676895">
-      <screen x="-1920" y="0" width="1920" height="1080" />
-    </state>
-    <state x="-1222" y="305" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1920.0.1920.1080/0.0.1680.1050@-1920.0.1920.1080" timestamp="1602333676895" />
-    <state x="-1372" y="282" key="IDE.errors.dialog" timestamp="1594489410390">
-      <screen x="-1920" y="0" width="1920" height="1080" />
-    </state>
-    <state x="-1372" y="282" key="IDE.errors.dialog/-1920.0.1920.1080/0.0.1680.1050@-1920.0.1920.1080" timestamp="1594489410390" />
-    <state x="349" y="175" key="SettingsEditor" timestamp="1601056380371">
-      <screen x="0" y="0" width="1680" height="1050" />
-    </state>
-    <state x="349" y="175" key="SettingsEditor/-1920.0.1920.1080/0.0.1680.1050@0.0.1680.1050" timestamp="1601056380371" />
-    <state width="596" height="445" key="SwitcherDM" timestamp="1602419079281">
-      <screen x="-1920" y="0" width="1920" height="1080" />
-    </state>
-    <state width="596" height="445" key="SwitcherDM/-1920.0.1920.1080/0.0.1680.1050@-1920.0.1920.1080" timestamp="1602419079281" />
-    <state x="-1205" y="402" key="cloudConfig.PluginsDialog" timestamp="1602355008477">
-      <screen x="-1920" y="0" width="1920" height="1080" />
-    </state>
-    <state x="-1205" y="402" key="cloudConfig.PluginsDialog/-1920.0.1920.1080/0.0.1680.1050@-1920.0.1920.1080" timestamp="1602355008477" />
-    <state x="-1295" y="263" width="670" height="609" key="search.everywhere.popup" timestamp="1602451324838">
-      <screen x="-1920" y="0" width="1920" height="1080" />
-    </state>
-    <state x="-1295" y="263" width="670" height="609" key="search.everywhere.popup/-1920.0.1920.1080/0.0.1680.1050@-1920.0.1920.1080" timestamp="1602451324838" />
-    <state x="625" y="292" width="670" height="676" key="search.everywhere.popup/0.0.1920.1200@0.0.1920.1200" timestamp="1602343482654" />
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
