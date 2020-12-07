@@ -49,4 +49,6 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
     Route::get('/settings/password', 'Users\ProfileController@changePassword')->name('users.profile.password');
     Route::get('/settings/bank', 'Users\ProfileController@updateBank')->name('users.profile.bank');
 
+    Route::post('/settings/password/update', 'Users\ProfileController@updatePassword')->name('user.password.update');
+
 });
