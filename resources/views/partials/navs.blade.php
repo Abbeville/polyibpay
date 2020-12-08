@@ -3,8 +3,11 @@
 
 
 
-<a href="{{ route('users.profile.index') }}" class="list-group-item list-group-item-action"><i
-            class="material-icons icons-raised">person</i>Profile & Settings</a>
+<a href="#" class="list-group-item list-group-item-action"><i
+            class="material-icons icons-raised">person</i>My Profile</a>
+
+<a href="{{ route('users.settings.index') }}" class="list-group-item list-group-item-action"><i
+            class="material-icons icons-raised">settings</i>Settings</a>
 
 
 <a href="javascript:void(0)" class="list-group-item list-group-item-action" data-toggle="modal"

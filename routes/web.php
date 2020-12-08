@@ -43,12 +43,16 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
     Route::get('/vcard', 'Users\VCardController@index')->name('users.vcard');
     Route::get('/transactions', 'Users\TransactionsController@index')->name('users.transactions');
 
-
-    Route::get('/settings', 'Users\ProfileController@index')->name('users.profile.index');
     Route::get('/settings/edit', 'Users\ProfileController@editProfile')->name('users.profile.edit');
-    Route::get('/settings/password', 'Users\ProfileController@changePassword')->name('users.profile.password');
-    Route::get('/settings/bank', 'Users\ProfileController@updateBank')->name('users.profile.bank');
+    Route::get('/settings/bank', 'Users\ProfileController@updateBank')->name('users.settings.bank');
 
-    Route::post('/settings/password/update', 'Users\ProfileController@updatePassword')->name('user.password.update');
+    Route::get('/settings', 'Users\SettingsController@index')->name('users.settings.index');
+
+    Route::get('/settings/pin', 'Users\SettingsController@pin')->name('users.settings.pin');
+    Route::post('/settings/pin/update', 'Users\SettingsController@updatePin')->name('users.settings.pin.update');
+
+    //Password
+    Route::get('/settings/password', 'Users\SettingsController@changePassword')->name('users.settings.password');
+    Route::post('/settings/password/update', 'Users\SettingsController@updatePassword')->name('user.password.update');
 
 });
