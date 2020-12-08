@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -13,18 +15,18 @@ class ProfileController extends Controller
     }
 
     public function index(){
-        return view('users.profile.index');
+//        return view('')
     }
+
 
     public function editProfile(){
         return view('users.profile.edit');
     }
 
-    public function changePassword(){
-        return view('users.profile.password');
-    }
+
 
     public function updateBank(){
         return view('users.profile.bank');
     }
+
 }

@@ -26,7 +26,7 @@
                             </a>
                         </li>
                         <li class="list-group-item">
-                            <a href="{{ route('users.profile.password') }}" class="row">
+                            <a href="{{ route('users.settings.password') }}" class="row">
                                 <div class="col">
                                     <h6 class="text-dark mb-1">Change password</h6>
                                     <p class="text-secondary mb-0 small">Change your password to a new one</p>
@@ -37,7 +37,19 @@
                             </a>
                         </li>
                         <li class="list-group-item">
-                            <a href="{{ route('users.profile.bank') }}" class="row">
+                            <a href="{{ route('users.settings.pin') }}" class="row">
+                                <div class="col">
+                                    <h6 class="text-dark mb-1">Transaction Pin</h6>
+                                    <p class="text-secondary mb-0 small">Set or update your 4 digit transaction pin</p>
+                                </div>
+                                <div class="col-2 pl-0 align-self-center text-right">
+                                    <i class="material-icons text-secondary">chevron_right</i>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="list-group-item">
+                            <a href="{{ route('users.settings.bank') }}" class="row">
                                 <div class="col">
                                     <h6 class="text-dark mb-1">Withdrawal Settings</h6>
                                     <p class="text-secondary mb-0 small">Change or set your bank account</p>
