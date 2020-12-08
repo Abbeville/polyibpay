@@ -12,6 +12,11 @@
     <!-- header ends -->
 
         <div class="container">
+            @if(Session::has('success'))
+                <div class="alert alert-success">
+                    {{ Session::get('success') }}
+                </div>
+            @endif
             <div class="card bg-template shadow mt-4 h-190">
                 <div class="card-body">
                     <div class="row">
