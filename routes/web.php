@@ -50,3 +50,4 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
     Route::get('/settings/bank', 'Users\ProfileController@updateBank')->name('users.profile.bank');
 
 });
+

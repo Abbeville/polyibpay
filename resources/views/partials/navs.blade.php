@@ -11,5 +11,9 @@
    data-target="#colorscheme"><i class="material-icons icons-raised">person_add</i>Invite your friends</a>
 
 
-<a href="login.html" class="list-group-item list-group-item-action"><i
+<a href="{{ route('logout') }}" class="list-group-item list-group-item-action" onclick="event.preventDefault();  document.getElementById('logout-form').submit();"><i
             class="material-icons icons-raised bg-danger">power_settings_new</i>Logout</a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
