@@ -43,7 +43,10 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
     Route::get('/vcard', 'Users\VCardController@index')->name('users.vcard');
     Route::get('/transactions', 'Users\TransactionsController@index')->name('users.transactions');
 
+
+  
     Route::get('/settings/edit', 'Users\ProfileController@editProfile')->name('users.profile.edit');
+    Route::get('/settings/password', 'Users\ProfileController@changePassword')->name('users.profile.password');
     Route::get('/settings/bank', 'Users\ProfileController@updateBank')->name('users.settings.bank');
 
     Route::get('/settings', 'Users\SettingsController@index')->name('users.settings.index');
@@ -56,3 +59,4 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
     Route::post('/settings/password/update', 'Users\SettingsController@updatePassword')->name('user.password.update');
 
 });
+
