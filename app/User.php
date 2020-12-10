@@ -38,6 +38,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function wallet(){
+        return $this->hasOne('App\Models\Wallet');
+    }
     /**
      * Scope a query to only include user status.
      *
