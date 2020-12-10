@@ -16,12 +16,14 @@ class CreateTransactionsTable extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
-            $table->string('type');
+            $table->enum('type', ['wallet_recharge', 'bills']);
             $table->string('reference');
-            $table->string('amount');
+            $table->double('amount', 16, 8);
             $table->string('balance');
             $table->text('narration');
-            $table->string('status');
+            $table->string('currency')->nullable();
+            $table->enum('status', ['success', 'pending', 'failed', 'canceled']);
+            $table->string('chargecode')->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
         });
