@@ -11,6 +11,9 @@
 |
 */
 
+use App\Http\Controllers\Users\ProfileController;
+use App\Http\Controllers\Users\SettingsController;
+
 
 Route::get('/', 'HomeController@index')->name('home');
 
@@ -44,10 +47,12 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
     Route::get('/transactions', 'Users\TransactionsController@index')->name('users.transactions');
 
 
-  
-    Route::get('/settings/edit', 'Users\ProfileController@editProfile')->name('users.profile.edit');
+
+//    Route::get('/settings/edit', 'Users\ProfileController@editProfile')->name('users.profile.edit');
     Route::get('/settings/password', 'Users\ProfileController@changePassword')->name('users.profile.password');
-    Route::get('/settings/bank', 'Users\ProfileController@updateBank')->name('users.settings.bank');
+    Route::get('/profile/', [ProfileController::class, 'index'])->name('users.profile');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('users.profile.edit');
+    Route::post('/profile/update', [ProfileController::class, 'update'])->name('users.profile.update');
 
     Route::get('/settings', 'Users\SettingsController@index')->name('users.settings.index');
 
@@ -57,6 +62,8 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
     //Password
     Route::get('/settings/password', 'Users\SettingsController@changePassword')->name('users.settings.password');
     Route::post('/settings/password/update', 'Users\SettingsController@updatePassword')->name('user.password.update');
+
+    //Profile (user_data)
 
 });
 

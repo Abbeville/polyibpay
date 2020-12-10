@@ -1,6 +1,6 @@
 <?php
 
-
+use Illuminate\Support\Facades\DB;
 
 function generateUserId()
 {
@@ -13,4 +13,9 @@ function generateUserId()
         $newUserId = 1000001;
     }
     return $newUserId;
+}
+
+function getBankName($id){
+    $bank = DB::table('banks')->where('id', $id)->first();
+    return $bank->name;
 }
