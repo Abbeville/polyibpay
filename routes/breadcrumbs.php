@@ -18,7 +18,7 @@ Breadcrumbs::for('users.profile.index', function ($trail) {
 
 Breadcrumbs::for('users.profile.edit', function ($trail) {
     $trail->push('Home', route('users.dashboard'));
-    $trail->push('Settings', route('users.profile.index'));
+    $trail->push('Settings', route('users.settings.index'));
     $trail->push('Edit Profile', '');
 });
 
@@ -34,5 +34,19 @@ Breadcrumbs::for('users.profile.bank', function ($trail) {
     $trail->push('Settings', route('users.profile.index'));
     $trail->push('Withdrawal Settings', '');
 });
+
+//New
+Breadcrumbs::for('users.settings.index', function ($trail) {
+    $trail->push('Home', route('users.dashboard'));
+    $trail->push('Settings', '');
+});
+
+Breadcrumbs::for('users.settings.pin', function ($trail) {
+    $trail->push('Home', route('users.dashboard'));
+    $trail->push('Settings', route('users.settings.index'));
+    $trail->push('Pin', '');
+});
+
+
 
 

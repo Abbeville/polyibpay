@@ -21,14 +21,18 @@
         </div>
     </div>
 </div>
+
+@auth
 <div class="sidebar">
     <div class="mt-4 mb-3">
         <div class="row">
             <div class="col-auto">
-                <figure class="avatar avatar-60 border-0"><img src="https://ui-avatars.com/api/?name={{-- {{ auth()->user()->firstname.'+'.auth()->user()->lastname }} --}}" alt=""></figure>
+
+{{--                <figure class="avatar avatar-60 border-0"><img src="https://ui-avatars.com/api/?name={{ auth()->user()->firstname.'+'.auth()->user()->lastname }}" alt=""></figure>--}}
             </div>
             <div class="col pl-0 align-self-center">
-                <h5 class="mb-1">{{-- {{  auth()->user()->firstname.' '.auth()->user()->lastname }} --}}</h5>
+{{--                <h5 class="mb-1">{{  auth()->user()->firstname.' '.auth()->user()->lastname }}</h5>--}}
+
                 <p class="text-mute small">Good morning</p>
             </div>
         </div>
@@ -36,12 +40,13 @@
     <div class="row">
         <div class="col">
             <div class="list-group main-menu">
-         @include('partials.navs')
+                @include('partials.navs')
             </div>
         </div>
     </div>
 </div>
 <a href="javascript:void(0)" class="closesidemenu"><i class="material-icons icons-raised bg-dark ">close</i></a>
+@endauth
 
 <!-- Loader -->
 <div class="row no-gutters vh-100 loader-screen">

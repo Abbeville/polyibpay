@@ -4,7 +4,7 @@
 
 [ Table of content ]
 -------------------------------------
-1. Basic 
+1. Basic
 2. primary colors
 3. sidebar
 4. bread crumb
@@ -13,7 +13,7 @@
 7. form elements
 8. button
 9. input group
-10. h group 
+10. h group
 11. heights
 12. top
 13. bottom
@@ -4217,3 +4217,22 @@ pre {
     border-radius: 5px;
     background: rgba(230, 230, 230, 0.4);
 }
+
+.pin :focus{
+    border: 2px solid #6d00be !important;
+    box-shadow: 2px 2px 2px #6d00be;
+}
+
+.pin{
+    padding: 10px;
+    border-radius: 5px;
+    height: 40px;
+    width: 40px;
+    border: 1px solid #6d00be;
+    font-size: 40px;
+    text-align: center;
+    color: #6d00be;
+}
+
+
+
