@@ -11,6 +11,8 @@
 |
 */
 
+use App\Http\Controllers\Users\TransactionsController;
+
 
 Route::get('/', 'HomeController@index')->name('home');
 
@@ -42,9 +44,10 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
     Route::get('/', 'Users\DashboardController@index')->name('users.dashboard');
     Route::get('/vcard', 'Users\VCardController@index')->name('users.vcard');
     Route::get('/transactions', 'Users\TransactionsController@index')->name('users.transactions');
+    Route::get('/transactions/crypto-request', [TransactionsController::class, 'crypto'])->name('users.transactions.crypto-request');
 
 
-  
+
     Route::get('/settings/edit', 'Users\ProfileController@editProfile')->name('users.profile.edit');
     Route::get('/settings/password', 'Users\ProfileController@changePassword')->name('users.profile.password');
     Route::get('/settings/bank', 'Users\ProfileController@updateBank')->name('users.settings.bank');
