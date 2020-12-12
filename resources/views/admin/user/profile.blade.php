@@ -175,31 +175,45 @@
               <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                   <div class="row register-form">
                            <!-- Earnings (Monthly) Card Example -->
-                       <div class="col-xl-3 col-md-6 mb-4">
+                       <div class="col-xl-4 col-md-6 mb-4">
                         <div class="card h-100 bg-success text-white">
                           <div class="card-body">
                             <div class="row align-items-center">
                               <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-uppercase mb-1">Wallet Balance</div>
-                                <div class="h5 mb-0 font-weight-bold">099</div>
+                                <div class="h5 mb-0 font-weight-bold">{{ $user->wallet->currency_type . ' ' . number_format($user->wallet->balance, 2) }}</div>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
 
-                      <div class="col-xl-3 col-md-6 mb-4">
+                      <div class="col-xl-4 col-md-6 mb-4">
                         <div class="card h-100">
                           <div class="card-body">
                             <div class="row align-items-center">
                               <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-uppercase mb-1">Amount Spent</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">099</div>
+                                <div class="text-xs font-weight-bold text-uppercase mb-1">Total Deposits</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $user->wallet->currency_type . ' ' . number_format($user->wallet->credit, 2) }}</div>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
+
+                      <div class="col-xl-4 col-md-6 mb-4">
+                        <div class="card h-100 bg-danger text-white">
+                          <div class="card-body">
+                            <div class="row align-items-center">
+                              <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-uppercase mb-1">Amount Spent</div>
+                                <div class="h5 mb-0 font-weight-bold text-white">{{ $user->wallet->currency_type . ' ' . number_format($user->wallet->debit, 2) }}</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
 
                       <div class="col-lg-12">
                        <div class="card mb-4">
@@ -211,18 +225,56 @@
                                 <thead class="thead-light">
                                    <tr>
                                       <th>#</th>
-                                      <th>ID</th>
-                                      <th>Name</th>
-                                      <th>Phone Number</th>
-                                      <th>Email</th>
+                                      {{-- <th>Ref. ID.</th> --}}
+                                      <th>Amount</th>
+                                      <th>Type</th>
+                                      {{-- <th>Narration</th> --}}
                                       <th>Status</th>
-                                      <th>Joined At</th>
+                                      <th>Created At</th>
                                       <th>Actions</th>
                                    </tr>
                                 </thead>
 
                                 <tbody>
-                                   
+                                   @forelse($user->transactions as $transaction)
+                                      <tr>
+                                         <td>{{ $loop->iteration }}</td>
+                                         {{-- <td>{{ $transaction->reference }}</td> --}}
+                                         <td>{{ $transaction->amount }}</td>
+                                         <td>
+                                            @if($transaction->type == 'wallet_recharge')
+                                                <span class="badge badge-success">{{ __('Wallet Deposit') }}</span>
+                                            @else
+                                                <span class="badge badge-danger"> {{ __('Spending') }}</span>
+                                            @endif
+                                         </td>
+                                         {{-- <td>{{ $transaction->narration }}</td> --}}
+                                         <td>
+                                            @if($transaction->status == 'success')
+                                                <span class="badge badge-success">{{ __('success') }}</span>
+                                            @elseif($transaction->status == 'pending')
+                                                <span class="badge badge-warning"> {{ __('pending') }}</span>
+                                            @elseif($transaction->status == 'failed')
+                                                <span class="badge badge-danger"> {{ __('failed') }}</span>
+                                            @elseif($transaction->status == 'canceled')
+                                                <span class="badge badge-warning"> {{ __('canceled') }}</span>
+                                            @endif
+                                         </td>
+                                         <td>{{ $transaction->created_at->diffForHumans() }}</td>
+                                         <td>
+                                            <a href="{{ route('admin.transaction.show', ['transaction' => $transaction->id]) }}" class="btn btn-sm btn-success" title='View'>
+                                               <i class="fa fa-eye"></i>
+                                            </a>
+
+                                            <a href="#" class="btn btn-sm btn-danger" title='Delete' rel="" onclick="deletTransaction('{{ route('admin.transaction.delete', ['transaction' => $transaction->id]) }}')">
+                                               <i class="fa fa-trash"></i>
+                                            </a>
+                                         </td>
+                                      </tr>
+                                   @empty
+
+
+                                   @endforelse
                                 </tbody>
                              </table>
                           </div>
@@ -236,7 +288,7 @@
 
             </div>
 
-      {{-- Delete Modal  --}}
+      {{-- Delete User Modal  --}}
       <div class="modal fade modal_delete" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -252,6 +304,32 @@
                   <p class="text-danger">Selecting Yes will make all this user resources(Cards, Wallet, Bank Data etc) be removed compleetely in the system.</p>
                   <p>Are you Sure to Delete?</p>
                   <button type="button" class="btn btn-danger" id="yes_delete">Yes</button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+              </form>  
+            </div>
+            <div class="modal-footer text-center">
+              <p class="fs12">Deleting Resources</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {{-- Delete Transaction Modal  --}}
+      <div class="modal fade modal_delete_transaction" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">DELETE TRANSACTION HISTORY</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body text-center">
+              <form method="post" action="" id="edit_url">
+                  <p class="text-danger">Selecting Yes will make this transaction record to be removed completely out of the system.</p>
+                  <p>Are you Sure to Delete?</p>
+                  <button type="button" class="btn btn-danger" id="yes_delete_transaction">Yes</button>
                   <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
               </form>  
             </div>
@@ -341,6 +419,13 @@
       function delet(id, route) {
          $('.modal_delete').modal({show: true});
          $('#yes_delete').click(function(){
+             window.location.href = route;
+         })
+      }
+
+      function deletTransaction(route) {
+         $('.modal_delete_transaction').modal({show: true});
+         $('#yes_delete_transaction').click(function(){
              window.location.href = route;
          })
       }

@@ -42,8 +42,14 @@ Route::group(['name' => 'admin', 'middleware' => []], function(){
         Route::post('/user/{user}/update', 'Admin\UserController@update')->name('admin.user.update');
         Route::get('/users/{user}/{status}', 'Admin\UserController@change_status')->where('status', 'active|inactive|suspended')->name('admin.users.change_status');
 
-        // Wallet Transaction Management
-        Route::get('/wallet_transactions', 'Admin\UserController@index')->name('admin.wallet.index');
+        // Transactions Management
+        Route::get('/transaction/index', 'Admin\TransactionController@index')->name('admin.transaction.index');
+        Route::get('/transaction/{transaction}/delete', 'Admin\TransactionController@destroy')->name('admin.transaction.delete');
+        Route::get('/transaction/{transaction}/show', 'Admin\TransactionController@show')->name('admin.transaction.show');
+        Route::get('/transaction/{transaction}/{status}', 'Admin\TransactionController@change_status')->where('status', 'success|pending|failed|canceled')->name('admin.transaction.change_status');
+        Route::post('/transaction/{transaction}/update', 'Admin\TransactionController@update')->name('admin.transaction.update');
+
+
 
 
 
