@@ -11,7 +11,7 @@
 |
 */
 
-
+Route::get('test', 'TestController@test')->name('test');
 Route::get('/', 'HomeController@index')->name('home');
 
 Auth::routes();
@@ -57,6 +57,10 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
     //Password
     Route::get('/settings/password', 'Users\SettingsController@changePassword')->name('users.settings.password');
     Route::post('/settings/password/update', 'Users\SettingsController@updatePassword')->name('user.password.update');
+
+   	Route::post('/fund-wallet', 'Lib\RaveController@initialize')->name('fund-wallet');
+  	Route::post('/rave/callback', 'Lib\RaveController@callback')->name('callback');
+  	Route::post('/rave/receive', 'Lib\RaveController@webhook')->name('webhook');
 
 });
 

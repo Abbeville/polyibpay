@@ -17,9 +17,9 @@ class CreateWalletsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('user_id');
             $table->string('unique_address');
-            $table->string('credit')->default(0);
-            $table->string('debit')->default(0);
-            $table->string('balance')->default(0);
+            $table->double('credit', 16, 8)->default(0);
+            $table->double('debit', 16, 8)->default(0);
+            $table->double('balance', 16, 8)->default(0);
             $table->enum('currency_type', ['NGN']);
             $table->longText('description')->nullable();
             $table->timestamps();
