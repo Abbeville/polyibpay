@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Users;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class SettingsController extends Controller
@@ -84,5 +85,11 @@ class SettingsController extends Controller
             }
         }
     }
+
+//    public function bank(){
+//        $data['banks'] = DB::table('banks')->get();
+//        return view('users.settings.bank', compact('data'));
+//    }
+
 
 }

@@ -17,14 +17,26 @@ class CreateUserDataTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
 
-            $table->string('bank_name_id');
-            $table->string('bank_account_name');
-            $table->string('bank_account_number');
-            $table->string('bank_account_type');
-            $table->string('btc_address');
-            $table->string('eth_address');
+            // Other Info
+            $table->date('dob')->nullable();
+            $table->text('address')->nullable();
+            $table->longText('about')->nullable();
+            $table->string('country')->nullable();
+            $table->string('state')->nullable();
+            $table->string('city')->nullable();
+            $table->string('zip_code')->nullable();
+            $table->string('photo')->nullable();
+            $table->string('photo_url')->nullable();
 
+            // Bank info
+            $table->string('bank_name_id')->nullable();
+            $table->string('bank_account_name')->nullable();
+            $table->string('bank_account_number')->nullable();
+            $table->string('bank_account_type')->nullable();
 
+            // Crypto Wallets
+            $table->string('btc_address')->nullable();
+            $table->string('eth_address')->nullable();
 
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');

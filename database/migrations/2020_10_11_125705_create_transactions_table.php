@@ -17,11 +17,14 @@ class CreateTransactionsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->enum('type', ['credit', 'debit']);
-            $table->enum('category', ['bill', 'wallet', 'vcard', 'airtime', 'data bundle', 'crypto']);
+            $table->enum('occurred_on', ['wallet', 'vcard']);
+            // $table->enum('category', ['bill', 'wallet', 'vcard', 'airtime', 'data bundle', 'crypto']);
+            $table->enum('category', ['bill', 'top_up','crypto']);
             $table->string('reference');
             $table->double('amount', 16, 8);
             $table->text('narration');
-            $table->enum('status', ['success', 'pending', 'failed', 'canceled']);
+            $table->string('currency')->nullable()->default('NGN');
+            $table->enum('status', ['success', 'pending', 'failed', 'canceled'])->default('pending');
             $table->string('chargecode')->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
