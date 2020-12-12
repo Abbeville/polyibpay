@@ -20,7 +20,7 @@ class CreateWalletsTable extends Migration
             $table->double('credit', 16, 8)->default(0);
             $table->double('debit', 16, 8)->default(0);
             $table->double('balance', 16, 8)->default(0);
-            $table->enum('currency_type', ['NGN']);
+            $table->enum('currency_type', ['NGN'])->default('NGN');
             $table->longText('description')->nullable();
             $table->timestamps();
 

@@ -12,7 +12,7 @@ class Transaction extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'type', 'reference', 'amount', 'balance', 'narration', 'status',
+        'user_id', 'type', 'reference', 'occurred_on', 'category', 'amount', 'narration', 'currency', 'chargecode', 'status',
     ];
     /**
      * User Relationship
