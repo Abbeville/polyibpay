@@ -18,7 +18,7 @@ Breadcrumbs::for('users.profile.index', function ($trail) {
 
 Breadcrumbs::for('users.profile.edit', function ($trail) {
     $trail->push('Home', route('users.dashboard'));
-    $trail->push('Settings', route('users.settings.index'));
+    $trail->push('Profile', route('users.profile'));
     $trail->push('Edit Profile', '');
 });
 
@@ -29,9 +29,9 @@ Breadcrumbs::for('users.profile.password', function ($trail) {
 });
 
 
-Breadcrumbs::for('users.profile.bank', function ($trail) {
+Breadcrumbs::for('users.settings.bank', function ($trail) {
     $trail->push('Home', route('users.dashboard'));
-    $trail->push('Settings', route('users.profile.index'));
+    $trail->push('Settings', route('users.settings.index'));
     $trail->push('Withdrawal Settings', '');
 });
 
@@ -47,6 +47,11 @@ Breadcrumbs::for('users.settings.pin', function ($trail) {
     $trail->push('Pin', '');
 });
 
+
+Breadcrumbs::for('users.profile', function ($trail){
+    $trail->push('Home', route('users.dashboard'));
+    $trail->push('My Profile', '');
+
 Breadcrumbs::for('users.transactions.crypto-request', function ($trail) {
     $trail->push('Home', route('users.dashboard'));
     $trail->push('Transactions', route('users.transactions'));
@@ -57,6 +62,7 @@ Breadcrumbs::for('users.transactions.crypto-transfer', function ($trail) {
     $trail->push('Home', route('users.dashboard'));
     $trail->push('Transactions', route('users.transactions'));
     $trail->push('Crypto Transfer', '');
+
 });
 
 
