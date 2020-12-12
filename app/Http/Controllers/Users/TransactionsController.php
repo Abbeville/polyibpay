@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class TransactionsController extends Controller
@@ -24,8 +26,24 @@ class TransactionsController extends Controller
 
     public function crypto_request_save()
     {
-//        $data = request()->validate([
-//            'amount'
-//        ]);
+        $data = request()->validate([
+            'amount' => 'required'
+        ]);
+
+        DB::table('crypto_request')->insert([
+           'user_id' => Auth::id(),
+           'amount' => $data['amount'],
+           'type' => 'btc',
+            'hash_code' => '',
+            'created_at' => Carbon::now()
+        ]);
+
+        return redirect(route('users.transactions.crypto-transfer'));
+
+
+    }
+
+    public function cryptoTransfer(){
+        return view('users.transactions.crypto-transfer');
     }
 }

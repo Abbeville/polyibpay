@@ -14,7 +14,7 @@ class CryptoRequest extends Migration
     public function up()
     {
         Schema::create('crypto_request', function (Blueprint $table){
-           $table->unsignedBigInteger('id');
+           $table->bigIncrements('id');
            $table->string('user_id');
            $table->string('amount')->comment('amount in crypto');
            $table->enum('type', ['btc', 'eth']);

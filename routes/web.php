@@ -45,6 +45,8 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
     Route::get('/vcard', 'Users\VCardController@index')->name('users.vcard');
     Route::get('/transactions', 'Users\TransactionsController@index')->name('users.transactions');
     Route::get('/transactions/crypto-request', [TransactionsController::class, 'crypto'])->name('users.transactions.crypto-request');
+    Route::post('/transactions/crypto-request-update', [TransactionsController::class, 'crypto_request_save'])->name('users.transactions.crypto-request.save');
+    Route::get('/transactions/crypto-transfer', [TransactionsController::class, 'cryptoTransfer'])->name('users.transactions.crypto-transfer');
 
 
 
