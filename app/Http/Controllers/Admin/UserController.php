@@ -59,7 +59,7 @@ class UserController extends Controller
      */
     public function show($user)
     {
-        $user = User::where('id', $user)->with('userData')->first();
+        $user = User::where('id', $user)->with(['userData', 'wallet', 'transactions'])->first();
         return view('admin.user.profile', ['user' => $user]);
     }
 
@@ -127,6 +127,8 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //delete user, userdata, bank, wallet
+
+        // Check user wallet balance before deleting
         if ($user->userdata) {
             $delete = $user->userdata->delete();
         }

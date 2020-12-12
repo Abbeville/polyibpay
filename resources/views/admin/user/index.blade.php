@@ -131,7 +131,7 @@
       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
          <h6 class="m-0 font-weight-bold text-primary">All Users Listing</h6>
       </div>
-      <div class="table-responsive p-3">
+      <div class="table-responsive p-3" style="font-size: 13px;">
          <table class="table align-items-center table-flush table-hover" id="dataTableHover">
             <thead class="thead-light">
                <tr>

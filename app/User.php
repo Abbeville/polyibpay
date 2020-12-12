@@ -80,4 +80,15 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Models\UserData');
     }
+
+    /**
+     * User Transactions Relationship
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function transactions()
+    {
+        return $this->hasMany('App\Models\Transaction');
+    }
 }

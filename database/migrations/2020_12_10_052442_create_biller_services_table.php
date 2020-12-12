@@ -23,7 +23,7 @@ class CreateBillerServicesTable extends Migration
             $table->string('short_name');
             $table->string('biller_name')->nullable();
 
-            $table->string('biller_id');
+            $table->unsignedBigInteger('biller_id');
             $table->json('meta_data')->nullable();
 
             $table->timestamps();
