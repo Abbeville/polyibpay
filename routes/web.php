@@ -11,7 +11,13 @@
 |
 */
 
+
+use App\Http\Controllers\Users\TransactionsController;
+
+
+
 Route::get('test', 'TestController@test')->name('test');
+
 Route::get('/', 'HomeController@index')->name('home');
 
 Auth::routes();
@@ -43,8 +49,14 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
     Route::get('/vcard', 'Users\VCardController@index')->name('users.vcard');
     Route::get('/transactions', 'Users\TransactionsController@index')->name('users.transactions');
 
+    Route::get('/transactions/crypto-request', [TransactionsController::class, 'crypto'])->name('users.transactions.crypto-request');
+    Route::post('/transactions/crypto-request-update', [TransactionsController::class, 'crypto_request_save'])->name('users.transactions.crypto-request.save');
+    Route::get('/transactions/crypto-transfer', [TransactionsController::class, 'cryptoTransfer'])->name('users.transactions.crypto-transfer');
+
+
 
   
+
     Route::get('/settings/edit', 'Users\ProfileController@editProfile')->name('users.profile.edit');
     Route::get('/settings/password', 'Users\ProfileController@changePassword')->name('users.profile.password');
     Route::get('/settings/bank', 'Users\ProfileController@updateBank')->name('users.settings.bank');
@@ -58,9 +70,11 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
     Route::get('/settings/password', 'Users\SettingsController@changePassword')->name('users.settings.password');
     Route::post('/settings/password/update', 'Users\SettingsController@updatePassword')->name('user.password.update');
 
+
    	Route::post('/fund-wallet', 'Lib\RaveController@initialize')->name('fund-wallet');
   	Route::post('/rave/callback', 'Lib\RaveController@callback')->name('callback');
   	Route::post('/rave/receive', 'Lib\RaveController@webhook')->name('webhook');
+
 
 });
 
