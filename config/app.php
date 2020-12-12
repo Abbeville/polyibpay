@@ -165,6 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
+        KingFlamez\Rave\RaveServiceProvider::class,
 
         Barryvdh\Debugbar\ServiceProvider::class,
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,

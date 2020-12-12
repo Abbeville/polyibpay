@@ -27,10 +27,12 @@
     <div class="mt-4 mb-3">
         <div class="row">
             <div class="col-auto">
+
 {{--                <figure class="avatar avatar-60 border-0"><img src="https://ui-avatars.com/api/?name={{ auth()->user()->firstname.'+'.auth()->user()->lastname }}" alt=""></figure>--}}
             </div>
             <div class="col pl-0 align-self-center">
 {{--                <h5 class="mb-1">{{  auth()->user()->firstname.' '.auth()->user()->lastname }}</h5>--}}
+
                 <p class="text-mute small">Good morning</p>
             </div>
         </div>
@@ -181,7 +183,7 @@
                     <input type="text" class="form-control form-control-lg text-center" placeholder="Enter amount"
                            required="" autofocus="">
                 </div>
-                <p class="text-mute">You will be redirected to payment gatway to procceed further. Enter amount in
+                <p class="text-mute">You will be redirected to payment gatway to proceed further. Enter amount in
                     USD.</p>
             </div>
             <div class="modal-footer border-0">

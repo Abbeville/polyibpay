@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateServicesTable extends Migration
+class CreateBillerServicesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,26 +13,22 @@ class CreateServicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('services', function (Blueprint $table) {
+        Schema::create('biller_services', function (Blueprint $table) {
             $table->bigIncrements('id');
-
             $table->string('name');
-            $table->string('banner_url')->nullable();
             $table->string('fee');
             $table->string('amount');
-            $table->string('required_label');
+            $table->string('required_label')->nullable();
             $table->string('item_code');
             $table->string('short_name');
-            $table->string('biller_name');
+            $table->string('biller_name')->nullable();
 
-            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('biller_id');
+            $table->json('meta_data')->nullable();
 
-            $table->json('meta_data');
             $table->timestamps();
 
-            $table->foreign('category_id')->references('id')->on('service_categories');
-
-
+            $table->foreign('biller_id')->references('id')->on('billers');
         });
     }
 
@@ -43,6 +39,6 @@ class CreateServicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('services');
+        Schema::dropIfExists('biller_services');
     }
 }

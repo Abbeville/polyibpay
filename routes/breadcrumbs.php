@@ -47,9 +47,22 @@ Breadcrumbs::for('users.settings.pin', function ($trail) {
     $trail->push('Pin', '');
 });
 
+
 Breadcrumbs::for('users.profile', function ($trail){
     $trail->push('Home', route('users.dashboard'));
     $trail->push('My Profile', '');
+
+Breadcrumbs::for('users.transactions.crypto-request', function ($trail) {
+    $trail->push('Home', route('users.dashboard'));
+    $trail->push('Transactions', route('users.transactions'));
+    $trail->push('Crypto Exchange Request', '');
+});
+
+Breadcrumbs::for('users.transactions.crypto-transfer', function ($trail) {
+    $trail->push('Home', route('users.dashboard'));
+    $trail->push('Transactions', route('users.transactions'));
+    $trail->push('Crypto Transfer', '');
+
 });
 
 

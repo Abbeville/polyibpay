@@ -38,6 +38,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function wallet(){
+        return $this->hasOne('App\Models\Wallet');
+    }
     /**
      * Scope a query to only include user status.
      *
@@ -76,5 +79,16 @@ class User extends Authenticatable
     public function userData()
     {
         return $this->hasOne('App\Models\UserData');
+    }
+
+    /**
+     * User Transactions Relationship
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function transactions()
+    {
+        return $this->hasMany('App\Models\Transaction');
     }
 }
