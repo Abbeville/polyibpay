@@ -37,6 +37,8 @@ Route::group(['name' => 'admin', 'middleware' => []], function(){
         Route::get('/users', 'Admin\UserController@index')->name('admin.user.index');
         Route::get('/users/list', 'Admin\UserController@index')->name('admin.user.listing');
         Route::get('/user/{user}/profile', 'Admin\UserController@show')->name('admin.user.show');
+        Route::get('/user/{user}/wallet', 'Admin\UserController@show_wallet')->name('admin.user.wallet.show');
+        Route::get('/user/{user}/vcard', 'Admin\UserController@show_virtual_card')->name('admin.user.virtual_card.show');
         Route::get('/user/create', 'Admin\UserController@create')->name('admin.user.create');
         Route::get('/user/{user}/delete', 'Admin\UserController@destroy')->name('admin.user.delete');
         Route::post('/user/{user}/update', 'Admin\UserController@update')->name('admin.user.update');
@@ -44,8 +46,8 @@ Route::group(['name' => 'admin', 'middleware' => []], function(){
 
         // Transactions Management
         Route::get('/transaction/index', 'Admin\TransactionController@index')->name('admin.transaction.index');
-        Route::get('/transaction/{transaction}/delete', 'Admin\TransactionController@destroy')->name('admin.transaction.delete');
-        Route::get('/transaction/{transaction}/show', 'Admin\TransactionController@show')->name('admin.transaction.show');
+        Route::get('/transaction/{transaction}/delete/{back?}', 'Admin\TransactionController@destroy')->name('admin.transaction.delete');
+        Route::get('/transaction/{transaction}/show/{back?}', 'Admin\TransactionController@show')->name('admin.transaction.show');
         Route::get('/transaction/{transaction}/{status}', 'Admin\TransactionController@change_status')->where('status', 'success|pending|failed|canceled')->name('admin.transaction.change_status');
         Route::post('/transaction/{transaction}/update', 'Admin\TransactionController@update')->name('admin.transaction.update');
 

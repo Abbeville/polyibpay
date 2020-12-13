@@ -50,7 +50,7 @@
         <div class="text-xs font-weight-bold text-uppercase mb-1">Successfull Transactions</div>
         <div class="h5 mb-0 font-weight-bold text-gray-800">{{ count($successful_transactions) }}</div>
         <div class="mt-2 mb-0 text-muted text-xs">
-         <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> {{ number_format((count($successful_transactions)/count($all_transactions)) * 100, 2) }}%</span>
+         <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> {{ number_format((count($successful_transactions)/(count($all_transactions) > 0 ? count($all_transactions) :  1)) * 100, 2) }}%</span>
          <span>Transaction that are completed</span>
       </div>
    </div>
@@ -70,7 +70,7 @@
         <div class="text-xs font-weight-bold text-uppercase mb-1">Pending Transactions</div>
         <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ count($pending_transactions) }}</div>
         <div class="mt-2 mb-0 text-muted text-xs">
-         <span class="text-warning mr-2"><i class="fas fa-arrow-up"></i> {{ number_format((count($pending_transactions)/count($all_transactions)) * 100, 2) }}%</span>
+         <span class="text-warning mr-2"><i class="fas fa-arrow-up"></i> {{ number_format((count($pending_transactions)/(count($all_transactions) > 0 ? count($all_transactions) :  1)) * 100, 2) }}%</span>
          <span>Transactions that needs Admin review</span>
       </div>
    </div>
@@ -90,8 +90,90 @@
         <div class="text-xs font-weight-bold text-uppercase mb-1">Failed Transactions</div>
         <div class="h5 mb-0 font-weight-bold text-gray-800">{{ count($failed_transactions) }}</div>
         <div class="mt-2 mb-0 text-muted text-xs">
-         <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> {{ number_format((count($failed_transactions)/count($all_transactions)) * 100, 2) }}%</span>
+         <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> {{ number_format((count($failed_transactions)/(count($all_transactions) > 0 ? count($all_transactions) :  1)) * 100, 2) }}%</span>
          <span>Transactions that failed</span>
+      </div>
+   </div>
+   <div class="col-auto">
+      <i class="fas fa-list-alt fa-2x text-primary"></i>
+  </div>
+</div>
+</div>
+</div>
+</div>
+
+
+<!-- Earnings (Annual) Card Example -->
+<div class="col-xl-3 col-md-6 mb-4">
+   <div class="card h-100">
+     <div class="card-body">
+      <div class="row no-gutters align-items-center">
+       <div class="col mr-2">
+        <div class="text-xs font-weight-bold text-uppercase mb-1">Crypto Transactions</div>
+        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ count($crypto_transactions) }}</div>
+        <div class="mt-2 mb-0 text-muted text-xs">
+         <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> {{ number_format((count($crypto_transactions)/(count($all_transactions) > 0 ? count($all_transactions) :  1)) * 100, 2) }}%</span>
+         <span>Crypto Transactions Category</span>
+      </div>
+   </div>
+   <div class="col-auto">
+      <i class="fa fa-bold fa-2x text-primary"></i>
+  </div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="col-xl-3 col-md-6 mb-4">
+   <div class="card h-100">
+     <div class="card-body">
+      <div class="row no-gutters align-items-center">
+       <div class="col mr-2">
+        <div class="text-xs font-weight-bold text-uppercase mb-1">Bill Transactions</div>
+        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ count($bill_transactions) }}</div>
+        <div class="mt-2 mb-0 text-muted text-xs">
+         <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> {{ number_format((count($bill_transactions)/(count($all_transactions) > 0 ? count($all_transactions) :  1)) * 100, 2) }}%</span>
+         <span>Bill Transactions Category</span>
+      </div>
+   </div>
+   <div class="col-auto">
+      <i class="fa fa-shopping-cart fa-2x text-primary"></i>
+  </div>
+</div>
+</div>
+</div>
+</div>
+<!-- New User Card Example -->
+<div class="col-xl-3 col-md-6 mb-4">
+   <div class="card h-100">
+     <div class="card-body">
+      <div class="row no-gutters align-items-center">
+       <div class="col mr-2">
+        <div class="text-xs font-weight-bold text-uppercase mb-1">Top-Up Transactions</div>
+        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ count($top_up_transactions) }}</div>
+        <div class="mt-2 mb-0 text-muted text-xs">
+         <span class="text-warning mr-2"><i class="fas fa-arrow-up"></i> {{ number_format((count($top_up_transactions)/(count($all_transactions) > 0 ? count($all_transactions) :  1)) * 100, 2) }}%</span>
+         <span>Top-Up Transactions Category</span>
+      </div>
+   </div>
+   <div class="col-auto">
+      <i class="fas fa-arrow-up fa-2x text-primary"></i>
+  </div>
+</div>
+</div>
+</div>
+</div>
+<!-- Pending Requests Card Example -->
+<div class="col-xl-3 col-md-6 mb-4">
+   <div class="card h-100">
+     <div class="card-body">
+      <div class="row no-gutters align-items-center">
+       <div class="col mr-2">
+        <div class="text-xs font-weight-bold text-uppercase mb-1">Cancelled Transactions</div>
+        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ count($canceled_transactions) }}</div>
+        <div class="mt-2 mb-0 text-muted text-xs">
+         <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> {{ number_format((count($canceled_transactions)/(count($all_transactions) > 0 ? count($all_transactions) :  1)) * 100, 2) }}%</span>
+         <span>Transactions that are Cancelled</span>
       </div>
    </div>
    <div class="col-auto">
@@ -105,7 +187,7 @@
 <div class="col-md-6">
    <div class="alert alert-info " role="alert">
      <h6><i class="fas fa-users"></i> Category in View:<b class="text-danger"> {{ $transactions['cat'] }} Transactions</b></h6>
-     The category of Users currently in View
+     The category of Transactions currently in View
    </div>
 </div>
 <div class="col-md-6">
@@ -120,6 +202,9 @@
                <option value="pending">Pending</option>
                <option value="failed">Failed</option>
                <option value="canceled">Cancelled</option>
+               <option value="crypto">Crypto</option>
+               <option value="top_up">Account Top-Up</option>
+               <option value="bill">Bills</option>
             </select>
          </div>
       </div>
@@ -140,6 +225,7 @@
                   <th>Ref. ID.</th>
                   <th>Amount</th>
                   <th>Type</th>
+                  <th>Occured On</th>
                   <th>Status</th>
                   <th>Created At</th>
                   <th>Actions</th>
@@ -151,6 +237,7 @@
                   <th>Ref. ID.</th>
                   <th>Amount</th>
                   <th>Type</th>
+                  <th>Occured On</th>
                   <th>Status</th>
                   <th>Created At</th>
                   <th>Actions</th>
@@ -163,10 +250,17 @@
                      <td>{{ $transaction->reference }}</td>
                      <td>{{ $transaction->amount }}</td>
                      <td>
-                        @if($transaction->type == 'wallet_recharge')
-                            <span class="badge badge-success">{{ __('Wallet Deposit') }}</span>
+                        @if($transaction->type == 'credit')
+                            <span class="badge badge-success">{{ __('Deposit') }}</span>
                         @else
                             <span class="badge badge-danger"> {{ __('Spending') }}</span>
+                        @endif
+                     </td>
+                     <td>
+                        @if($transaction->occurred_on == 'wallet')
+                            {{ __('Wallet') }}
+                        @else
+                            {{ __('Wallet') }}
                         @endif
                      </td>
                      <td>

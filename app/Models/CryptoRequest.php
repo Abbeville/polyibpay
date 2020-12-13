@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class BillInfo extends Model
+class CryptoRequest extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -19,13 +19,4 @@ class BillInfo extends Model
     public function transaction(){
         return $this->belongsTo('App\Models\Transaction');
     }
-
-    public function biller(){
-        return $this->belongsTo('App\Models\Biller');
-    }
-
-    public function billerService(){
-        return $this->belongsTo('App\Models\BillerService');
-    }
-
 }

@@ -8,6 +8,7 @@ use Alert;
 
 // Models
 use App\User;
+use App\Models\UserData;
 
 class UserController extends Controller
 {
@@ -62,6 +63,28 @@ class UserController extends Controller
         $user = User::where('id', $user)->with(['userData', 'wallet', 'transactions'])->first();
         return view('admin.user.profile', ['user' => $user]);
     }
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show_wallet($user)
+    {
+        $user = User::where('id', $user)->with(['userData', 'wallet', 'transactions'])->first();
+        return view('admin.user.wallet', ['user' => $user]);
+    }
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show_virtual_card($user)
+    {
+        $user = User::where('id', $user)->with(['userData', 'wallet', 'transactions'])->first();
+        return view('admin.user.test', ['user' => $user]);
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -83,39 +106,76 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $request->validate([
-            'firstname' => ['required', 'string', 'max:255'],
-            'lastname' => ['required', 'string', 'max:255'],
-            'phone_number' => ['required'],
-            'email' => ['required', 'string', 'email', 'max:255'],
-        ]);
+        if ($request->input('detail') == 'personaldetails') {
 
-        if ($user->userdata) {
-            $request->validate([
-                'eth_address' => ['required', 'string'],
-                'btc_address' => ['required', 'string'],
+            $user->firstname = $request->input('firstname');
+            $user->lastname = $request->input('lastname');
+            $user->email = $request->input('email');
+            $user->phone_number = $request->input('phone_number');
+            $user->save();
+
+            $userdetails = UserData::updateOrCreate([
+                'user_id' => $user->id
+            ],[
+                'dob' => $request->input('dob'),
+                'about' => $request->input('about'),
+                'address' => $request->input('address'),
+                'city' => $request->input('city'),
+                'state' => $request->input('state'),
+                'zip_code' => $request->input('zip_code'),
+                'country' => $request->input('country'),
             ]);
-        }
+            $userdetails->save();
 
-        $user->firstname = $request->input('firstname');
-        $user->lastname = $request->input('lastname');
-        $user->phone_number = $request->input('phone_number');
-        $user->email = $request->input('email');
-        $user->save();
+            if ($user && $userdetails) {
+                toast('User Account Updated Successfully','success');
+                return redirect()->back();
+            }
 
-        if ($user->userdata) {
-            $user->userdata->eth_address = $request->input('eth_address');
-            $user->userdata->btc_address = $request->input('btc_address');
-            $user->userdata->save();
-        }
-
-        if ($user) {
-            toast('User Updated Successfully','success');
+            toast('Operation Failed, Please Retry!','error');
             return redirect()->back();
         }
 
-        toast('Operation Failed, Please Retry!','error');
-        return redirect()->back();
+        if ($request->input('detail') == 'bankdetails') {
+
+            $userdetails = UserData::updateOrCreate([
+                'user_id' => $user->id
+            ],[
+                'bank_name_id' => $request->input('bank_name_id'),
+                'bank_account_name' => $request->input('bank_account_name'),
+                'bank_account_number' => $request->input('bank_account_number'),
+                'bank_account_type' => $request->input('bank_account_type'),
+            ]);
+            $userdetails->save();
+
+            if ($userdetails) {
+                toast('User Account Updated Successfully','success');
+                return redirect()->back();
+            }
+
+            toast('Operation Failed, Please Retry!','error');
+            return redirect()->back();
+        }
+
+        if ($request->input('detail') == 'wallletsdetails') {
+
+            $userdetails = UserData::updateOrCreate([
+                'user_id' => $user->id
+            ],[
+                'btc_address' => $request->input('btc_address'),
+                'eth_address' => $request->input('eth_address'),
+            ]);
+            $userdetails->save();
+
+            if ($userdetails) {
+                toast('User Account Updated Successfully','success');
+                return redirect()->back();
+            }
+
+            toast('Operation Failed, Please Retry!','error');
+            return redirect()->back();
+        }
+
     }
 
     /**

@@ -50,7 +50,7 @@
         <div class="text-xs font-weight-bold text-uppercase mb-1">Active Users</div>
         <div class="h5 mb-0 font-weight-bold text-gray-800">{{ count($active_users) }}</div>
         <div class="mt-2 mb-0 text-muted text-xs">
-         <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
+         <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> {{ number_format((count($active_users)/(count($all_users) > 0 ? count($all_users) :  1)) * 100, 2) }}%</span>
          <span>Users that still perform</span>
       </div>
    </div>
@@ -70,7 +70,7 @@
         <div class="text-xs font-weight-bold text-uppercase mb-1">New Users</div>
         <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ count($new_users) }}</div>
         <div class="mt-2 mb-0 text-muted text-xs">
-         <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 20.4%</span>
+         <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> {{ number_format((count($new_users)/(count($all_users) > 0 ? count($all_users) :  1)) * 100, 2) }}%</span>
          <span>Since Beginning of this {{ \Carbon\Carbon::now()->format('F') }}</span>
       </div>
    </div>
@@ -90,7 +90,7 @@
         <div class="text-xs font-weight-bold text-uppercase mb-1">Suspended Users</div>
         <div class="h5 mb-0 font-weight-bold text-gray-800">{{ count($suspended_users) }}</div>
         <div class="mt-2 mb-0 text-muted text-xs">
-         <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
+         <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> {{ number_format((count($suspended_users)/(count($all_users) > 0 ? count($all_users) :  1)) * 100, 2) }}%</span>
          <span>Since yesterday</span>
       </div>
    </div>
