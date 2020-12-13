@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBankNamesTable extends Migration
+class CreateNigeriaStatesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class CreateBankNamesTable extends Migration
      */
     public function up()
     {
-        Schema::create('bank_names', function (Blueprint $table) {
+        Schema::create('nigeria_states', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('bank_name');
-            $table->string('code');
-            $table->string('slug');
-            $table->string('status'); //It tells if the bank is active or not... TRUE or FALSE value ;
+            $table->string('name');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -31,6 +27,6 @@ class CreateBankNamesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bank_names');
+        Schema::dropIfExists('nigeria_states');
     }
 }

@@ -37,13 +37,19 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#wallet"
         aria-expanded="true" aria-controls="wallet">
         <i class="fa fa-briefcase"></i>
-        <span>Wallet Transactions</span>
+        <span>Transactions</span>
         </a>
         <div id="wallet" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Wallet Transactions</h6>
-                <a class="collapse-item" href="{{ route('admin.transaction.index') }}">All Wallets</a>
-                <a class="collapse-item" href="buttons.html">Active Wallets</a>
+                <h6 class="collapse-header">Transactions</h6>
+                <a class="collapse-item" href="{{ route('admin.transaction.index') }}">All Transactions</a>
+                <a class="collapse-item" href="{{ url('admin/transaction/index?type=success') }}">Successful Transactions</a>
+                <a class="collapse-item" href="{{ url('admin/transaction/index?type=pending') }}">Pending Transactions</a>
+                <a class="collapse-item" href="{{ url('admin/transaction/index?type=failed') }}">Failed Transactions</a>
+                <a class="collapse-item" href="{{ url('admin/transaction/index?type=canceled') }}">Cancelled Transactions</a>
+                <a class="collapse-item" href="{{ url('admin/transaction/index?type=crypto') }}">Crypto Transactions</a>
+                <a class="collapse-item" href="{{ url('admin/transaction/index?type=top_up') }}">Top-Up Transactions</a>
+                <a class="collapse-item" href="{{ url('admin/transaction/index?type=bill') }}">Bill Transactions</a>
             </div>
         </div>
     </li>
@@ -58,6 +64,19 @@
                 <h6 class="collapse-header">Virtual Cards</h6>
                 <a class="collapse-item" href="alerts.html">All Virtual Cards</a>
                 <a class="collapse-item" href="buttons.html">Active Virtual Cards</a>
+            </div>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#settings"
+        aria-expanded="true" aria-controls="settings">
+        <i class="fa fa-credit-card"></i>
+        <span>Settings</span>
+        </a>
+        <div id="settings" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Settings</h6>
+                <a class="collapse-item" href="buttons.html">Set Exchange Rate</a>
             </div>
         </div>
     </li>

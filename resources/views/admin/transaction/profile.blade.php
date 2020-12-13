@@ -40,7 +40,11 @@
    <h1 class="h3 mb-0 text-gray-800">Transaction (#{{ $transaction->reference }})</h1>
    <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Admin Dashboard</a></li>
-      <li class="breadcrumb-item"><a href="{{ route('admin.transaction.index') }}">All Transactions</a></li>
+      @if(!is_null($back))
+        <li class="breadcrumb-item"><a href="{{ route('admin.user.wallet.show', ['user' => $transaction->user_id]) }}">Back To User Wallet</a></li>
+      @else
+        <li class="breadcrumb-item"><a href="{{ route('admin.transaction.index') }}">All Transactions</a></li>
+      @endif
       <li class="breadcrumb-item active" aria-current="page">Transaction</li>
    </ol>
 </div>
@@ -52,14 +56,15 @@
           {{-- <img src="{{ asset('admin_assets/img/boy.png') }}" alt="profile_image"/> --}}
           <i class="fa fa-wallet mb-4" style="font-size: 60px"></i>
           <h3>{{ __('NGN') }} {{ $transaction->amount }}</h3>
-            @if($transaction->type == 'bills')
+            @if($transaction->type == 'debit')
               Debited Amount
-            @elseif($transaction->type == 'wallet_recharge')
+            @elseif($transaction->type == 'credit')
               Credited Amount
             @endif
-          <br>
-          <br>
-          <p>Happened Since: {{ $transaction->created_at->diffForHumans() }}</p>
+          {{-- <br>
+          <br> --}}
+          <p>Since: {{ $transaction->created_at->diffForHumans() }}</p>
+          <p>Occurred On: <span style="font-size: 20px; font-style: bolder">{{ $transaction->occurred_on }}</span></p>
           
           @if($transaction->status == 'success')
               <span class="badge badge-success" style="font-size: 20px">{{ __('Successful') }}</span>
@@ -77,6 +82,8 @@
           </ul>
           <div class="tab-content" id="myTabContent">
               <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                  <h3 class="register-heading">Transaction Details</h3>
+
                   <h3 class="register-heading">
                     @if($transaction->type == 'bills')
                       Bill Payment
@@ -104,23 +111,66 @@
                                 <td>Reference</td>
                                 <td>{{ $transaction->reference }}</td>
                               </tr>
-                              </tr>
-                              <tr>
-                                <td>Status</td>
-                                <td>{{ $transaction->status }}</td>
-                              </tr>
                               <tr>
                                 <td>Happened On</td>
-                                <td>{{ date('D, d-m-Y', strtotime($transaction->created_at)) }}</td>
+                                <td>{{ date('D, d-m-Y,    h:ia', strtotime($transaction->created_at)) }}</td>
                               </tr>
                               <tr>
                                 <td>Description</td>
                                 <td>{{ $transaction->narration }}
                               </td>
-                              
-                               
                             </tbody>
                           </table>
+
+                          @if($transaction->category == 'bill')
+
+                          <table class="table table-bordered align-items-center table-flush" style="font-size: 13px;">
+                            <tbody>
+                              <tr>
+                                <th colspan="2" class="text-info">Bill Info</th>
+                              </tr>
+                              <tr>
+                                <td>Biller</td>
+                                  <td>
+                                    {{ $transaction->billinfo->biller->name ?? 'Not set' }}
+                                  </td>
+                              </tr>
+                              <tr>
+                                <td>Service Bought</td>
+                                <td>{{ $transaction->billinfo->billerservice->name ?? 'Not set' }}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+
+
+
+
+
+                          @elseif($transaction->category == 'crypto')
+                              <table class="table table-bordered align-items-center table-flush" style="font-size: 13px;">
+                                <tbody>
+                                  <tr>
+                                    <th colspan="2" class="text-info">Cryto Request</th>
+                                  </tr>
+                                  <tr>
+                                    <td>Crypto Amount</td>
+                                      <td>
+                                        {{ $transaction->crytoRequest->amount ?? 'Not set' }}
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                    <td>Cryto Kind</td>
+                                    <td>{{ $transaction->crytoRequest->type ?? 'Not set' }}</td>
+                                  </tr>
+                                  <tr>
+                                    <td>#Hash Key</td>
+                                    <td>{{ $transaction->crytoRequest->hash_code ?? 'Not set' }}</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+
+
+                          @endif
 
                       </div>
                       <div class="col-md-5 mt-5">
@@ -129,14 +179,14 @@
                             <h6 class="m-0 font-weight-bold text-primary">Action Center</h6>
                           </div>
                           <div class="card-body">
-                            <p><code>Manage User Info</code>
+                            <p><code>Manage Transaction</code>
                             </p>
-                            <a href="#" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#modal_edit" id="#modalEditButton">
+                            {{-- <a href="#" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#modal_edit" id="#modalEditButton">
                               <span class="icon text-white-50">
                                 <i class="fas fa-edit"></i>
                               </span>
                               <span class="text" >Edit Transaction History</span>
-                            </a>
+                            </a> --}}
                             <div class="my-2"></div>
                             
                             @if($transaction->status == 'success')
@@ -187,12 +237,45 @@
                                 <div class="my-2"></div>
                             @endif
                             
-                            <a href="#" class="btn btn-danger btn-icon-split" onclick="delet('{{ route('admin.transaction.delete', ['transaction' => $transaction->id]) }}')">
-                              <span class="icon text-white-50">
-                                <i class="fas fa-trash"></i>
-                              </span>
-                              <span class="text">Delete History</span>
-                            </a>
+
+                            @if(!is_null($back))
+                              <a href="#" class="btn btn-danger btn-icon-split" onclick="delet('{{ route('admin.transaction.delete', ['transaction' => $transaction->id, 'back' => 1]) }}')">
+                                  <span class="icon text-white-50">
+                                    <i class="fas fa-trash"></i>
+                                  </span>
+                                  <span class="text">Delete History</span>
+                                </a>
+                            @else
+                              <a href="#" class="btn btn-danger btn-icon-split" onclick="delet('{{ route('admin.transaction.delete', ['transaction' => $transaction->id]) }}')">
+                                <span class="icon text-white-50">
+                                  <i class="fas fa-trash"></i>
+                                </span>
+                                <span class="text">Delete History</span>
+                              </a>
+                            @endif
+
+                            @if($transaction->category == 'crypto')
+                              @if(!is_null($transaction->crytoRequest->proof_file))
+
+                              <center>
+                                <a href="{{ asset('admin_assets/img/boy.png') }}" target="_blank" title="View">
+                                <img class="img mt-5" width="70%" src="{{ asset('admin_assets/img/boy.png') }}" alt="proof_image">
+                                </a>
+                                <p>Proof Image</p>
+                              </center>
+
+                              @else
+
+                              <center>
+                                <img class="img mt-5" width="70%" src="{{ asset('admin_assets/im/boy.png') }}" alt="proof_image">
+                                <p>No Proof Image Provided</p>
+                              </center>
+
+                              @endif
+
+                            @endif
+
+                            
                           </div>
                         </div>
                       </div>
@@ -200,7 +283,7 @@
               </div>
               <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                   <div class="row register-form">
-                      hewd
+                      
                   </div>
               </div>
           </div>
@@ -222,7 +305,7 @@
             </div>
             <div class="modal-body text-center">
               <form method="post" action="" id="edit_url">
-                  <p class="text-danger">Selecting Yes will make this transaction record removed from the system</p>
+                  <p class="text-danger">Selecting Yes will make this transaction record be removed from the system with all related records</p>
                   <p>Are you Sure to Delete?</p>
                   <button type="button" class="btn btn-danger" id="yes_delete">Yes</button>
                   <button type="button" class="btn btn-default" data-dismiss="modal">No</button>

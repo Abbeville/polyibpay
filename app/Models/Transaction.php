@@ -25,6 +25,26 @@ class Transaction extends Model
         return $this->belongsTo('App\User');
     }
     /**
+     * User Relationship
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function billInfo()
+    {
+        return $this->hasOne('App\Models\BillInfo');
+    }
+    /**
+     * User Relationship
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function crytoRequest()
+    {
+        return $this->hasOne('App\Models\CryptoRequest');
+    }
+    /**
      * Scope a query to only include user status.
      *
      * @param  \Illuminate\Database\Eloquent\Builder  $query
@@ -33,5 +53,16 @@ class Transaction extends Model
     public function scopeStatus($query, $status)
     {
         return $query->where('status', $status)->latest()->get();
+    }
+
+    /**
+     * Scope a query to only include user status.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeCategory($query, $category)
+    {
+        return $query->where('category', $category)->latest()->get();
     }
 }
