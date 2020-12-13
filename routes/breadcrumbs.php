@@ -65,6 +65,20 @@ Breadcrumbs::for('users.transactions.crypto-transfer', function ($trail) {
 
 });
 
+Breadcrumbs::for('users.transactions.crypto', function ($trail) {
+    $trail->push('Home', route('users.dashboard'));
+    $trail->push('Transactions', route('users.transactions'));
+    $trail->push('Crypto', '');
+});
+
+Breadcrumbs::for('users.transactions.crypto-transactions', function ($trail) {
+    $trail->push('Home', route('users.dashboard'));
+    $trail->push('Transactions', route('users.transactions'));
+    $trail->push('Cryptocurrency Transactions', '');
+});
+
+
+
 
 
 

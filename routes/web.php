@@ -12,16 +12,15 @@
 */
 
 
+
 use App\Http\Controllers\Users\ProfileController;
 use App\Http\Controllers\Users\SettingsController;
-
-
-
 use App\Http\Controllers\Users\TransactionsController;
 
 
 
 Route::get('test', 'TestController@test')->name('test');
+
 
 
 Route::get('/', 'HomeController@index')->name('home');
@@ -55,22 +54,18 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
     Route::get('/vcard', 'Users\VCardController@index')->name('users.vcard');
     Route::get('/transactions', 'Users\TransactionsController@index')->name('users.transactions');
 
-
-
-
 //    Route::get('/settings/edit', 'Users\ProfileController@editProfile')->name('users.profile.edit');
     Route::get('/settings/password', 'Users\ProfileController@changePassword')->name('users.profile.password');
     Route::get('/profile/', [ProfileController::class, 'index'])->name('users.profile');
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('users.profile.edit');
     Route::post('/profile/update', [ProfileController::class, 'update'])->name('users.profile.update');
 
+
     Route::get('/transactions/crypto-request', [TransactionsController::class, 'crypto'])->name('users.transactions.crypto-request');
     Route::post('/transactions/crypto-request-update', [TransactionsController::class, 'crypto_request_save'])->name('users.transactions.crypto-request.save');
     Route::get('/transactions/crypto-transfer', [TransactionsController::class, 'cryptoTransfer'])->name('users.transactions.crypto-transfer');
 
 
-
-  
 
     Route::get('/settings/edit', 'Users\ProfileController@editProfile')->name('users.profile.edit');
     Route::get('/settings/password', 'Users\ProfileController@changePassword')->name('users.profile.password');
@@ -88,9 +83,11 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
 
 
 
+
    	Route::post('/fund-wallet', 'Lib\RaveController@initialize')->name('fund-wallet');
   	Route::post('/rave/callback', 'Lib\RaveController@callback')->name('callback');
   	Route::post('/rave/receive', 'Lib\RaveController@webhook')->name('webhook');
+
 
 
 
