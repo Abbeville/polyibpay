@@ -48,9 +48,10 @@ Breadcrumbs::for('users.settings.pin', function ($trail) {
 });
 
 
-Breadcrumbs::for('users.profile', function ($trail){
+Breadcrumbs::for('users.profile', function ($trail) {
     $trail->push('Home', route('users.dashboard'));
     $trail->push('My Profile', '');
+});
 
 Breadcrumbs::for('users.transactions.crypto-request', function ($trail) {
     $trail->push('Home', route('users.dashboard'));
