@@ -13,7 +13,7 @@ class TransactionsController extends Controller
     public function index()
     {
         $transactions = DB::table('transactions')->where('user_id', auth()->user()->id)->get();
-        $bitcoin  = DB::table('crypto_request')->
+        $bitcoin  = DB::table('crypto_requests')->
         where('user_id', auth()->user()->id)->get();
         //return view('');
     }
@@ -40,7 +40,7 @@ class TransactionsController extends Controller
         if($check > 0){
             $request_id = mt_rand(111111, 999999);
         }
-        DB::table('crypto_request')->insert([
+        DB::table('crypto_requests')->insert([
            'user_id' => Auth::id(),
            'amount' => $data['amount'],
            'type' => 'btc',
@@ -69,7 +69,7 @@ class TransactionsController extends Controller
         $proof = request('proof')->store('uploads/crypto_proof', 'public');
 
 
-        DB::table('crypto_request')->where('request_id', \request('request'))
+        DB::table('crypto_requests')->where('request_id', \request('request'))
             ->update([
                'proof_file' => $proof,
                'hash_code' => $data['hash'],
@@ -83,7 +83,7 @@ class TransactionsController extends Controller
 
     public function cryptoTransactions()
     {
-        $transactions = DB::table('crypto_request')->where('user_id', Auth::id())->get();
+        $transactions = DB::table('crypto_requests')->where('user_id', Auth::id())->get();
         return view('users.transactions.crypto-transactions', compact('transactions'));
     }
 }
