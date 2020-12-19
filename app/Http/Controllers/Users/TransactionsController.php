@@ -36,7 +36,7 @@ class TransactionsController extends Controller
         ]);
 
         $request_id = mt_rand(111111, 999999);
-        $check = DB::table('crypto_request')->where('request_id', $request_id)->count();
+        $check = DB::table('crypto_requests')->where('request_id', $request_id)->count();
         if($check > 0){
             $request_id = mt_rand(111111, 999999);
         }
