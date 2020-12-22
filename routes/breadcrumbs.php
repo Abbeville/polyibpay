@@ -78,6 +78,14 @@ Breadcrumbs::for('users.transactions.crypto-transactions', function ($trail) {
     $trail->push('Cryptocurrency Transactions', '');
 });
 
+Breadcrumbs::for('users.settings.password', function ($trail) {
+    $trail->push('Home', route('users.dashboard'));
+    $trail->push('Settings', route('users.settings.index'));
+    $trail->push('Change Password', '');
+});
+
+
+
 
 
 

@@ -3,7 +3,7 @@
 
 
 
-<a href="#" class="list-group-item list-group-item-action"><i
+<a href="{{ route('users.profile') }}" class="list-group-item list-group-item-action"><i
             class="material-icons icons-raised">person</i>My Profile</a>
 
 <a href="{{ route('users.settings.index') }}" class="list-group-item list-group-item-action"><i

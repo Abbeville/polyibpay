@@ -23,7 +23,7 @@ class ProfileController extends Controller
 
     public function edit(){
         $profile = DB::table('user_data')->where('user_id', auth()->user()->id)->first();
-        $banks = DB::table('banks')->get();
+        $banks = DB::table('bank_names')->get();
 //        dd($banks);
         return view('users.profile.edit', compact('profile', 'banks'));
     }
@@ -32,12 +32,17 @@ class ProfileController extends Controller
     {
         $data = request()->validate([
             'account_name' => 'required|min:3',
-            'account_number' => 'required|min:10',
+            'account_number' => 'required|min:10|max:10',
             'bank' => '',
             'account_type' => '',
             'btc_address' => '',
             'eth_address' => '',
-            'pin' => ''
+            'pin' => '',
+            'address' => 'required',
+            'city' => 'required',
+            'zip_code' => '',
+            'state' => 'required',
+            'dob' => 'required'
         ]);
 
         $pin_check = Hash::check($data['pin'], auth()->user()->pin);
@@ -55,11 +60,16 @@ class ProfileController extends Controller
                 'bank_account_number' => $data['account_number'],
                 'bank_name_id' => $data['bank'],
                 'bank_account_type' => $data['account_type'],
-                'btc_address' => '',
-                'eth_address' => ''
+                'btc_address' => $data['btc_address'],
+                'eth_address' => $data['eth_address'],
+                'address' => $data['address'],
+                'city' => $data['city'],
+                'state' => $data['state'],
+                'dob' => $data['dob'],
+                'zip_code' => $data['zip_code']
             ]);
 
-            session()->flash('success', 'Bank Details Updated Successfully');
+            session()->flash('success', 'Profile Updated Successfully');
             return redirect('/dashboard');
         }else{
             DB::table('user_data')->where('user_id', auth()->user()->id)
@@ -69,6 +79,11 @@ class ProfileController extends Controller
                     'bank_account_number' => $data['account_number'],
                     'bank_name_id' => $data['bank'],
                     'bank_account_type' => $data['account_type'],
+                    'address' => $data['address'],
+                    'city' => $data['city'],
+                    'state' => $data['state'],
+                    'dob' => $data['dob'],
+                    'zip_code' => $data['zip_code']
 
                 ]);
 
@@ -85,7 +100,7 @@ class ProfileController extends Controller
                         'eth_address' => $data['eth_address']
                     ]);
             }
-            session()->flash('success', 'Bank Details Updated Successfully');
+            session()->flash('success', 'Profile Updated Successfully');
             return redirect('/dashboard');
         }
     }
