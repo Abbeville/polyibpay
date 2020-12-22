@@ -18,8 +18,8 @@ function generateUserId()
 }
 
 function getBankName($id){
-    $bank = DB::table('banks')->where('id', $id)->first();
-    return $bank->name;
+    $bank = DB::table('bank_names')->where('id', $id)->first();
+    return $bank->bank_name;
 }
 
 function getStates(){

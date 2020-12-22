@@ -18,14 +18,40 @@
             </div>
 
 
-            <h6 class="subtitle">My Details</h6>
+            <h6 class="subtitle">My Profile</h6>
+            <hr>
 
             <div class="row">
                 <div class="col-md-5 col-xs-12">
                     <div class="">
                         <div class="">
-                            <div>
+                            <div class="alert alert-info">
                                 <p><b>{{ auth()->user()->firstname }} {{ auth()->user()->lastname }}</b></p>
+                            </div>
+
+                            <div class="p-1">
+                                <table class="table table-active table-responsive">
+                                    <tr>
+                                        <td>Address</td>
+                                        <td>{{ $profile->address }}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>City</td>
+                                        <td>{{ $profile->city }}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Zip Code</td>
+                                        <td>{{ $profile->zip_code }}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>State</td>
+                                        <td>{{ $profile->state }}</td>
+                                    </tr>
+                                </table>
+
                             </div>
                             <hr>
                             <div class="mt-4">

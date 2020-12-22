@@ -13,6 +13,11 @@
         <div class="container">
             <div class="row mt-3">
                 <div class="col-12 px-0">
+                    @if(Session::has('warning'))
+                        <div class="alert alert-warning alert-dismissible">
+                            {{ Session('warning') }}
+                        </div>
+                    @endif
                     <ul class="list-group list-group-flush mb-4">
                         <li class="list-group-item">
                             <a href="{{ route('users.transactions.crypto-request') }}" class="row">
