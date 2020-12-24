@@ -43,6 +43,8 @@ Route::group(['name' => 'admin', 'middleware' => []], function(){
         Route::get('/user/{user}/delete', 'Admin\UserController@destroy')->name('admin.user.delete');
         Route::post('/user/{user}/update', 'Admin\UserController@update')->name('admin.user.update');
         Route::get('/users/{user}/{status}', 'Admin\UserController@change_status')->where('status', 'active|inactive|suspended')->name('admin.users.change_status');
+        Route::post('/user/{user}/deposit', 'Admin\UserController@wallet_deposit')->name('admin.user.wallet_deposit');
+        Route::post('/user/{user}/withdrawal', 'Admin\UserController@wallet_withdrawal')->name('admin.user.wallet_withdrawal');
 
         // Transactions Management
         Route::get('/transaction/index', 'Admin\TransactionController@index')->name('admin.transaction.index');
@@ -50,6 +52,13 @@ Route::group(['name' => 'admin', 'middleware' => []], function(){
         Route::get('/transaction/{transaction}/show/{back?}', 'Admin\TransactionController@show')->name('admin.transaction.show');
         Route::get('/transaction/{transaction}/{status}', 'Admin\TransactionController@change_status')->where('status', 'success|pending|failed|canceled')->name('admin.transaction.change_status');
         Route::post('/transaction/{transaction}/update', 'Admin\TransactionController@update')->name('admin.transaction.update');
+
+        // Virtual Card Management
+        Route::get('/vcard/index', 'Admin\TransactionController@index')->name('admin.vcard.index');
+        Route::get('/vcard/{vcard}/delete/{back?}', 'Admin\VirtualCardController@destroy')->name('admin.vcard.delete');
+        Route::get('/vcard/{vcard}/show/{back?}', 'Admin\VirtualCardController@show')->name('admin.vcard.show');
+        Route::get('/vcard/{vcard}/{status}', 'Admin\VirtualCardController@change_status')->where('status', 'success|pending|failed|canceled')->name('admin.vcard.change_status');
+        Route::post('/vcard/{vcard}/update', 'Admin\VirtualCardController@update')->name('admin.vcard.update');
 
 
 
