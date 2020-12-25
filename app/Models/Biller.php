@@ -17,22 +17,6 @@ class Biller extends Model
     {
     	return $this->hasMany('App\Models\BillerServices', 'id', 'biller_id');
     }
-}
-
-<?php
-
-namespace App\Models;
-
-use Illuminate\Database\Eloquent\Model;
-
-class Biller extends Model
-{
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-
 
     public function billInfo(){
         return $this->hasMany('App\Models\BillInfo');
