@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
       $this->call(AdminSeeder::class);
       $this->call(BillersTableSeeder::class);
       $this->call(BillerServicesSeeder::class);
-      // $this->call(UserSeeder::class);
+      $this->call(UserSeeder::class);
+      $this->call(NigeriaStatesTableSeeder::class);
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddPinToUsers extends Migration
+class AddRequestIdToCryptoRequests extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddPinToUsers extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('pin')->nullable();
+        Schema::table('crypto_requests', function (Blueprint $table) {
+            $table->string('request_id');
         });
     }
 
@@ -25,7 +25,7 @@ class AddPinToUsers extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('crypto_requests', function (Blueprint $table) {
             //
         });
     }

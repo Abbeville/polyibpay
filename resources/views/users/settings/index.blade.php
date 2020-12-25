@@ -18,7 +18,7 @@
                             <a href="{{ route('users.profile.edit') }}" class="row">
                                 <div class="col">
                                     <h6 class="text-dark mb-1">Edit Profile</h6>
-                                    <p class="text-secondary mb-0 small">Update your profile</p>
+                                    <p class="text-secondary mb-0 small">Update your personal information</p>
                                 </div>
                                 <div class="col-2 pl-0 align-self-center text-right">
                                     <i class="material-icons text-secondary">chevron_right</i>
@@ -48,17 +48,17 @@
                             </a>
                         </li>
 
-                        <li class="list-group-item">
-                            <a href="{{ route('users.settings.bank') }}" class="row">
-                                <div class="col">
-                                    <h6 class="text-dark mb-1">Withdrawal Settings</h6>
-                                    <p class="text-secondary mb-0 small">Change or set your bank account</p>
-                                </div>
-                                <div class="col-2 pl-0 align-self-center text-right">
-                                    <i class="material-icons text-secondary">chevron_right</i>
-                                </div>
-                            </a>
-                        </li>
+{{--                        <li class="list-group-item">--}}
+{{--                            <a href="{{ route('users.settings.bank') }}" class="row">--}}
+{{--                                <div class="col">--}}
+{{--                                    <h6 class="text-dark mb-1">Withdrawal Settings</h6>--}}
+{{--                                    <p class="text-secondary mb-0 small">Change or set your bank account</p>--}}
+{{--                                </div>--}}
+{{--                                <div class="col-2 pl-0 align-self-center text-right">--}}
+{{--                                    <i class="material-icons text-secondary">chevron_right</i>--}}
+{{--                                </div>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
                     </ul>
                 </div>
             </div>

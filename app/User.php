@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\CryptoRequest;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -79,5 +80,21 @@ class User extends Authenticatable
     public function userData()
     {
         return $this->hasOne('App\Models\UserData');
+    }
+
+    /**
+     * User Transactions Relationship
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function transactions()
+    {
+        return $this->hasMany('App\Models\Transaction');
+    }
+
+    public function cryptoRequest()
+    {
+        return $this->hasMany(CryptoRequest::class);
     }
 }

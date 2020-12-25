@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
+use App\Models\NigeriaState;
+use App\Models\BankName;
 
 function generateUserId()
 {
@@ -12,6 +15,26 @@ function generateUserId()
         $newUserId = 1000001;
     }
     return $newUserId;
+}
+
+function getBankName($id){
+    $bank = DB::table('bank_names')->where('id', $id)->first();
+    return $bank->bank_name;
+}
+
+function getStates(){
+    $states = NigeriaState::all();
+    return $states;
+}
+
+function getAllBanks(){
+    $bank = Bankname::all();
+    return $bank;
+}
+
+function getBank($code){
+    $bank = DB::table('bank_names')->where('code', $code)->first();
+    return $bank;
 }
 
 function generateWalletId()

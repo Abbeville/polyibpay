@@ -1,6 +1,6 @@
 @extends('admin.layout.auth_master')
 
-@section('page_title', 'Admin User Management')
+@section('page_title', 'Admin Transaction Management')
 
 @section('more_css')
 {{-- More CSS here --}}
@@ -18,7 +18,7 @@
 @section('content')
 
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-   <h1 class="h3 mb-0 text-gray-800">User Account</h1>
+   <h1 class="h3 mb-0 text-gray-800">User Acoount</h1>
    <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Admin Dashboard</a></li>
       <li class="breadcrumb-item"><a href="{{ route('admin.user.index') }}">All Users</a></li>
@@ -30,9 +30,10 @@
 <div class="bg-primary">
   <div class="container d-flex justify-content-center ">
     <ul class="nav secondary-nav">
-      <li class="nav-item"> <a class="nav-link active text-white" href="{{ route('admin.user.show', ['user' => $user->id]) }}">Account</a></li>
-      <li class="nav-item"> <a class="nav-link text-white" href="{{ route('admin.user.wallet.show', ['user' => $user->id]) }}">Wallet</a></li>
-      <li class="nav-item"> <a class="nav-link text-white" href="{{ route('admin.user.virtual_card.show', ['user' => $user->id]) }}">Virtual Cards</a></li>
+      <li class="nav-item"> <a class="nav-link active text-white" href="settings-profile.html">Account</a></li>
+      <li class="nav-item"> <a class="nav-link text-white" href="settings-security.html">Wallet</a></li>
+      <li class="nav-item"> <a class="nav-link text-white" href="settings-payment-methods.html">Virtual Cards</a></li>
+      <li class="nav-item"> <a class="nav-link text-white" href="settings-notifications.html">Notifications</a></li>
     </ul>
   </div>
 </div>
@@ -48,18 +49,21 @@
           =============================== -->
           <div class="bg-white shadow-sm rounded text-center p-3 mb-4">
             <div class="profile-thumb mt-3 mb-4"> 
-              @if(!is_null($user->userdata))
-                @if($user->userdata->photo == null)
-                  <img class="rounded-circle" width="50%" src="{{ asset('admin_assets/img/boy.png') }}" alt="profile_image">
-                @else
-                  <img class="rounded-circle" width="50%" src="{{ asset($user->userdata->photo_url . '/' . $user->userdata->photo ) }}" alt="profile_image">
-                @endif
-              @else
+              @if($user->userdata)
+              @if($user->userdata->photo == null)
                 <img class="rounded-circle" width="50%" src="{{ asset('admin_assets/img/boy.png') }}" alt="profile_image">
+              @else
+                <img class="rounded-circle" width="50%" src="{{ asset($user->userdata->photo_url . '/' . $user->userdata->photo ) }}" alt="profile_image">
               @endif
+              @endif
+              {{-- <div class="profile-thumb-edit custom-file bg-primary text-white" data-toggle="tooltip" title="" data-original-title="Change Profile Picture"> <i class="fas fa-camera position-absolute"></i>
+                <input type="file" class="custom-file-input" id="customFile">
+              </div> --}}
             </div>
             <p class="text-3 font-weight-500 mb-2">{{ $user->fullname }}</p>
-            <p class="text-3 font-weight-500 mb-2">{{ $user->userdata->about ?? 'No about info set' }}</p>
+            <p class="text-3 font-weight-500 mb-2">{{ $user->userdata->about ?? '' }}</p>
+            {{-- <div class="form-row align-items-center"> --}}
+              {{-- <p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">Status:</p> --}}
               @if($user->status == 'active')
                 <p class=" text-3">Status: <span class="bg-success text-white rounded-pill d-inline-block px-2 mb-0"><i class="fas fa-check-circle"></i> Active</span></p>
               @elseif($user->status == 'inactive')
@@ -67,6 +71,8 @@
               @elseif($user->status == 'suspended')
                 <p class="text-3">Status: <span class="bg-danger text-white rounded-pill d-inline-block px-2 mb-0"><i class="fas fa-times-circle"></i> Suspended</span></p>
               @endif
+            {{-- </div> --}}
+            {{-- <p class="mb-2"><a href="profile.html" class="text-5 text-light" data-toggle="tooltip" title="" data-original-title="Edit Profile"><i class="fas fa-edit"></i></a></p> --}}
           </div>
           <!-- Profile Details End --> 
           
@@ -82,6 +88,17 @@
               <a href="deposit-money.html" class="btn-link ml-auto text-gray-800">Deposit</a></div>
           </div>
           <!-- Available Balance End --> 
+          
+          <!-- Need Help?
+          =============================== -->
+          {{-- <div class="bg-white shadow-sm rounded text-center p-3 mb-4">
+            <div class="text-17 text-light my-3"><i class="fas fa-comments"></i></div>
+            <h3 class="text-5 font-weight-400 my-4">Need Help?</h3>
+            <p class="text-muted opacity-8 mb-4">Have questions or concerns regrading your account?<br>
+              Our experts are here to help!.</p>
+            <a href="#" class="btn btn-primary btn-block">Chate with Us</a> 
+          </div> --}}
+          <!-- Need Help? End --> 
           
         </aside>
         <!-- Left Panel End --> 
@@ -368,7 +385,7 @@
                     <div class="form-group">
                       <label for="emailID2">Bank Account Number</label>
                       <div class="input-group">
-                        <input type="text" value="{{ $user->userdata->bank_account_number ?? '' }}" class="form-control" data-bv-field="" id="emailID2" required="" placeholder="Account Number" name="bank_account_number">
+                        <input type="text" value="{{ $user->userdata->bank_account_number ?? '' }}" class="form-control" data-bv-field="" id="emailID2" required="" placeholder="Account Name" name="bank_account_number">
                       </div>
                     </div>
                     <div class="form-group">
@@ -489,6 +506,17 @@
 
 
 @section('more_scripts')
+   <!-- Page level plugins -->
+  <script src="{{ asset('admin_assets/vendor/datatables/jquery.dataTables.min.js') }}"></script>
+  <script src="{{ asset('admin_assets/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+
+  <!-- Page level custom scripts -->
+  <script>
+    $(document).ready(function () {
+      $('#dataTable').DataTable(); // ID From dataTable 
+      $('#dataTableHover').DataTable(); // ID From dataTable with Hover
+    });
+  </script>
 
   <script type="text/javascript">
 

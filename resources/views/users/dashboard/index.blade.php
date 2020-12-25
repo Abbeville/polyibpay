@@ -85,7 +85,7 @@
                             </div>
                             <p class="small mt-2">Electricity</p>
                         </a>
-                        <a href="#" class="swiper-slide text-center">
+                        <a href="{{ route('users.transactions.crypto') }}" class="swiper-slide text-center">
                             <div class="avatar avatar-60 no-shadow border-0">
                                 <div class="overlay bg-template"></div>
                                 <i class="material-icons text-template">monetization_on</i>
