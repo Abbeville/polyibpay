@@ -59,8 +59,14 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
     Route::post('/settings/password/update', 'Users\SettingsController@updatePassword')->name('user.password.update');
 
    	Route::post('/fund-wallet', 'Lib\RaveController@initialize')->name('fund-wallet');
-  	Route::post('/rave/callback', 'Lib\RaveController@callback')->name('callback');
+  	Route::get('/rave/callback', 'Lib\RaveController@callback')->name('callback');
   	Route::post('/rave/receive', 'Lib\RaveController@webhook')->name('webhook');
+
+    Route::get('/purchase/{category}/{biller_code}', 'Users\BillController@index')->name('users.purchase.category')->where('category', 'airtime|data_bundle|tv_subscription|electricity');
+
+    Route::post('/purchase/bill', 'Users\BillController@createBill')->name('users.create.bill');
+
+    // Route::get('/recharge/wallet', 'Users\BillController@rechargeWallet')->name('users.recharge.wallet');
 
 });
 

@@ -169,33 +169,6 @@
 <!-- color chooser menu ends -->
 
 <!-- Modal -->
-<div class="modal fade" id="addmoney" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header border-0">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body text-center pt-0">
-                <img src="img/infomarmation-graphics2.png" alt="logo" class="logo-small">
-                <div class="form-group mt-4">
-                    <input type="text" class="form-control form-control-lg text-center" placeholder="Enter amount"
-                           required="" autofocus="">
-                </div>
-                <p class="text-mute">You will be redirected to payment gatway to proceed further. Enter amount in
-                    USD.</p>
-            </div>
-            <div class="modal-footer border-0">
-                <button type="button" class="btn btn-default btn-lg btn-rounded shadow btn-block" class="close"
-                        data-dismiss="modal">Next
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal -->
 <div class="modal fade" id="sendmoney" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
         <div class="modal-content">

@@ -66,7 +66,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
 
-        return User::create([
+        $user = User::create([
             'user_id' => generateUserId(),
             'firstname' => $data['firstname'],
             'lastname' => $data['lastname'],
@@ -75,5 +75,14 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        $user->wallet()->create([
+            'unique_address' => generateWalletId(),
+            'credit' => 0,
+            'debit' => 0,
+            'balance' => 0
+        ]);
+
+        return $user;
     }
 }

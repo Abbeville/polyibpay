@@ -4,13 +4,13 @@ namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Wallet;
+use Auth;
 
 class WalletController extends Controller
 {
-    public static function debit($user_id, $amount, $currency_type, $description)
+    public static function debit($user_id, $amount)
     {
-        $unique_address = $this->generateTxCode();
-
 
         if (Auth::user()->wallet()->exists()) {
             $ledger = Auth::user()->wallet;
@@ -20,18 +20,14 @@ class WalletController extends Controller
 
         $ledger->user_id = $user_id;
         $ledger->debit = $amount;
-        $ledger->balance = $this->calculateBalance($user_id, 'debit', $amount, $currency_type);
-        $ledger->currency_type = $currency_type;
-        $ledger->description = $description;
-        $ledger->unique_address = $unique_address;
+        $ledger->balance = self::calculateBalance($user_id, 'debit', $amount);
         $ledger->save();
 
-        return $unique_address;
+        return;
     }
 
-    public static function credit($user_id, $amount, $currency_type, $description)
+    public static function credit($user_id, $amount)
     {
-        $ref_code = $this->generateTxCode();
         if (Auth::user()->wallet()->exists()) {
             $ledger = Auth::user()->wallet;
         }else{
@@ -39,25 +35,21 @@ class WalletController extends Controller
         }
 
         $ledger->user_id = $user_id;
-        $ledger->credit = $this->fixFigre($amount);
-        $ledger->balance = $this->calculateBalance($user_id, 'credit', $amount, $currency_type);
-        $ledger->currency_type = $currency_type;
-        $ledger->type = $type;
-        $ledger->description = $description;
-        $ledger->unique_address = $unique_address;
+        $ledger->credit = $amount;
+        $ledger->balance = self::calculateBalance($user_id, 'credit', $amount);
         $ledger->save();
 
 
-        return $ref_code;
+        return;
     }
 
 
-    private function calculateBalance($userId, $ledgerType, $amount, $currency_type)
+    private static function calculateBalance($userId, $ledgerType, $amount)
     {
         $newBalance = 0;
         $amount =$amount;
         $getLastBalance = Wallet::where('user_id', $userId)
-                ->where('currency_type', $currency_type)->get()->last()->balance ?? 0;
+                ->get()->last()->balance ?? 0;
         $getLastBalance = $getLastBalance;
         if ($ledgerType === 'debit') {
             $newBalance = $getLastBalance - $amount;
@@ -68,16 +60,6 @@ class WalletController extends Controller
 
 
         return $newBalance;
-    }
-
-    private function generateTxCode()
-    {
-        $lastTxCode = Wallet::latest('id');
-        $lastTx = $lastTxCode->value('reference_code');
-        if (empty($lastTx)) {
-            return 10000001;
-        }
-        return ++$lastTx;
     }
 
     private function fixFigre($amount)

@@ -24,12 +24,11 @@ class RaveController extends Controller
      Transaction::create([
         'user_id' => auth()->id(),
         'amount' => $request->amount,
-        'type' => $request->type,
-        'category' => $request->category,
-        'reference' => $request->txref,
-        'narration' => 'Recharged wallet with {$request_amount}',
-        'status' => 'pending',
-        'currency' => 'NGN'
+        'type' => 'credit',
+        'category' => 'wallet',
+        'reference' => $request->ref,
+        'narration' => 'Recharged wallet with #'.$request->amount,
+        'status' => 'pending'
      ]);
 
     Rave::initialize(route('callback'));
@@ -42,11 +41,11 @@ class RaveController extends Controller
   public function callback()
   {
 
-    $res = Rave::verifyTransaction(request()->txref);
+    $resp = Rave::verifyTransaction(json_decode(request()->resp)->data->data->txRef);
 
-    $transaction = Transaction::where('reference', request()->txref)->first();
+    $transaction = Transaction::where('reference', $resp->data->txref)->first();
 
-    if (request()->cancelled) {
+    if ($resp->status != 'success') {
       $transaction->status = 'failed';
 
       $transaction->save();
@@ -62,9 +61,9 @@ class RaveController extends Controller
           Session::flash('success', 'Wallet Recharged successful');
           return redirect()->route('users.dashboard');
         }else{
-            $data = $res->data;
+            $data = $resp->data;
 
-          if ($res->status == 'success' && $data->chargecode == 00 || $data->chargecode == 0 && $data->currency == $currency && $data->amount) {
+          if ($resp->status == 'success' && $data->chargecode == 00 || $data->chargecode == 0 && $data->currency == $currency && $data->amount >= $transaction->amount ) {
 
             $transaction->status = 'success';
             $transaction->chargecode = $data->chargecode;
@@ -75,13 +74,13 @@ class RaveController extends Controller
 
             /*Update User Wallet*/
 
-            if ($request->type == 'credit') {
-              Wallet::credit($user->id, $data->amount, $data->currency, $transaction->description);
+            if ($transaction->type == 'credit') {
+              Wallet::credit($user->id, $data->amount);
             }else{
-              Wallet::debit($user->id, $data->amount, $data->currency, $transaction->description);
+              Wallet::debit($user->id, $data->amount);
             }
 
-            Session::flash('success', 'Wallet Recharged Succesful!');
+            Session::flash('success', 'Wallet Recharged Succesfully!');
             return redirect()->route('users.dashboard');
 
           }else{

@@ -15,15 +15,17 @@ class CreateBillerServicesTable extends Migration
     {
         Schema::create('biller_services', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('biller_code');
             $table->string('name');
-            $table->string('fee');
-            $table->string('amount');
-            $table->string('required_label')->nullable();
+            $table->boolean('is_airtime');
+            $table->string('biller_name')->nullable();
+            $table->double('fee', 16, 8);
+            $table->string('label_name')->nullable();
+            $table->double('amount', 16, 8);
             $table->string('item_code');
             $table->string('short_name');
-            $table->string('biller_name')->nullable();
 
-            $table->string('biller_id');
+            $table->unsignedBigInteger('biller_id');
             $table->json('meta_data')->nullable();
 
             $table->timestamps();
