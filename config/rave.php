@@ -15,13 +15,13 @@ return [
      * Public Key: Your Rave publicKey. Sign up on https://rave.flutterwave.com/ to get one from your settings page
      *
      */
-    'publicKey' => env('RAVE_PUBLIC_KEY'),
+    'publicKey' => env('RAVE_PUBLIC_KEY', ''),
 
     /**
      * Secret Key: Your Rave secretKey. Sign up on https://rave.flutterwave.com/ to get one from your settings page
      *
      */
-    'secretKey' => env('RAVE_SECRET_KEY'),
+    'secretKey' => env('RAVE_SECRET_KEY', ''),
 
     /**
      * Company/Business/Store Name: The name of your store
@@ -33,7 +33,7 @@ return [
      * Environment: This can either be 'staging' or 'live'
      *
      */
-    'env' => env('RAVE_ENVIRONMENT', 'staging'),
+    'env' => env('RAVE_ENVIRONMENT', 'live'),
 
     /**
      * Logo: Enter the URL of your company/business logo

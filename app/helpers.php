@@ -36,3 +36,32 @@ function getBank($code){
     $bank = DB::table('bank_names')->where('code', $code)->first();
     return $bank;
 }
+
+function generateWalletId()
+{
+	//get last ID
+	$lastId = \App\Models\Wallet::all()->last();
+	if ($lastId) {
+	    $lastWalletId = (int)$lastId->id;
+	    $newWalletId = 'W-00'.$lastWalletId++;
+	} else {
+	    $newWalletId = 'W-001';
+	}
+	return $newWalletId;
+}
+
+function generateTransactionRef(){
+	$prefix = Config::get('rave.prefix');
+	$overrideRefWithPrefix = false;
+
+	$transactionPrefix = $prefix . '_';
+	$overrideTransactionReference = $overrideRefWithPrefix;
+
+	if ($overrideTransactionReference) {
+	    $txref = $transactionPrefix;
+	} else {
+	    $txref = uniqid($transactionPrefix);
+	}
+
+	return $txref;
+}

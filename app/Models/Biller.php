@@ -6,15 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Biller extends Model
 {
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'transaction_id', 'biller_id', 'biller_service', 'service_category', 
-    ];
 
+	protected $fillable = ['name', 'biller_code', 'category_id', 'thumbnail_path']; 
+
+    public function category() {
+    	return $this->belongsTo('App\Models\ServiceCategory', 'id', 'category_id');
+    }
+
+    public function services()
+    {
+    	return $this->hasMany('App\Models\BillerServices', 'id', 'biller_id');
+    }
 
     public function billInfo(){
         return $this->hasMany('App\Models\BillInfo');

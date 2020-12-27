@@ -78,10 +78,11 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-        $wallet = Wallet::create([
-            'user_id' => $user->id,
-            'unique_address' => Str::random(30),
-            'description' => 'I now can buy and pay my bills easily',
+        $user->wallet()->create([
+            'unique_address' => generateWalletId(),
+            'credit' => 0,
+            'debit' => 0,
+            'balance' => 0
         ]);
 
         return $user;

@@ -47,6 +47,18 @@ Breadcrumbs::for('users.settings.pin', function ($trail) {
     $trail->push('Pin', '');
 });
 
+Breadcrumbs::for('users.purchase.category', function ($trail) {
+    $trail->push('Home', route('users.dashboard'));
+    $trail->push('Purchase', '');
+    $trail->push('Bill', '');
+});
+
+Breadcrumbs::for('users.create.bill', function ($trail) {
+    $trail->push('Home', route('users.dashboard'));
+    $trail->push('Create', '');
+    $trail->push('Bill', '');
+});
+
 
 Breadcrumbs::for('users.profile', function ($trail) {
     $trail->push('Home', route('users.dashboard'));
