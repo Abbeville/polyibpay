@@ -16,7 +16,7 @@ class CreateVirtualCardsTable extends Migration
         Schema::create('virtual_cards', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('card_id');
+            $table->string('card_id');
             $table->unsignedBigInteger('account_id');
             $table->double('credits', 16, 8)->default(0);
             $table->double('debits', 16, 8)->default(0);
@@ -36,6 +36,8 @@ class CreateVirtualCardsTable extends Migration
             $table->enum('currency_type', ['NGN', 'USD'])->default('NGN');
 
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users');
+            
         });
     }
 

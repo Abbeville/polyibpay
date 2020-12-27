@@ -74,12 +74,13 @@
           =============================== -->
           <div class="bg-white shadow-sm rounded text-center p-3 mb-4">
             <div class=" text-light my-3" style="font-size: 50px"><i class="fas fa-wallet"></i></div>
-            <h3 class="text-9 font-weight-400">{{ $user->wallet->currency_type ?? '' }} {{ $user->wallet->balance ?? 'Not yet Created'}}</h3>
+            <h3 class="text-9 font-weight-400">{{ $user->wallet->currency_type ?? '' }} {{ number_format($user->wallet->balance, 2) ?? 'Not yet Created'}}</h3>
             <p class="mb-2 text-muted opacity-8">Available Balance</p>
             <hr class="mx-n3">
             <div class="d-flex text-gray-800">
-              <a href="withdraw-money.html" class="btn-link mr-auto text-gray-800">Withdraw</a> 
-              <a href="deposit-money.html" class="btn-link ml-auto text-gray-800">Deposit</a></div>
+              <a href="#wallet-withdrawal" data-toggle="modal" class="btn-link mr-auto text-gray-800">Withdraw</a> 
+              <a href="#wallet-deposit" data-toggle="modal" class="btn-link ml-auto text-gray-800">Deposit</a>
+            </div>
           </div>
           <!-- Available Balance End --> 
           
@@ -288,7 +289,7 @@
                       <div class="col-12 col-sm-6">
                         <div class="form-group">
                           <label for="inputCountry">Country</label>
-                          <select class="custom-select" id="inputCountry" name="country_id">
+                          <select class="custom-select" id="inputCountry" name="country_id" required="">
                               <option value="Nigeria" selected="">Nigeria</option>
                           </select>
                         </div>
@@ -422,7 +423,7 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title font-weight-400">Phone</h5>
+                  <h5 class="modal-title font-weight-400">Cryto Wallet Address</h5>
                   <button type="button" class="close font-weight-400" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span> </button>
                 </div>
                 <div class="modal-body p-4">
@@ -449,6 +450,62 @@
             </div>
           </div>
           <!-- Phone End --> 
+
+          <!-- Deposit Modal
+          ================================== -->
+          <div id="wallet-deposit" class="modal fade " role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title font-weight-400">Wallet Deposit</h5>
+                  <button type="button" class="close font-weight-400" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span> </button>
+                </div>
+                <div class="modal-body p-4">
+                  <form id="wallet-deposit" method="post" action="{{ route('admin.user.wallet_deposit', ['user' => $user->id]) }}">
+                    @csrf
+
+                    <p class="text-danger">You are about to add a certain amount to the current balance of the user wallet, Be careful, you are dealing with figures of money here</p>
+                    <div class="form-group">
+                      <label for="amount">Amount to Deposit</label>
+                      <div class="input-group">
+                        <input type="number" value="" class="form-control" data-bv-field="" id="amount" required="" placeholder="Amount to deposit" name="deposit_amount">
+                      </div>
+                    </div>
+                    <button class="btn btn-primary btn-block" type="submit">Make Deposit</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Add Money to wallet End --> 
+
+          <!-- Withdrawal Modal
+          ================================== -->
+          <div id="wallet-withdrawal" class="modal fade " role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title font-weight-400">Wallet Withdrawal</h5>
+                  <button type="button" class="close font-weight-400" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span> </button>
+                </div>
+                <div class="modal-body p-4">
+                  <form id="wallet-withdrawal" method="post" action="{{ route('admin.user.wallet_withdrawal', ['user' => $user->id]) }}">
+                    @csrf
+
+                    <p class="text-danger">You are about to debit certain amount from the current balance of the user wallet, Be careful, you are dealing with figures of money here</p>
+                    <div class="form-group">
+                      <label for="amount">Amount to Withdraw</label>
+                      <div class="input-group">
+                        <input type="number" value="" class="form-control" data-bv-field="" id="amount" required="" placeholder="Amount to deposit" name="withdrawal_amount">
+                      </div>
+                    </div>
+                    <button class="btn btn-primary btn-block" type="submit">Make Withdrawal</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Remove Money from wallet End --> 
           
         </div>
         <!-- Middle Panel End --> 

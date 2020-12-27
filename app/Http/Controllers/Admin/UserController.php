@@ -9,6 +9,7 @@ use Alert;
 // Models
 use App\User;
 use App\Models\UserData;
+use App\Models\Wallet;
 
 class UserController extends Controller
 {
@@ -82,8 +83,65 @@ class UserController extends Controller
      */
     public function show_virtual_card($user)
     {
-        $user = User::where('id', $user)->with(['userData', 'wallet', 'transactions'])->first();
-        return view('admin.user.test', ['user' => $user]);
+        $user = User::where('id', $user)->with(['userData', 'wallet', 'transactions', 'vcards'])->first();
+        return view('admin.user.vcard', ['user' => $user]);
+    }
+
+    /**
+     * Add to the specified resource wallet balance.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function wallet_deposit(Request $request, $user)
+    {
+        $request->validate([
+            'deposit_amount' => ['required', 'integer']
+        ]);
+
+        $amount = $request->input('deposit_amount');
+
+        $update = Wallet::where('user_id',$user)->increment('credit', $amount);
+        $update = Wallet::where('user_id',$user)->increment('balance', $amount);
+
+        if ($update) {
+            toast('User Wallet has been Credited Successfully','success');
+            return redirect()->back();
+        }
+
+        toast('Operation Failed, Please Retry!','error');
+        return redirect()->back();
+
+    }
+
+    /**
+     * Debit action to the specified resource wallet balance.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function wallet_withdrawal(Request $request, User $user)
+    {
+        $request->validate([
+            'withdrawal_amount' => ['required', 'integer']
+        ]);
+
+        $amount = $request->input('withdrawal_amount');
+
+        if ($user->wallet->balance > $amount) { 
+            $update = Wallet::where('user_id',$user->id)->increment('debit', $amount);
+            $update = Wallet::where('user_id',$user->id)->decrement('balance', $amount);
+
+            if ($update) {
+                toast('User Wallet has been Debited Successfully','success');
+                return redirect()->back();
+            }
+
+            toast('Operation Failed, Please Retry!','error');
+            return redirect()->back();
+        }
+        toast('Operation Failed, User balance is insufficient!','error');
+        return redirect()->back();
     }
 
     /**
@@ -123,7 +181,7 @@ class UserController extends Controller
                 'city' => $request->input('city'),
                 'state' => $request->input('state'),
                 'zip_code' => $request->input('zip_code'),
-                'country' => $request->input('country'),
+                'country' => $request->input('country_id'),
             ]);
             $userdetails->save();
 
