@@ -119,6 +119,7 @@
                                     </div>
                                     <div class="col-auto">
                                         <h6 class="text-{{ ($transaction->type == 'credit') ? 'success' : 'danger' }}">@mon($transaction->amount)</h6>
+                                        <p class="text-mute small text-secondary">{{ $transaction->status }}</p>
                                     </div>
                                 </div>
                             </li>
@@ -171,6 +172,7 @@
                                     </div>
                                     <div class="col-auto">
                                         <h6 class="text-{{ ($transaction->type == 'credit') ? 'success' : 'danger' }}">@mon($transaction->amount)</h6>
+                                        <p class="text-mute small text-secondary">{{ $transaction->status }}</p>
                                     </div>
                                 </div>
                             </li>
@@ -223,6 +225,7 @@
                                     </div>
                                     <div class="col-auto">
                                         <h6 class="text-{{ ($transaction->type == 'credit') ? 'success' : 'danger' }}">@mon($transaction->amount)</h6>
+                                        <p class="text-mute small text-secondary">{{ $transaction->status }}</p>
                                     </div>
                                 </div>
                             </li>
@@ -302,6 +305,42 @@
                                 <p class="text-mute">You will be redirected to payment gatway to proceed further. Enter amount in
                                     Naira.</p>
                             @endif
+                    </div>
+                    <div class="modal-footer border-0">
+                        <input type="submit" class="btn btn-default btn-lg btn-rounded shadow btn-block" value="Next" class="close">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal Fund Wallet -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="completeTransaction" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="POST" action="{{ route('users.create.bill') }}" id="paymentForm">
+                    <div class="modal-body text-center pt-0">
+                        <img src="img/infomarmation-graphics2.png" alt="logo" class="logo-small">
+                        
+                            {{ csrf_field() }} 
+                            <input type="hidden" name="item_code" value="{{ Session::has('pending_bill') ? session('pending_bill')['item_code'] : '' }}" /> 
+                            <input type="hidden" name="country" value="{{ Session::has('pending_bill') ? session('pending_bill')['country'] : '' }}" /> 
+                            <input type="hidden" name="customer" value="{{ Session::has('pending_bill') ? session('pending_bill')['customer'] : '' }}" /> 
+                            <input type="hidden" name="amount" value="{{ Session::has('pending_bill') ? session('pending_bill')['amount'] : '' }}" /> 
+                            <input type="hidden" name="recurrence" value="{{ Session::has('pending_bill') ? session('pending_bill')['recurrence'] : '' }}" /> 
+                            <input type="hidden" name="type" value="{{ Session::has('pending_bill') ? session('pending_bill')['type'] : '' }}" /> 
+                            <input type="hidden" name="biller_code" value="{{ Session::has('pending_bill') ? session('pending_bill')['biller_code'] : '' }}" /> 
+                            
+                            <p class="text-mute">We notice a pending transaction on your account </p>       
+                            <p class="text-mute">Transaction Details: </p>       
+                            <p class="text-mute">Amount :  {{ Session::has('pending_bill') ? session('pending_bill')['amount'] : '' }}</p>       
+                            <p class="text-mute">Number : {{ Session::has('pending_bill') ? session('pending_bill')['customer'] : '' }} </p>       
                     </div>
                     <div class="modal-footer border-0">
                         <input type="submit" class="btn btn-default btn-lg btn-rounded shadow btn-block" value="Next" class="close">
@@ -470,6 +509,18 @@
     <script type="text/javascript">
         $(document).ready(function(){ 
             $("#addmoney").modal("show");
+         });
+    </script>
+@endsection
+
+@endif
+
+@if(Session::has('pending_bill'))
+
+@section('scripts')
+    <script type="text/javascript">
+        $(document).ready(function(){ 
+            $("#completeTransaction").modal("show");
          });
     </script>
 @endsection

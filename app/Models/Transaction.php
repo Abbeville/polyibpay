@@ -64,4 +64,8 @@ class Transaction extends Model
     {
         return $query->where('category', $category)->latest()->get();
     }
+
+    public function bill(){
+        return $this->hasOne('App\Models\BillTransaction');
+    }
 }
