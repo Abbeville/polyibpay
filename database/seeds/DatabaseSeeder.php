@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
       DB::table('billers')->truncate();
       DB::table('service_categories')->truncate();
       DB::table('admins')->truncate();
+      DB::table('settings')->truncate();
       DB::table('biller_services')->truncate();
       DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
@@ -24,7 +25,9 @@ class DatabaseSeeder extends Seeder
       $this->call(AdminSeeder::class);
       $this->call(BillersTableSeeder::class);
       $this->call(BillerServicesSeeder::class);
+      $this->call(BankNameTableSeeder::class);
       $this->call(UserSeeder::class);
       $this->call(NigeriaStatesTableSeeder::class);
+      $this->call(SettingsTableSeeder::class);
     }
 }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+
 use Alert;
 
 // Models
@@ -50,7 +52,43 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'firstname' => ['required', 'string', 'max:255'],
+            'lastname' => ['required', 'string', 'max:255'],
+            'phone_number' => ['required', 'string', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        ]);
+
+
+        $user = User::create([
+            'user_id' => generateUserId(),
+            'status' => $request->input('status'),
+            'firstname' => $request->input('firstname'),
+            'lastname' => $request->input('lastname'),
+            'phone_number' => $request->input('phone_number'),
+            'ref_id' => '1000000',
+            'email' => $request->input('email'),
+            'password' => Hash::make('password'),
+        ]);
+
+        $user->wallet()->create([
+            'unique_address' => generateWalletId(),
+            'credit' => 0,
+            'debit' => 0,
+            'balance' => 0
+        ]);
+
+        $user->userData()->create([
+            'user_id' => $user->id
+        ]);
+
+        if ($user) {
+            toast('User Account has been Credited Successfully','success');
+            return redirect()->back();
+        }
+
+        toast('Operation Failed, Please Retry!','error');
+        return redirect()->back();
     }
 
     /**

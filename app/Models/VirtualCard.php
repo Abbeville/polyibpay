@@ -36,4 +36,15 @@ class VirtualCard extends Model
     {
         return $this->hasMany('App\Models\Transaction', 'vcard_id');
     }
+
+    /**
+     * Scope a query to only include user status.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeActive($query, $status)
+    {
+        return $query->where('is_active', $status)->latest()->get();
+    }
 }

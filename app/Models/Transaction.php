@@ -64,4 +64,15 @@ class Transaction extends Model
     {
         return $query->where('category', $category)->latest()->get();
     }
+
+    /**
+     * Scope a query to only include user status.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeType($query, $type)
+    {
+        return $query->where('type', $type)->latest()->get();
+    }
 }
