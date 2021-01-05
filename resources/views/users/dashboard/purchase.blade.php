@@ -36,7 +36,7 @@
 
                 <input type="hidden" name="country" value="NG">
                 <input type="hidden" name="recurrence" value="ONCE">
-
+                <input type="hidden" name="category" value="{{ $category }}">
                 <hr>
                 <button class="btn btn-lg btn-default text-white btn-block btn-rounded shadow mt-50">Submit</button>
             </form>

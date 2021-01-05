@@ -193,7 +193,7 @@
                                         </div> --}}
                                     </div>
                                     <div class="col align-self-center pr-0">
-                                        {{ 'No transaction today' }}
+                                        {{ 'No transaction' }}
                                     </div>
                                     <div class="col-auto">
                                         
@@ -246,7 +246,7 @@
                                         </div> --}}
                                     </div>
                                     <div class="col align-self-center pr-0">
-                                        {{ 'No transaction today' }}
+                                        {{ 'No transaction' }}
                                     </div>
                                     <div class="col-auto">
                                         

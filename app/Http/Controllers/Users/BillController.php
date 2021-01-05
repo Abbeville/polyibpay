@@ -20,8 +20,8 @@ class BillController extends Controller
 	{
     	$this->client = new \GuzzleHttp\Client();
 
-		$this->apiKey = config('rave.secretKey');
-        // $this->apiKey = 'FLWSECK_TEST-SANDBOXDEMOKEY-X';
+		// $this->apiKey = config('rave.secretKey');
+        $this->apiKey = 'FLWSECK_TEST-SANDBOXDEMOKEY-X';
 
     	$this->headers = [ 'Authorization' => 'Bearer ' . $this->apiKey, 'Accept' => 'application/json', 'Content-Type' => 'application/json' ];
 
@@ -44,6 +44,7 @@ class BillController extends Controller
 
     public function createBill(Request $request)
     {
+        $data['category'] = $request->category;
         $data['item_code'] = $request->item_code;
         $data['country'] = $request->country;
         $data['customer'] = $request->customer;
@@ -51,7 +52,7 @@ class BillController extends Controller
         $data['recurrence'] = $request->recurrence;
         $data['type'] = $request->biller_name;
         $data['biller_code'] = $request->biller_code;
-        $data['reference'] = generateTransactionRef();
+        $data['reference'] = generateTransactionRef($data['category']);
 
     	$this->validateBill($request->item_code, $request->biller_code, $request->customer);
 
@@ -92,7 +93,7 @@ class BillController extends Controller
     			'user_id' => auth()->user()->id,
     			'type' => 'debit',
     			'category' => 'bill',
-    			'reference' => generateTransactionRef(),
+    			'reference' => generateTransactionRef($data['category']),
     			'amount' => $response->data->amount,
     			'narration' => 'Purchased '.$data["type"].' for #'.$response->data->amount,
     			'status' => 'success'
