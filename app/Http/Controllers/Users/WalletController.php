@@ -61,10 +61,5 @@ class WalletController extends Controller
 
         return $newBalance;
     }
-
-    private function fixFigre($amount)
-    {
-      return  rtrim(rtrim(sprintf('%.8F', $amount), '0'), ".");
-
-    }
+    
 }
