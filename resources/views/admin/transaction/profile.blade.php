@@ -37,7 +37,7 @@
 @section('content')
 
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-   <h1 class="h3 mb-0 text-gray-800">Transaction (#{{ $transaction->reference }})</h1>
+   <h1 class="h3 mb-0 text-gray-800">Transaction ({{ $transaction->custom_ref ?? 'null' }})</h1>
    <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Admin Dashboard</a></li>
       @if(!is_null($back))
@@ -64,7 +64,7 @@
           {{-- <br>
           <br> --}}
           <p>Since: {{ $transaction->created_at->diffForHumans() }}</p>
-          <p>Occurred On: <span style="font-size: 20px; font-style: bolder">{{ $transaction->occurred_on }}</span></p>
+          {{-- <p>Occurred On: <span style="font-size: 20px; font-style: bolder">{{ $transaction->occurred_on }}</span></p> --}}
           
           @if($transaction->status == 'success')
               <span class="badge badge-success" style="font-size: 20px">{{ __('Successful') }}</span>
@@ -81,8 +81,8 @@
               </li>
           </ul>
           <div class="tab-content" id="myTabContent">
-              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                  <h3 class="register-heading">Transaction Details</h3>
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                  <h3 class="register-heading">Tansaction Details</h3>
 
                   <h3 class="register-heading">
                     @if($transaction->type == 'bills')
@@ -258,8 +258,8 @@
                               @if(!is_null($transaction->crytoRequest->proof_file))
 
                               <center>
-                                <a href="{{ asset('admin_assets/img/boy.png') }}" target="_blank" title="View">
-                                <img class="img mt-5" width="70%" src="{{ asset('admin_assets/img/boy.png') }}" alt="proof_image">
+                                <a href="{{ asset($transaction->crytoRequest->proof_file) }}" target="_blank" title="View">
+                                <img class="img mt-5" width="70%" src="{{ asset($transaction->crytoRequest->proof_file) }}" alt="proof_image">
                                 </a>
                                 <p>Proof Image</p>
                               </center>

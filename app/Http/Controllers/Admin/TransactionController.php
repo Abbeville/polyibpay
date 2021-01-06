@@ -29,8 +29,8 @@ class TransactionController extends Controller
             'failed_transactions' => Transaction::status('failed'),
             'canceled_transactions' => Transaction::status('canceled'),
             'crypto_transactions' => Transaction::category('crypto'),
-            'bill_transactions' => Transaction::category('bill'),
-            'top_up_transactions' => Transaction::category('top_up'),
+            'bill_transactions' => Transaction::type('debit'),
+            'top_up_transactions' => Transaction::type('credit'),
 
         ]);
     }
@@ -190,13 +190,13 @@ class TransactionController extends Controller
                 $cat = 'Crypto';
                 break;
 
-            case 'top_up':
-                $transactions = Transaction::category('top_up');
-                $cat = 'Top-Up';
+            case 'credit':
+                $transactions = Transaction::type('credit');
+                $cat = 'Credits';
                 break;
             
-            case 'bill':
-                $transactions = Transaction::category('bill');
+            case 'debit':
+                $transactions = Transaction::type('debit');
                 $cat = 'Bill';
                 break;
 

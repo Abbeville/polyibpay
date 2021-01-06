@@ -47,6 +47,7 @@ class TransactionsController extends Controller
             $transaction = Transaction::create([
                 'user_id' => Auth::id(),
                 'type' => 'credit',
+                'custom_ref' => generateCustomRef(auth()->user()->id),
                 'occurred_on' => 'wallet',
                 'category' => 'crypto',
                 'amount' => $data['amount'],

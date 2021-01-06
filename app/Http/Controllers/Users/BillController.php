@@ -90,6 +90,7 @@ class BillController extends Controller
     	if ($response->status == 'success') {
     		//Save the transaction
     		$transaction = Transaction::create([
+                'custom_ref' => generateCustomRef(auth()->user()->id),
     			'user_id' => auth()->user()->id,
     			'type' => 'debit',
     			'category' => 'bill',

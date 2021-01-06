@@ -18,11 +18,11 @@
 @section('content')
 
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-   <h1 class="h3 mb-0 text-gray-800">User Wallet</h1>
+   <h1 class="h3 mb-0 text-gray-800">User Virtual Cards</h1>
    <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Admin Dashboard</a></li>
       <li class="breadcrumb-item"><a href="{{ route('admin.user.index') }}">All Users</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Transaction</li>
+      <li class="breadcrumb-item active" aria-current="page">Virtual Cards</li>
    </ol>
 </div>
 
@@ -94,119 +94,97 @@
           <!-- Personal Details
           ============================================= -->
           <div class="bg-white shadow-sm rounded p-4 mb-4">
-            <h4 class="text-5 font-weight-400 d-flex align-items-center mb-4">Wallet History
+            <h4 class="text-5 font-weight-400 d-flex align-items-center mb-4">Virtual Cards
             </h4>
             <hr class="mx-n4 mb-4">
-            
-                    <div class="row register-form">
-                           <!-- Earnings (Monthly) Card Example -->
-                       <div class="col-xl-4 col-md-6 mb-4">
-                        <div class="card h-100 bg-success text-white">
-                          <div class="card-body">
-                            <div class="row align-items-center">
-                              <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-uppercase mb-1">Wallet Balance</div>
-                                <div class="h5 mb-0 font-weight-bold">{{ $user->wallet->currency_type . ' ' . number_format($user->wallet->balance, 2) }}</div>
+              
+              <div class="row">
+
+                @forelse($user->vcards as $vcard)
+                <div class="col-md-6">    
+                  <div class="container z-1 position-relative text-white">
+                            
+                        @if($vcard->card_type == 'visa')
+
+                          <div class="card bg-gradient-primary shadow mt-4 h-200">
+                            <div class="card-body">
+                              <div class="row">
+                                <div class="col-12">
+                                    <img src="{{ asset('assets/img/visa-logos.png') }}" alt="">
+                                    <h4 class="mt-1 font-weight-normal"># {{ number_format($vcard->balance,2) }} 
+                                      <a href="{{ route('admin.vcard.show', ['vcard' => $vcard->id]) }}" class="mt-1 font-weight-normal"><span class="float-right text-white" style="font-size: 12px">View Details</span></a></h4>
+                                    
+                                </div>
+                                <div class="col-12 mt-5">
+                                    <h3 class="font-weight-normal">{{ $vcard->masked_pan }}</h3>
+                                </div>
+                                <div class="col-12">
+                                    <p>{{ $vcard->name_on_card }} <span class="float-right">{{ $vcard->expiration }}</span></p>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                      </div>
+                        @elseif($vcard->card_type == 'mastercard')
 
-                      <div class="col-xl-4 col-md-6 mb-4">
-                        <div class="card h-100">
-                          <div class="card-body">
-                            <div class="row align-items-center">
-                              <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-uppercase mb-1">Total Deposits</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $user->wallet->currency_type . ' ' . number_format($user->wallet->credit, 2) }}</div>
+                          <div class="card bg-gradient-danger shadow mt-4 h-200">
+                            <div class="card-body">
+                              <div class="row">
+                                <div class="col-12 pb-0">
+                                    <img src="{{ asset('assets/img/master_card.png') }}" alt="" class="mb-0 mt-0">
+                                    <h4 class="mt-0 font-weight-normal"># {{ number_format($vcard->balance,2) }}
+                                      <a href="{{ route('admin.vcard.show', ['vcard' => $vcard->id]) }}" class="mt-1 font-weight-normal"><span class="float-right text-white" style="font-size: 12px">View Details</span></a></h4>
+                                    
+                                </div>
+                                <div class="col-12 mt-3">
+                                    <h3 class="font-weight-normal">{{ $vcard->masked_pan }}</h3>
+                                </div>
+                                <div class="col-12">
+                                    <p>{{ $vcard->name_on_card }} <span class="float-right">{{ $vcard->expiration }}</span></p>
+                                </div>
+                              </div>
+
+                            </div>
+                          </div>
+                        @else
+
+                          <div class="card bg-gradient-secondary shadow mt-4 h-200">
+                            <div class="card-body">
+                              <div class="row">
+                                <div class="col-12">
+                                    <h3>{{ $vcard->card_type }}</h3>
+                                    <h4 class="mt-1 font-weight-normal"># {{ number_format($vcard->balance,2) }} 
+                                      <a href="{{ route('admin.vcard.show', ['vcard' => $vcard->id]) }}" class="mt-1 font-weight-normal"><span class="float-right text-white" style="font-size: 12px">View Details</span></a></h4>
+                                    
+                                </div>
+                                <div class="col-12 mt-5">
+                                    <h3 class="font-weight-normal">{{ $vcard->masked_pan }}</h3>
+                                </div>
+                                <div class="col-12">
+                                    <p>{{ $vcard->name_on_card }} <span class="float-right">{{ $vcard->expiration }}</span></p>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                      </div>
 
-                      <div class="col-xl-4 col-md-6 mb-4">
-                        <div class="card h-100 bg-danger text-white">
-                          <div class="card-body">
-                            <div class="row align-items-center">
-                              <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-uppercase mb-1">Amount Spent</div>
-                                <div class="h5 mb-0 font-weight-bold text-white">{{ $user->wallet->currency_type . ' ' . number_format($user->wallet->debit, 2) }}</div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                        @endif
 
-
-                      <div class="col-lg-12">
-                       <div class="card mb-4">
-                          <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                             <h6 class="m-0 font-weight-bold text-primary">Wallet Transactions</h6>
-                          </div>
-                          <div class="table-responsive fs12 px-3 pb-2">
-                             <table class="table align-items-center table-flush table-hover " id="dataTableHover">
-                                <thead class="thead-light">
-                                   <tr>
-                                      <th>#</th>
-                                      {{-- <th>Ref. ID.</th> --}}
-                                      <th>Amount</th>
-                                      {{-- <th>Trans. Cat</th> --}}
-                                      <th>Narration</th>
-                                      <th>Status</th>
-                                      <th>Created At</th>
-                                      <th>Actions</th>
-                                   </tr>
-                                </thead>
-
-                                <tbody>
-                                   @forelse($user->transactions as $transaction)
-                                      <tr>
-                                         <td>{{ $loop->iteration }}</td>
-                                         {{-- <td>{{ $transaction->reference }}</td> --}}
-                                         <td>
-                                            @if($transaction->type == 'credit')
-                                                <p class="text-success">{{ $transaction->amount }}</p>
-                                                <p class="">Cat.: {{ $transaction->category }}</p>
-                                            @else
-                                                <p class="text-danger"> {{ $transaction->amount }}</p>
-                                            @endif
-                                         </td>
-                                         {{-- <td>{{ $transaction->category }}</td> --}}
-                                         <td>{{ $transaction->narration }}</td>
-                                         <td>
-                                            @if($transaction->status == 'success')
-                                                <span class="badge badge-success">{{ __('success') }}</span>
-                                            @elseif($transaction->status == 'pending')
-                                                <span class="badge badge-warning"> {{ __('pending') }}</span>
-                                            @elseif($transaction->status == 'failed')
-                                                <span class="badge badge-danger"> {{ __('failed') }}</span>
-                                            @elseif($transaction->status == 'canceled')
-                                                <span class="badge badge-warning"> {{ __('canceled') }}</span>
-                                            @endif
-                                         </td>
-                                         <td>{{ $transaction->created_at->diffForHumans() }}</td>
-                                         <td>
-                                            <a href="{{ route('admin.transaction.show', ['transaction' => $transaction->id, 'back' => 1]) }}" class="btn btn-sm btn-success" title='View'>
-                                               <i class="fa fa-eye"></i>
-                                            </a>
-
-                                            <a href="#" class="btn btn-sm btn-danger" title='Delete' rel="" onclick="deletTransaction('{{ route('admin.transaction.delete', ['transaction' => $transaction->id, 'back' => 1]) }}')">
-                                               <i class="fa fa-trash"></i>
-                                            </a>
-                                         </td>
-                                      </tr>
-                                   @empty
-
-
-                                   @endforelse
-                                </tbody>
-                             </table>
-                          </div>
-                       </div>
-                    </div>
                   </div>
+                </div>
+
+                @empty
+
+                <div class="alert alert-info">
+                  <i class="fa fa-exclamation-triangle"></i> User has no Virtual Card connected to him
+                </div>
+
+
+                @endforelse
+
+                
+
+                
+              </div>
+              
 
 
             <br>
@@ -328,7 +306,7 @@
 
   <script type="text/javascript">
 
-      function deletTransaction(route) {
+      function deletTransaction(id, route) {
          $('.modal_delete').modal({show: true});
          $('#yes_delete').click(function(){
              window.location.href = route;

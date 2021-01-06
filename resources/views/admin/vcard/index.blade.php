@@ -12,10 +12,10 @@
 @section('content')
 
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-   <h1 class="h3 mb-0 text-gray-800">User Management</h1>
+   <h1 class="h3 mb-0 text-gray-800">Virtual Cards Management</h1>
    <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Admin Dashboard</a></li>
-      <li class="breadcrumb-item active" aria-current="page">All Users</li>
+      <li class="breadcrumb-item active" aria-current="page">All Virtual Cards</li>
    </ol>
 </div>
 
@@ -27,15 +27,15 @@
         <div class="card-body">
          <div class="row align-items-center">
           <div class="col mr-2">
-           <div class="text-xs font-weight-bold text-uppercase mb-1">All Registered Users</div>
-           <div class="h5 mb-0 font-weight-bold text-gray-800">{{ count($all_users) }}</div>
+           <div class="text-xs font-weight-bold text-uppercase mb-1">All Created Cards</div>
+           <div class="h5 mb-0 font-weight-bold text-gray-800">{{ count($all_vcards) }}</div>
            <div class="mt-2 mb-0 text-muted text-xs">
             <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
             <span>Since last month</span>
          </div>
       </div>
       <div class="col-auto">
-        <i class="fas fa-users fa-2x text-primary"></i>
+        <i class="fas fa-credit-card fa-2x text-primary"></i>
      </div>
   </div>
 </div>
@@ -47,15 +47,15 @@
      <div class="card-body">
       <div class="row no-gutters align-items-center">
        <div class="col mr-2">
-        <div class="text-xs font-weight-bold text-uppercase mb-1">Active Users</div>
-        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ count($active_users) }}</div>
+        <div class="text-xs font-weight-bold text-uppercase mb-1">Active Cards</div>
+        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ count($active_cards) }}</div>
         <div class="mt-2 mb-0 text-muted text-xs">
-         <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> {{ number_format((count($active_users)/(count($all_users) > 0 ? count($all_users) :  1)) * 100, 2) }}%</span>
+         <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> {{ number_format((count($active_cards)/(count($all_vcards) > 0 ? count($all_vcards) :  1)) * 100, 2) }}%</span>
          <span>Users that still perform</span>
       </div>
    </div>
    <div class="col-auto">
-     <i class="fas fa-users fa-2x text-success"></i>
+     <i class="fas fa-credit-card fa-2x text-success"></i>
   </div>
 </div>
 </div>
@@ -67,15 +67,15 @@
      <div class="card-body">
       <div class="row no-gutters align-items-center">
        <div class="col mr-2">
-        <div class="text-xs font-weight-bold text-uppercase mb-1">New Users</div>
-        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ count($new_users) }}</div>
+        <div class="text-xs font-weight-bold text-uppercase mb-1">Inactive Cards </div>
+        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ count($inactive_cards) }}</div>
         <div class="mt-2 mb-0 text-muted text-xs">
-         <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> {{ number_format((count($new_users)/(count($all_users) > 0 ? count($all_users) :  1)) * 100, 2) }}%</span>
-         <span>Since Beginning of this {{ \Carbon\Carbon::now()->format('F') }}</span>
+         <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> {{ number_format((count($inactive_cards)/(count($all_vcards) > 0 ? count($all_vcards) :  1)) * 100, 2) }}%</span>
+         {{-- <span>Since Beginning of this {{ \Carbon\Carbon::now()->format('F') }}</span> --}}
       </div>
    </div>
    <div class="col-auto">
-     <i class="fas fa-users fa-2x text-info"></i>
+     <i class="fas fa-credit-card fa-2x text-info"></i>
   </div>
 </div>
 </div>
@@ -87,15 +87,15 @@
      <div class="card-body">
       <div class="row no-gutters align-items-center">
        <div class="col mr-2">
-        <div class="text-xs font-weight-bold text-uppercase mb-1">Suspended Users</div>
-        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ count($suspended_users) }}</div>
+        <div class="text-xs font-weight-bold text-uppercase mb-1">Terminated Cards</div>
+        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ count($terminated_cards) }}</div>
         <div class="mt-2 mb-0 text-muted text-xs">
-         <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> {{ number_format((count($suspended_users)/(count($all_users) > 0 ? count($all_users) :  1)) * 100, 2) }}%</span>
+         <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> {{ number_format((count($terminated_cards)/(count($all_vcards) > 0 ? count($all_vcards) :  1)) * 100, 2) }}%</span>
          <span>Since yesterday</span>
       </div>
    </div>
    <div class="col-auto">
-     <i class="fas fa-users fa-2x text-danger"></i>
+     <i class="fas fa-credit-card fa-2x text-danger"></i>
   </div>
 </div>
 </div>
@@ -104,21 +104,21 @@
 
 <div class="col-md-6">
    <div class="alert alert-info " role="alert">
-     <h6><i class="fas fa-users"></i> Category in View:<b class="text-danger"> {{ $users['cat'] }} Users</b></h6>
-     The category of Users currently in View
+     <h6><i class="fas fa-users"></i> Category in View:<b class="text-danger"> {{ $vcards['cat'] }} Cards</b></h6>
+     The category of Virtual Cards currently in View
    </div>
 </div>
 <div class="col-md-6">
-   <form method="GET" action="{{ route('admin.user.listing') }}" id="user_listing">
+   <form method="GET" action="{{ route('admin.vcard.index') }}" id="user_listing">
       <div class="form-group">
          <label class="control-label col-md-5 col-sm-5 col-xs-12">Select Category:</label>
          <div class="col-md-12 col-sm-12 col-xs-12">
             <select name="type" class="form-control" id="user_type" onchange="event.preventDefault();  document.getElementById('user_listing').submit();">
                <option value="" selected="" disabled="">select category</option>
-               <option value="all">All Users</option>
-               <option value="active">Active Users</option>
-               <option value="inactive">Inactive Users</option>
-               <option value="suspended">Suspended Users</option>
+               <option value="all">All Cards</option>
+               <option value="1">Active Cards</option>
+               <option value="0">Inactive Cards</option>
+               <option value="2">Terminated Cards</option>
             </select>
          </div>
       </div>
@@ -129,54 +129,58 @@
 <div class="col-lg-12">
    <div class="card mb-4">
       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-         <h6 class="m-0 font-weight-bold text-primary">All Users Listing</h6>
+         <h6 class="m-0 font-weight-bold text-primary">All Virtual Cards Listing</h6>
       </div>
       <div class="table-responsive p-3" style="font-size: 13px;">
          <table class="table align-items-center table-flush table-hover" id="dataTableHover">
             <thead class="thead-light">
                <tr>
                   <th>#</th>
-                  <th>ID</th>
-                  <th>Name</th>
-                  <th>Phone Number</th>
-                  <th>Email</th>
+                  <th>Masked Pan</th>
+                  <th>Owner's Name</th>
+                  <th>Card Type</th>
+                  <th>Currency</th>
                   <th>Status</th>
-                  <th>Joined At</th>
+                  <th>Created At</th>
                   <th>Actions</th>
                </tr>
             </thead>
             <tfoot>
                <tr>
                   <th>#</th>
-                  <th>ID</th>
-                  <th>Name</th>
-                  <th>Phone Number</th>
-                  <th>Email</th>
+                  <th>Masked Pan</th>
+                  <th>Owner's Name</th>
+                  <th>Card Type</th>
+                  <th>Currency</th>
                   <th>Status</th>
-                  <th>Joined At</th>
+                  <th>Created At</th>
                   <th>Actions</th>
                </tr>
             </tfoot>
             <tbody>
-               @forelse($users['users'] as $user)
+               @forelse($vcards['vcards'] as $vcard)
                   <tr>
                      <td>{{ $loop->iteration }}</td>
-                     <td>{{ $user->user_id }}</td>
-                     <td>{{ $user->fullname }}</td>
-                     <td>{{ $user->phone_number }}</td>
-                     <td>{{ $user->email }}</td>
+                     <td>{{ $vcard->masked_pan }}</td>
                      <td>
-                        @if($user->status == 'active')
+                        <a href="{{ route('admin.user.show', $vcard->user_id) }}">
+                          {{ $vcard->user->fullname }}
+                        </a>
+                     </td>
+                     <td>{{ $vcard->card_type }}</td>
+                     <td>{{ $vcard->currency_type }}</td>
+                     <td>
+                        @if($vcard->is_active == 1)
                             <span class="badge badge-success">{{ __('Active') }}</span>
-                        @elseif($user->status == 'inactive')
+                        @elseif($vcard->is_active == 0)
                             <span class="badge badge-warning"> {{ __('Inactive') }}</span>
-                        @elseif($user->status == 'suspended')
-                            <span class="badge badge-danger"> {{ __('Suspended') }}</span>
+                        @elseif($vcard->is_active == 2)
+                            <span class="badge badge-danger"> {{ __('Terminated') }}</span>
                         @endif
                      </td>
-                     <td>{{ $user->created_at->diffForHumans() }}</td>
+                     <td>{{ $vcard->created_at->diffForHumans() }}</td>
                      <td>
-                        <a href="{{ route('admin.user.show', ['user' => $user->id]) }}" class="btn btn-sm btn-success" title='View'>
+                        <a href="{{ route('admin.vcard.show', ['vcard' => $vcard->id]) }}" class="btn btn-sm btn-success" title='View'>
                            <i class="fa fa-eye"></i>
                         </a>
 

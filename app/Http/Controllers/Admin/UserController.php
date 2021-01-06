@@ -4,11 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+
 use Alert;
 
 // Models
 use App\User;
 use App\Models\UserData;
+use App\Models\Wallet;
 
 class UserController extends Controller
 {
@@ -49,7 +52,43 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'firstname' => ['required', 'string', 'max:255'],
+            'lastname' => ['required', 'string', 'max:255'],
+            'phone_number' => ['required', 'string', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        ]);
+
+
+        $user = User::create([
+            'user_id' => generateUserId(),
+            'status' => $request->input('status'),
+            'firstname' => $request->input('firstname'),
+            'lastname' => $request->input('lastname'),
+            'phone_number' => $request->input('phone_number'),
+            'ref_id' => '1000000',
+            'email' => $request->input('email'),
+            'password' => Hash::make('password'),
+        ]);
+
+        $user->wallet()->create([
+            'unique_address' => generateWalletId(),
+            'credit' => 0,
+            'debit' => 0,
+            'balance' => 0
+        ]);
+
+        $user->userData()->create([
+            'user_id' => $user->id
+        ]);
+
+        if ($user) {
+            toast('User Account has been Credited Successfully','success');
+            return redirect()->back();
+        }
+
+        toast('Operation Failed, Please Retry!','error');
+        return redirect()->back();
     }
 
     /**
@@ -82,8 +121,65 @@ class UserController extends Controller
      */
     public function show_virtual_card($user)
     {
-        $user = User::where('id', $user)->with(['userData', 'wallet', 'transactions'])->first();
-        return view('admin.user.test', ['user' => $user]);
+        $user = User::where('id', $user)->with(['userData', 'wallet', 'transactions', 'vcards'])->first();
+        return view('admin.user.vcard', ['user' => $user]);
+    }
+
+    /**
+     * Add to the specified resource wallet balance.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function wallet_deposit(Request $request, $user)
+    {
+        $request->validate([
+            'deposit_amount' => ['required', 'integer']
+        ]);
+
+        $amount = $request->input('deposit_amount');
+
+        $update = Wallet::where('user_id',$user)->increment('credit', $amount);
+        $update = Wallet::where('user_id',$user)->increment('balance', $amount);
+
+        if ($update) {
+            toast('User Wallet has been Credited Successfully','success');
+            return redirect()->back();
+        }
+
+        toast('Operation Failed, Please Retry!','error');
+        return redirect()->back();
+
+    }
+
+    /**
+     * Debit action to the specified resource wallet balance.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function wallet_withdrawal(Request $request, User $user)
+    {
+        $request->validate([
+            'withdrawal_amount' => ['required', 'integer']
+        ]);
+
+        $amount = $request->input('withdrawal_amount');
+
+        if ($user->wallet->balance > $amount) { 
+            $update = Wallet::where('user_id',$user->id)->increment('debit', $amount);
+            $update = Wallet::where('user_id',$user->id)->decrement('balance', $amount);
+
+            if ($update) {
+                toast('User Wallet has been Debited Successfully','success');
+                return redirect()->back();
+            }
+
+            toast('Operation Failed, Please Retry!','error');
+            return redirect()->back();
+        }
+        toast('Operation Failed, User balance is insufficient!','error');
+        return redirect()->back();
     }
 
     /**
@@ -123,7 +219,7 @@ class UserController extends Controller
                 'city' => $request->input('city'),
                 'state' => $request->input('state'),
                 'zip_code' => $request->input('zip_code'),
-                'country' => $request->input('country'),
+                'country' => $request->input('country_id'),
             ]);
             $userdetails->save();
 

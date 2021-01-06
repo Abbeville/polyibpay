@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Blade;
+use DB;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -30,10 +31,21 @@ class AppServiceProvider extends ServiceProvider
             return "<?php echo '₦ ' . number_format($money, 2); ?>";
         });
 
+        if (Schema::hasTable('settings')) {
+            config([
+            'global' => DB::table('settings')->get()
+                    ->keyBy('key')
+                    ->transform(function ($setting) {
+                        return ['name' => $setting->name, 'value' => $setting->value, 'description' => $setting->description];
+                    })->toArray()
+            ]);
+        }
+
         //register observers
         /*$observers = ['Wallet'];
         foreach ($observers as $c) {
             ("App\\Models\\$c")::observe("App\\Observers\\{$c}Observer");
         }*/
+
     }
 }

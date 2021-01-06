@@ -97,4 +97,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(CryptoRequest::class);
     }
+
+    public function vcards()
+    {
+        return $this->hasMany('App\Models\VirtualCard');
+    }
 }
