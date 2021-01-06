@@ -40,6 +40,7 @@ Route::group(['name' => 'admin', 'middleware' => []], function(){
         Route::get('/user/{user}/wallet', 'Admin\UserController@show_wallet')->name('admin.user.wallet.show');
         Route::get('/user/{user}/vcard', 'Admin\UserController@show_virtual_card')->name('admin.user.virtual_card.show');
         Route::get('/user/create', 'Admin\UserController@create')->name('admin.user.create');
+        Route::post('/user/create/new', 'Admin\UserController@store')->name('admin.user.store');
         Route::get('/user/{user}/delete', 'Admin\UserController@destroy')->name('admin.user.delete');
         Route::post('/user/{user}/update', 'Admin\UserController@update')->name('admin.user.update');
         Route::get('/users/{user}/{status}', 'Admin\UserController@change_status')->where('status', 'active|inactive|suspended')->name('admin.users.change_status');
@@ -54,12 +55,21 @@ Route::group(['name' => 'admin', 'middleware' => []], function(){
         Route::post('/transaction/{transaction}/update', 'Admin\TransactionController@update')->name('admin.transaction.update');
 
         // Virtual Card Management
-        Route::get('/vcard/index', 'Admin\TransactionController@index')->name('admin.vcard.index');
-        Route::get('/vcard/{vcard}/delete/{back?}', 'Admin\VirtualCardController@destroy')->name('admin.vcard.delete');
+        Route::get('/vcard/index', 'Admin\VirtualCardController@index')->name('admin.vcard.index');
         Route::get('/vcard/{vcard}/show/{back?}', 'Admin\VirtualCardController@show')->name('admin.vcard.show');
-        Route::get('/vcard/{vcard}/{status}', 'Admin\VirtualCardController@change_status')->where('status', 'success|pending|failed|canceled')->name('admin.vcard.change_status');
         Route::post('/vcard/{vcard}/update', 'Admin\VirtualCardController@update')->name('admin.vcard.update');
+        Route::get('/vcard/{vcard}/terminate', 'Admin\VirtualCardController@destroy')->name('admin.vcard.terminate');
+        Route::get('/vcard/{vcard}/{status}', 'Admin\VirtualCardController@status')->where('status', 'block|unblock')->name('admin.vcard.change_status');
 
+        Route::post('/vcard/{vcard}/deposit', 'Admin\VirtualCardController@deposit')->name('admin.vcard.deposit');
+        Route::post('/vcard/{vcard}/withdrawal', 'Admin\VirtualCardController@withdraw')->name('admin.user.withdraw');
+
+
+        // Settings
+
+        Route::get('/settings/crypto', 'Admin\SettingsController@crypto_index')->name('admin.settings.crypto.index');
+        Route::get('/settings/{status}/status/{crypto}', 'Admin\SettingsController@change_btc_status')->where('status', 'active|inactive')->name('admin.settings.crypto.status');
+        Route::post('/settings/{crypto}/crypto', 'Admin\SettingsController@update_btc_info')->name('admin.settings.crypto.set_btc_info');
 
 
 

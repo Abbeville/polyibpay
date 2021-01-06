@@ -84,11 +84,11 @@
                 Actions
               </p>
               @if($online_card_info['is_active'])
-              <a href="#" class="list-group-item list-group-item-action list-group-item-warning">Turn Inactive</a>
+              <a href="{{ route('admin.vcard.change_status', ['vcard' => $vcard->id, 'status' => 'block']) }}" class="list-group-item list-group-item-action list-group-item-warning">Block Card</a>
               @else
-              <a href="#" class="list-group-item list-group-item-action list-group-item-success">Turn Active</a>
+              <a href="{{ route('admin.vcard.change_status', ['vcard' => $vcard->id, 'status' => 'unblock']) }}" class="list-group-item list-group-item-action list-group-item-success">Unblock Card</a>
               @endif
-              <a href="#" class="list-group-item list-group-item-action list-group-item-danger">Terminate Card </a>
+              <a href="{{ route('admin.vcard.terminate', ['vcard' => $vcard->id]) }}" class="list-group-item list-group-item-action list-group-item-danger">Terminate Card </a>
             </div>
             
           </div>
@@ -213,16 +213,17 @@
               <button type="button" class="close font-weight-400" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span> </button>
             </div>
             <div class="modal-body p-4">
-              <form id="wallet-deposit" method="post" action="">
+              <form id="wallet-deposit" method="post" action="{{ route('admin.vcard.deposit', $online_card_info['id']) }}">
                 @csrf
 
                 <p class="text-danger">You are about to add a certain amount to the current balance of the user wallet, Be careful, you are dealing with figures of money here</p>
                 <div class="form-group">
                   <label for="amount">Amount to Deposit</label>
                   <div class="input-group">
-                    <input type="number" value="" class="form-control" data-bv-field="" id="amount" required="" placeholder="Amount to deposit" name="deposit_amount">
+                    <input type="number" value="" class="form-control" data-bv-field="" id="amount" required="" placeholder="Amount to deposit" name="amount">
                   </div>
                 </div>
+                <input type="hidden" name="debit_currency" value="NGN">
                 <button class="btn btn-primary btn-block" type="submit">Make Deposit</button>
               </form>
             </div>
@@ -241,16 +242,17 @@
               <button type="button" class="close font-weight-400" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span> </button>
             </div>
             <div class="modal-body p-4">
-              <form id="wallet-withdrawal" method="post" action="">
+              <form id="wallet-withdrawal" method="post" action="{{ route('admin.user.withdraw', $online_card_info['id']) }}">
                 @csrf
 
                 <p class="text-danger">You are about to debit certain amount from the current balance of the user wallet, Be careful, you are dealing with figures of money here</p>
                 <div class="form-group">
                   <label for="amount">Amount to Withdraw</label>
                   <div class="input-group">
-                    <input type="number" value="" class="form-control" data-bv-field="" id="amount" required="" placeholder="Amount to deposit" name="withdrawal_amount">
+                    <input type="number" value="" class="form-control" data-bv-field="" id="amount" required="" placeholder="Amount to deposit" name="amount">
                   </div>
                 </div>
+                <input type="hidden" name="debit_currency" value="NGN">
                 <button class="btn btn-primary btn-block" type="submit">Make Withdrawal</button>
               </form>
             </div>

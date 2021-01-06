@@ -7,10 +7,10 @@ use App\Models\BankName;
 function generateUserId()
 {
     //get last ID
-    $lastId = \App\User::all()->last();
+    $lastId = \App\User::latest('id')->first();
     if ($lastId) {
         $lastUserId = (int)$lastId->user_id;
-        $newUserId = $lastUserId++;
+        $newUserId = $lastUserId + 1;
     } else {
         $newUserId = 1000001;
     }
@@ -20,6 +20,15 @@ function generateUserId()
 function getBankName($id){
     $bank = DB::table('bank_names')->where('id', $id)->first();
     return $bank->bank_name;
+}
+
+function generateCustomRef($user_id = null){
+    if (!is_null($user_id)) {
+    	$ref = '#' . $user_id . sprintf("%15d", uniqid(random_int(99, 99999999999)) );
+    }else{
+    	$ref = '#' . sprintf("%15d", uniqid(random_int(99, 99999999999)) );
+    }
+	return $ref;
 }
 
 function getStates(){

@@ -180,9 +180,9 @@
                            <i class="fa fa-eye"></i>
                         </a>
 
-                        <a href="#" class="btn btn-sm btn-danger" title='Delete' rel="" onclick="delet({{ $user->id }}, '')">
+                        {{-- <a href="#" class="btn btn-sm btn-danger" title='Delete' rel="" onclick="delet({{ $user->id }}, '')">
                            <i class="fa fa-trash"></i>
-                        </a>
+                        </a> --}}
                      </td>
                   </tr>
                @empty

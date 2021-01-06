@@ -4,7 +4,34 @@
 
 @section('more_css')
 {{-- More CSS here --}}
-   <link href="{{ asset('admin_assets/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">   
+   <link href="{{ asset('admin_assets/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">  
+
+   <style type="text/css">
+     .register .nav-tabs{
+          margin-top: 3%;
+          border: none;
+          background: #0062cc;
+          border-radius: 1.5rem;
+          width: 30%;
+          float: right;
+      }
+      .register .nav-tabs .nav-link{
+          padding: 2%;
+          height: 34px;
+          font-weight: 600;
+          color: #fff;
+          border-top-right-radius: 1.5rem;
+          border-bottom-right-radius: 1.5rem;
+      }
+
+      .register .nav-tabs .nav-link.active{
+          width: auto;
+          color: #0062cc;
+          border: 2px solid #0062cc;
+          border-top-left-radius: 1.5rem;
+          border-bottom-left-radius: 1.5rem;
+      }
+   </style> 
 
 @endsection
 
@@ -29,17 +56,17 @@
       <div class="col-md-9 register-right">
           <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
               <li class="nav-item">
-                  <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Employee</a>
+                  <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">New User</a>
               </li>
-              <li class="nav-item">
-                  <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Hirer</a>
-              </li>
+
           </ul>
           <div class="tab-content" id="myTabContent">
               <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                   <h3 class="register-heading">Create New User</h3>
-                  <div class="row register-form">
-                      <div class="col-md-6">
+                  <div class=" register-form pt-5">
+                    <form method="POST" action="{{ route('admin.user.store') }}">
+                      @csrf
+                      <div class="col-md-12">
                           <div class="form-group">
                               <input name="firstname" type="text" class="form-control" placeholder="First Name *" value="" required="" />
                           </div>
@@ -65,73 +92,14 @@
                                   </label>
                               </div>
                           </div>
+
+                          <p class="text-danger"><b>Note:</b> User default password for the account created is "password".</p>
+                          <input type="submit" class="btnRegister mb-3"  value="Create"/>
                       </div>
-                      <div class="col-md-6">
-                          <div class="form-group">
-                              <input name="eth_address" type="text" class="form-control" placeholder="Ethereum Wallet Address" value="" />
-                          </div>
-                          <div class="form-group">
-                              <input name="btc_address" type="text"  name="txtEmpPhone" class="form-control" placeholder=" BTC Wallet Address *" value="" />
-                          </div>
-                          <div class="form-group">
-                              <select class="form-control">
-                                  <option class="hidden"  selected disabled>Please select your Bank Name</option>
-                                  <option>Bank </option>
-                                  <option>What is Your old Phone Number</option>
-                                  <option>What is your Pet Name?</option>
-                              </select>
-                          </div>
-                          <div class="form-group">
-                              <input name="account_number" type="text" class="form-control" placeholder="Account Number *" value="" />
-                          </div>
-                          <div class="form-group">
-                              <button class="btn btn-info">Verify Bank Account</button>
-                          </div>
-                          <input type="submit" class="btnRegister"  value="Register"/>
-                      </div>
+                    </form>
                   </div>
               </div>
-              <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                  <h3  class="register-heading">Apply as a Hirer</h3>
-                  <div class="row register-form">
-                      <div class="col-md-6">
-                          <div class="form-group">
-                              <input type="text" class="form-control" placeholder="First Name *" value="" />
-                          </div>
-                          <div class="form-group">
-                              <input type="text" class="form-control" placeholder="Last Name *" value="" />
-                          </div>
-                          <div class="form-group">
-                              <input type="email" class="form-control" placeholder="Email *" value="" />
-                          </div>
-                          <div class="form-group">
-                              <input type="text" maxlength="10" minlength="10" class="form-control" placeholder="Phone *" value="" />
-                          </div>
-
-
-                      </div>
-                      <div class="col-md-6">
-                          <div class="form-group">
-                              <input type="password" class="form-control" placeholder="Password *" value="" />
-                          </div>
-                          <div class="form-group">
-                              <input type="password" class="form-control" placeholder="Confirm Password *" value="" />
-                          </div>
-                          <div class="form-group">
-                              <select class="form-control">
-                                  <option class="hidden"  selected disabled>Please select your Sequrity Question</option>
-                                  <option>What is your Birthdate?</option>
-                                  <option>What is Your old Phone Number</option>
-                                  <option>What is your Pet Name?</option>
-                              </select>
-                          </div>
-                          <div class="form-group">
-                              <input type="text" class="form-control" placeholder="`Answer *" value="" />
-                          </div>
-                          <input type="submit" class="btnRegister"  value="Register"/>
-                      </div>
-                  </div>
-              </div>
+           
           </div>
       </div>
   </div>

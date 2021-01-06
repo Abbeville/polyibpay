@@ -152,7 +152,7 @@
                                       <th>#</th>
                                       {{-- <th>Ref. ID.</th> --}}
                                       <th>Amount</th>
-                                      <th>Trans. Cat</th>
+                                      {{-- <th>Trans. Cat</th> --}}
                                       <th>Narration</th>
                                       <th>Status</th>
                                       <th>Created At</th>
@@ -168,11 +168,12 @@
                                          <td>
                                             @if($transaction->type == 'credit')
                                                 <p class="text-success">{{ $transaction->amount }}</p>
+                                                <p class="">Cat.: {{ $transaction->category }}</p>
                                             @else
                                                 <p class="text-danger"> {{ $transaction->amount }}</p>
                                             @endif
                                          </td>
-                                         <td>{{ $transaction->category }}</td>
+                                         {{-- <td>{{ $transaction->category }}</td> --}}
                                          <td>{{ $transaction->narration }}</td>
                                          <td>
                                             @if($transaction->status == 'success')
@@ -327,7 +328,7 @@
 
   <script type="text/javascript">
 
-      function deletTransaction(id, route) {
+      function deletTransaction(route) {
          $('.modal_delete').modal({show: true});
          $('#yes_delete').click(function(){
              window.location.href = route;
