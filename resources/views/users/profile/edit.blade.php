@@ -13,7 +13,7 @@
         <div class="container">
 
             <h6 class="subtitle">Update Personal Details</h6>
-            <form action="{{ route('users.profile.update') }}" method="post">
+                <form action="{{ route('users.profile.update') }}" method="post">
                 @csrf
                 <div class="row">
                     <div class="col-12 col-md-6">
@@ -221,7 +221,7 @@
                             @enderror
                         </div>
 
-                        <p><small>Enter transaction pin to confirm update</small></p>
+                        <p><small>Enter PIN to confirm update</small></p>
                         <input type="hidden" name="pin" id="pin">
                         <hr>
                         <button type="submit" class="btn btn-lg btn-default text-white btn-block btn-rounded shadow mt-50" id="update">Update</button>
