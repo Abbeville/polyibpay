@@ -29,5 +29,11 @@ class AppServiceProvider extends ServiceProvider
         Blade::directive('mon', function ($money) {
             return "<?php echo '₦ ' . number_format($money, 2); ?>";
         });
+
+        //register observers
+        /*$observers = ['Wallet'];
+        foreach ($observers as $c) {
+            ("App\\Models\\$c")::observe("App\\Observers\\{$c}Observer");
+        }*/
     }
 }

@@ -19,9 +19,9 @@ class WalletController extends Controller
         }
 
         $ledger->user_id = $user_id;
-        $ledger->debit = $amount;
+        $ledger->debit = $ledger->debit + $amount;
         $ledger->balance = self::calculateBalance($user_id, 'debit', $amount);
-        $ledger->save();
+        $ledger->update();
 
         return;
     }
@@ -35,9 +35,9 @@ class WalletController extends Controller
         }
 
         $ledger->user_id = $user_id;
-        $ledger->credit = $amount;
+        $ledger->credit = $ledger->credit + $amount;
         $ledger->balance = self::calculateBalance($user_id, 'credit', $amount);
-        $ledger->save();
+        $ledger->update();
 
 
         return;

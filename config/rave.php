@@ -45,7 +45,7 @@ return [
      * Prefix: This is added to the front of your transaction reference numbers
      *
      */
-    'prefix' => env('RAVE_PREFIX', 'rave'),
+    'prefix' => env('RAVE_PREFIX', 'W'),
 
     /**
      * Prefix: This is added to the front of your transaction reference numbers

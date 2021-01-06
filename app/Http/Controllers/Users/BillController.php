@@ -20,7 +20,8 @@ class BillController extends Controller
 	{
     	$this->client = new \GuzzleHttp\Client();
 
-		$this->apiKey = config('rave.secretKey');
+		// $this->apiKey = config('rave.secretKey');
+        $this->apiKey = 'FLWSECK_TEST-SANDBOXDEMOKEY-X';
 
     	$this->headers = [ 'Authorization' => 'Bearer ' . $this->apiKey, 'Accept' => 'application/json', 'Content-Type' => 'application/json' ];
 
@@ -38,13 +39,21 @@ class BillController extends Controller
 
         $packages = $response->data;
 
-        // $packages = BillerService::where('biller_code', $biller_code)->get();
-
         return view('users.dashboard.purchase', compact('category', 'biller_code', 'packages'));
     }
 
     public function createBill(Request $request)
     {
+        $data['category'] = $request->category;
+        $data['item_code'] = $request->item_code;
+        $data['country'] = $request->country;
+        $data['customer'] = $request->customer;
+        $data['amount'] = $request->amount;
+        $data['recurrence'] = $request->recurrence;
+        $data['type'] = $request->biller_name;
+        $data['biller_code'] = $request->biller_code;
+        $data['reference'] = generateTransactionRef($data['category']);
+
     	$this->validateBill($request->item_code, $request->biller_code, $request->customer);
 
         /*Check if user has enough balance in wallet*/
@@ -52,20 +61,13 @@ class BillController extends Controller
 
             $balance = $request->amount - auth()->user()->wallet->balance;
 
+            //save event session
+            session()->put('process_data', $data);
+
             session()->flash('amount_to_recharge', $balance);
             return redirect()->route('users.dashboard');
 
         }
-
-        $item_code = $request->item_code;
-
-    	$data['country'] = 'NG';
-    	$data['customer'] = $request->customer;
-    	$data['amount'] = $request->amount;
-        $data['amount'] = '500';
-    	$data['recurrence'] = 'ONCE';
-    	$data['type'] = $request->biller_name;
-    	$data['reference'] = generateTransactionRef();
 
     	$client = new \GuzzleHttp\Client([
     	    'headers' => [ 
@@ -76,18 +78,22 @@ class BillController extends Controller
     	]);
     	
     	$url = 'https://api.flutterwave.com/v3/bills';
-
-    	$request = $client->post($url, ['json' => $data]);
-    	$response = $request->getBody()->getContents();
-    	$response = json_decode($response);
-
+        try{
+            $request = $client->post($url, ['json' => $data]);
+            $response = $request->getBody()->getContents();
+            $response = json_decode($response);
+        }catch(\Exception $e){
+            session()->flash('error', $e->getMessage());
+            return redirect()->back();
+        }
+        
     	if ($response->status == 'success') {
     		//Save the transaction
     		$transaction = Transaction::create([
     			'user_id' => auth()->user()->id,
     			'type' => 'debit',
     			'category' => 'bill',
-    			'reference' => generateTransactionRef(),
+    			'reference' => generateTransactionRef($data['category']),
     			'amount' => $response->data->amount,
     			'narration' => 'Purchased '.$data["type"].' for #'.$response->data->amount,
     			'status' => 'success'
@@ -99,7 +105,7 @@ class BillController extends Controller
     			'biller_name' => $data["type"],
     			'amount' => $data["amount"],
     			'type' => $data["type"],
-                'item_code' => $item_code
+                'item_code' => $data['item_code']
     		]);
 
     		//Carry out the operation on the wallet
@@ -123,11 +129,10 @@ class BillController extends Controller
     	]);
 
     	$response = json_decode($response->getBody()->getContents());
-
     	if ($response->status == 'success') {
     		return;
     	}else{
-
+            dd('not validated');
     		session()->flash('error', $response->message);
 
     		return redirect()->back();
