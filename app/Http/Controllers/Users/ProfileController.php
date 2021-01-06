@@ -17,15 +17,26 @@ class ProfileController extends Controller
 
     public function index(){
         $profile = DB::table('user_data')->where('user_id', auth()->user()->id)->first();
-        return view('users.profile.index', compact('profile'));
+
+        if($profile){
+            return view('users.profile.index', compact('profile'));
+        }else{
+            return redirect('/dashboard/profile/edit');
+        }
     }
 
 
     public function edit(){
-        $profile = DB::table('user_data')->where('user_id', auth()->user()->id)->first();
-        $banks = DB::table('bank_names')->get();
-//        dd($banks);
-        return view('users.profile.edit', compact('profile', 'banks'));
+        if(auth()->user()->pin != ''){
+            $profile = DB::table('user_data')->where('user_id', auth()->user()->id)->first();
+            $banks = DB::table('bank_names')->get();
+
+            return view('users.profile.edit', compact('profile', 'banks'));
+        }else{
+            session()->flash('error', 'Kindly set a transaction pin to update your profile details');
+            return redirect('/dashboard/settings/pin');
+        }
+
     }
 
     public function update()
