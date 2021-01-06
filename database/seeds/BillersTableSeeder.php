@@ -18,10 +18,10 @@ class BillersTableSeeder extends Seeder
     	    'airtime' => [
 
     	        'billers' => [
-    	            ['biller_code' => 'BIL099', 'name' => 'MTN', 'thumbnail_path' => asset('/thumbnails/billers/mtn.jpg')],
-    	            ['biller_code' => 'BIL099', 'name' => 'GLO', 'thumbnail_path' => asset('/thumbnails/billers/glo.jpg')],
-    	            ['biller_code' => 'BIL099', 'name' => 'AIRTEL', 'thumbnail_path' => asset('/thumbnails/billers/airtel.jpg')],
-    	            ['biller_code' => 'BIL099', 'name' => 'ETISALAT', 'thumbnail_path' => asset('/thumbnails/billers/etisalat.jpg')],
+    	            ['biller_code' => 'BIL099', 'name' => 'MTN', 'thumbnail_path' => '/thumbnails/billers/mtn.svg'],
+    	            ['biller_code' => 'BIL099', 'name' => 'GLO', 'thumbnail_path' => '/thumbnails/billers/glo.svg'],
+    	            ['biller_code' => 'BIL099', 'name' => 'AIRTEL', 'thumbnail_path' => '/thumbnails/billers/airtel.svg'],
+    	            ['biller_code' => 'BIL099', 'name' => 'ETISALAT', 'thumbnail_path' => '/thumbnails/billers/etisalat.svg'],
 
     	        ]
     	    ],
@@ -29,10 +29,10 @@ class BillersTableSeeder extends Seeder
     	    'data_bundle' => [
 
     	        'billers' => [
-    	            ['biller_code' => 'BIL108', 'name' => 'MTN', 'thumbnail_path' => asset('/thumbnails/billers/mtn.jpg')],
-    	            ['biller_code' => 'BIL109', 'name' => 'GLO', 'thumbnail_path' => asset('/thumbnails/billers/glo.jpg')],
-    	            ['biller_code' => 'BIL110', 'name' => 'AIRTEL', 'thumbnail_path' => asset('/thumbnails/billers/airtel.jpg')],
-    	            ['biller_code' => 'BIL111', 'name' => 'ETISALAT', 'thumbnail_path' => asset('/thumbnails/billers/etisalat.jpg')],
+    	            ['biller_code' => 'BIL108', 'name' => 'MTN', 'thumbnail_path' => '/thumbnails/billers/mtn.svg'],
+    	            ['biller_code' => 'BIL109', 'name' => 'GLO', 'thumbnail_path' => '/thumbnails/billers/glo.svg'],
+    	            ['biller_code' => 'BIL110', 'name' => 'AIRTEL', 'thumbnail_path' => '/thumbnails/billers/airtel.svg'],
+    	            ['biller_code' => 'BIL111', 'name' => 'ETISALAT', 'thumbnail_path' => '/thumbnails/billers/etisalat.svg'],
 
     	        ]
     	    ],
@@ -41,14 +41,14 @@ class BillersTableSeeder extends Seeder
     	    'electricity' => [
 
     	        'billers' => [
-    	            ['biller_code' => 'BIL112', 'name' => 'EKO ELECTRICITY ', 'thumbnail_path' => asset('/thumbnails/billers/eko.jpg')],
-    	            ['biller_code' => 'BIL113', 'name' => 'IKEJA ELECTRICITY', 'thumbnail_path' => asset('/thumbnails/billers/ikeja.jpg')],
-    	            ['biller_code' => 'BIL114', 'name' => 'IBADAN ELECTRICITY', 'thumbnail_path' => asset('/thumbnails/billers/ibadan.jpg')],
-    	            ['biller_code' => 'BIL115', 'name' => 'ENUGU ELECTRICITY', 'thumbnail_path' => asset('/thumbnails/billers/enugu.jpg')],
-    	            ['biller_code' => 'BIL116', 'name' => 'PHC ELECTRICITY', 'thumbnail_path' => asset('/thumbnails/billers/phc.jpg')],
-    	            ['biller_code' => 'BIL117', 'name' => 'BENIN ELECTRICITY', 'thumbnail_path' => asset('/thumbnails/billers/benin.jpg')],
-    	            ['biller_code' => 'BIL118', 'name' => 'YOLA ELECTRICITY', 'thumbnail_path' => asset('/thumbnails/billers/yola.jpg')],
-    	            ['biller_code' => 'BIL120', 'name' => 'KANO ELECTRICITY', 'thumbnail_path' => asset('/thumbnails/billers/kano.jpg')]
+    	            ['biller_code' => 'BIL112', 'name' => 'EKO ELECTRICITY ', 'thumbnail_path' => '/thumbnails/billers/eko.png'],
+    	            ['biller_code' => 'BIL113', 'name' => 'IKEJA ELECTRICITY', 'thumbnail_path' => '/thumbnails/billers/ikeja.png'],
+    	            ['biller_code' => 'BIL114', 'name' => 'IBADAN ELECTRICITY', 'thumbnail_path' => '/thumbnails/billers/ibadan.jpg'],
+    	            ['biller_code' => 'BIL115', 'name' => 'ENUGU ELECTRICITY', 'thumbnail_path' => '/thumbnails/billers/enugu.png'],
+    	            ['biller_code' => 'BIL116', 'name' => 'PHC ELECTRICITY', 'thumbnail_path' => '/thumbnails/billers/ph.jpg'],
+    	            ['biller_code' => 'BIL117', 'name' => 'BENIN ELECTRICITY', 'thumbnail_path' => '/thumbnails/billers/benin.png'],
+    	            ['biller_code' => 'BIL118', 'name' => 'YOLA ELECTRICITY', 'thumbnail_path' => '/thumbnails/billers/yola.jpg'],
+    	            ['biller_code' => 'BIL120', 'name' => 'KANO ELECTRICITY', 'thumbnail_path' => '/thumbnails/billers/kano.png']
 
     	        ]
     	    ],
@@ -56,9 +56,9 @@ class BillersTableSeeder extends Seeder
     	    'tv_subscription' => [
 
     	        'billers' => [
-    	            ['biller_code' => 'BIL121', 'name' => 'DSTV', 'thumbnail_path' => asset('/thumbnails/billers/mtn.jpg')],
-    	            ['biller_code' => 'BIL122', 'name' => 'GOTV', 'thumbnail_path' => asset('/thumbnails/billers/mtn.jpg')],
-    	            ['biller_code' => 'BIL123', 'name' => 'STARTIMES', 'thumbnail_path' => asset('/thumbnails/billers/mtn.jpg')]
+    	            ['biller_code' => 'BIL121', 'name' => 'DSTV', 'thumbnail_path' => '/thumbnails/billers/dstv.png'],
+    	            ['biller_code' => 'BIL122', 'name' => 'GOTV', 'thumbnail_path' => '/thumbnails/billers/gotv.jpg'],
+    	            ['biller_code' => 'BIL123', 'name' => 'STARTIMES', 'thumbnail_path' => '/thumbnails/billers/startimes.jpg']
 
     	        ]
     	    ],
