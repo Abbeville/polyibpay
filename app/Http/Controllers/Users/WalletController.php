@@ -61,21 +61,5 @@ class WalletController extends Controller
 
         return $newBalance;
     }
-
-<<<<<<< HEAD
-    private function fixFigre($amount)
-    {
-      return  rtrim(rtrim(sprintf('%.8F', $amount), '0'), ".");
-
-=======
-    private function generateTxCode()
-    {
-        $lastTxCode = Wallet::latest('id');
-        $lastTx = $lastTxCode->value('unique_address');
-        if (empty($lastTx)) {
-            return 10000001;
-        }
-        return ++$lastTx;
->>>>>>> Removed unsed method in wallet COntroller
-    }
+    
 }
