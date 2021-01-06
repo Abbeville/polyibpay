@@ -20,8 +20,8 @@ class BillController extends Controller
 	{
     	$this->client = new \GuzzleHttp\Client();
 
-		// $this->apiKey = config('rave.secretKey');
-        $this->apiKey = 'FLWSECK_TEST-SANDBOXDEMOKEY-X';
+		$this->apiKey = config('rave.secretKey');
+        // $this->apiKey = 'FLWSECK_TEST-SANDBOXDEMOKEY-X';
 
     	$this->headers = [ 'Authorization' => 'Bearer ' . $this->apiKey, 'Accept' => 'application/json', 'Content-Type' => 'application/json' ];
 
