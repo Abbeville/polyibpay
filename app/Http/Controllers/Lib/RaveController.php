@@ -10,6 +10,7 @@ use Auth;
 
 use Rave;
 use App\Http\Controllers\Users\WalletController as Wallet;
+use App\Http\Controllers\Users\BillController as Bill;
 
 class RaveController extends Controller
 {
@@ -41,8 +42,9 @@ class RaveController extends Controller
    */
   public function callback()
   {
-
-    $resp = Rave::verifyTransaction(json_decode(request()->resp)->data->data->txRef);
+    // dd(json_decode(request()->resp));
+    // $resp = Rave::verifyTransaction(json_decode(request()->resp)->data->data->txRef);
+    $resp = Rave::verifyTransaction(json_decode(request()->resp)->data->tx->txRef);
 
     $transaction = Transaction::where('reference', $resp->data->txref)->first();
 
@@ -79,6 +81,17 @@ class RaveController extends Controller
               Wallet::credit($user->id, $data->amount);
             }else{
               Wallet::debit($user->id, $data->amount);
+            }
+
+            if(session()->has('process_data'))
+            {
+                $data = session('process_data');
+
+                session()->forget('process_data');
+
+                session()->flash('pending_bill', $data);
+
+                return redirect()->route('users.dashboard');
             }
 
             Session::flash('success', 'Wallet Recharged Succesfully!');

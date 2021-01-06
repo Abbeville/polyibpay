@@ -11,6 +11,16 @@
     <!-- header ends -->
 
         <div class="container">
+            @if(Session::has('success'))
+                <div class="alert alert-success">
+                    {{ Session::get('success') }}
+                </div>
+            @elseif(Session::has('error'))
+                <div class="alert alert-danger">
+                    {{ Session::get('error') }}
+                </div>
+            @endif
+
             <form action="{{ route('users.create.bill') }}" method="POST">
                 @csrf
                 <h6 class="subtitle">Buy {{ ucwords($category) }}</h6>
@@ -24,6 +34,9 @@
                     @include('users.dashboard.bill.cable')
                 @endif
 
+                <input type="hidden" name="country" value="NG">
+                <input type="hidden" name="recurrence" value="ONCE">
+                <input type="hidden" name="category" value="{{ $category }}">
                 <hr>
                 <button class="btn btn-lg btn-default text-white btn-block btn-rounded shadow mt-50">Submit</button>
             </form>

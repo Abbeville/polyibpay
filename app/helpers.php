@@ -59,17 +59,20 @@ function generateWalletId()
 	return $newWalletId;
 }
 
-function generateTransactionRef(){
-	$prefix = Config::get('rave.prefix');
+function generateTransactionRef($category){
+	$prefix = strtoupper($category[0]);
+
 	$overrideRefWithPrefix = false;
 
-	$transactionPrefix = $prefix . '_';
+	$transactionPrefix = $prefix;
 	$overrideTransactionReference = $overrideRefWithPrefix;
 
 	if ($overrideTransactionReference) {
 	    $txref = $transactionPrefix;
 	} else {
 	    $txref = uniqid($transactionPrefix);
+
+	    dd(substr($txref, 0, 11));
 	}
 
 	return $txref;
