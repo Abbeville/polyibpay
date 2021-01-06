@@ -47,7 +47,8 @@
      <div class="card-body">
       <div class="row no-gutters align-items-center">
        <div class="col mr-2">
-        <div class="text-xs font-weight-bold text-uppercase mb-1">Successfull Transactions</div>
+        <div class="text-xs font-weight-bold text-uppercase mb-1">Successfull Transactions 
+        </div>
         <div class="h5 mb-0 font-weight-bold text-gray-800">{{ count($successful_transactions) }}</div>
         <div class="mt-2 mb-0 text-muted text-xs">
          <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> {{ number_format((count($successful_transactions)/(count($all_transactions) > 0 ? count($all_transactions) :  1)) * 100, 2) }}%</span>
@@ -55,6 +56,11 @@
       </div>
    </div>
    <div class="col-auto">
+      <a href="{{ url('admin/transaction/index?type=success') }}">
+        <i class="float-right fa fa-arrow-right"></i>
+      </a>
+      <br>
+      <br>
       <i class="fas fa-list-alt fa-2x text-primary"></i>
   </div>
 </div>
@@ -75,6 +81,11 @@
       </div>
    </div>
    <div class="col-auto">
+      <a href="{{ url('admin/transaction/index?type=pending') }}">
+        <i class="float-right fa fa-arrow-right"></i>
+      </a>
+      <br>
+      <br>
       <i class="fas fa-list-alt fa-2x text-primary"></i>
   </div>
 </div>
@@ -95,6 +106,11 @@
       </div>
    </div>
    <div class="col-auto">
+      <a href="{{ url('admin/transaction/index?type=failed') }}">
+        <i class="float-right fa fa-arrow-right"></i>
+      </a>
+      <br>
+      <br>
       <i class="fas fa-list-alt fa-2x text-primary"></i>
   </div>
 </div>
@@ -117,6 +133,11 @@
       </div>
    </div>
    <div class="col-auto">
+      <a href="{{ url('admin/transaction/index?type=crypto') }}">
+        <i class="float-right fa fa-arrow-right"></i>
+      </a>
+      <br>
+      <br>
       <i class="fa fa-bold fa-2x text-primary"></i>
   </div>
 </div>
@@ -137,6 +158,11 @@
       </div>
    </div>
    <div class="col-auto">
+      <a href="{{ url('admin/transaction/index?type=debit') }}">
+        <i class="float-right fa fa-arrow-right"></i>
+      </a>
+      <br>
+      <br>
       <i class="fa fa-shopping-cart fa-2x text-primary"></i>
   </div>
 </div>
@@ -149,7 +175,7 @@
      <div class="card-body">
       <div class="row no-gutters align-items-center">
        <div class="col mr-2">
-        <div class="text-xs font-weight-bold text-uppercase mb-1">Top-Up Transactions</div>
+        <div class="text-xs font-weight-bold text-uppercase mb-1">Credit Transactions</div>
         <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ count($top_up_transactions) }}</div>
         <div class="mt-2 mb-0 text-muted text-xs">
          <span class="text-warning mr-2"><i class="fas fa-arrow-up"></i> {{ number_format((count($top_up_transactions)/(count($all_transactions) > 0 ? count($all_transactions) :  1)) * 100, 2) }}%</span>
@@ -157,6 +183,11 @@
       </div>
    </div>
    <div class="col-auto">
+      <a href="{{ url('admin/transaction/index?type=credit') }}">
+        <i class="float-right fa fa-arrow-right"></i>
+      </a>
+      <br>
+      <br>
       <i class="fas fa-arrow-up fa-2x text-primary"></i>
   </div>
 </div>
@@ -177,6 +208,11 @@
       </div>
    </div>
    <div class="col-auto">
+      <a href="{{ url('admin/transaction/index?type=canceled') }}">
+        <i class="float-right fa fa-arrow-right"></i>
+      </a>
+      <br>
+      <br>
       <i class="fas fa-list-alt fa-2x text-primary"></i>
   </div>
 </div>
@@ -203,8 +239,8 @@
                <option value="failed">Failed</option>
                <option value="canceled">Cancelled</option>
                <option value="crypto">Crypto</option>
-               <option value="top_up">Account Top-Up</option>
-               <option value="bill">Bills</option>
+               <option value="credit">Account Top-Up</option>
+               <option value="debit">Bills</option>
             </select>
          </div>
       </div>
@@ -247,7 +283,7 @@
                @forelse($transactions['transactions'] as $transaction)
                   <tr>
                      <td>{{ $loop->iteration }}</td>
-                     <td>{{ $transaction->reference }}</td>
+                     <td>{{ $transaction->custom_ref ?? 'null' }}</td>
                      <td>{{ $transaction->amount }}</td>
                      <td>
                         @if($transaction->type == 'credit')

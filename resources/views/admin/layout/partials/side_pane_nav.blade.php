@@ -12,15 +12,12 @@
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
     </li>
-    <hr class="sidebar-divider">
-    <div class="sidebar-heading">
-        Features
-    </div>
+    
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#user_manage"
         aria-expanded="true" aria-controls="user_manage">
-        <i class="fa fa-user"></i>
-        <span>User Management</span>
+        <i class="fa fa-users"></i>
+        <span>Users Management</span>
         </a>
         <div id="user_manage" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
@@ -36,7 +33,7 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#wallet"
         aria-expanded="true" aria-controls="wallet">
-        <i class="fa fa-briefcase"></i>
+        <i class="fa fa-list"></i>
         <span>Transactions</span>
         </a>
         <div id="wallet" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
@@ -62,21 +59,23 @@
         <div id="virtual_cards" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Virtual Cards</h6>
-                <a class="collapse-item" href="alerts.html">All Virtual Cards</a>
-                <a class="collapse-item" href="buttons.html">Active Virtual Cards</a>
+                <a class="collapse-item" href="{{ route('admin.vcard.index') }}">All Virtual Cards</a>
+                <a class="collapse-item" href="{{ url('admin/vcard/index?type=1') }}">Active Virtual Cards</a>
+                <a class="collapse-item" href="{{ url('admin/vcard/index?type=0') }}">Inactive Virtual Cards</a>
+                <a class="collapse-item" href="{{ url('admin/vcard/index?type=2') }}">Terminate Virtual Cards</a>
             </div>
         </div>
     </li>
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#settings"
         aria-expanded="true" aria-controls="settings">
-        <i class="fa fa-credit-card"></i>
+        <i class="fa fa-cog"></i>
         <span>Settings</span>
         </a>
         <div id="settings" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Settings</h6>
-                <a class="collapse-item" href="buttons.html">Set Exchange Rate</a>
+                <a class="collapse-item" href="{{ route('admin.settings.crypto.index') }}">Crypto Settings</a>
             </div>
         </div>
     </li>

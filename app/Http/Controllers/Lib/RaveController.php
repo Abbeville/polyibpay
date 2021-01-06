@@ -23,6 +23,7 @@ class RaveController extends Controller
   {
 
      Transaction::create([
+        'custom_ref' => generateCustomRef(auth()->user()->id),
         'user_id' => auth()->id(),
         'amount' => $request->amount,
         'type' => 'credit',
