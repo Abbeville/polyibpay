@@ -277,9 +277,9 @@
                 </div>
                 <form method="POST" action="{{ route('fund-wallet') }}" id="paymentForm">
                     <div class="modal-body text-center pt-0">
-                        <img src="img/infomarmation-graphics2.png" alt="logo" class="logo-small">
+                        <img src="{{ asset('assets/img/bp3.png') }}" alt="logo" class="logo-small" style="height: 122px; width: 100px;">
 
-                            {{ csrf_field() }}
+                        {{ csrf_field() }}
                             <input type="hidden" name="payment_method" value="both" />
                             <input type="hidden" name="description" value="No description" />
                             <input type="hidden" name="country" value="NG" />
@@ -326,9 +326,9 @@
                 </div>
                 <form method="POST" action="{{ route('users.create.bill') }}" id="paymentForm">
                     <div class="modal-body text-center pt-0">
-                        <img src="img/infomarmation-graphics2.png" alt="logo" class="logo-small">
+                        <img src="{{ asset('assets/img/bp3.png') }}" alt="logo" class="logo-small" style="height: 122px; width: 100px;">
 
-                            {{ csrf_field() }}
+                        {{ csrf_field() }}
                             <input type="hidden" name="item_code" value="{{ Session::has('pending_bill') ? session('pending_bill')['item_code'] : '' }}" />
                             <input type="hidden" name="country" value="{{ Session::has('pending_bill') ? session('pending_bill')['country'] : '' }}" />
                             <input type="hidden" name="customer" value="{{ Session::has('pending_bill') ? session('pending_bill')['customer'] : '' }}" />

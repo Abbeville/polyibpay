@@ -5,13 +5,16 @@
     <div class="wrapper row">
         <div class="container col-sm-8">
             <div class="page-title mg-top-50" style="padding-top: 30px; margin-bottom: 15px;">
+
                 <div class="container">
                     <a class="float-left" href="{{ route('home') }}">Home</a>
                     <span class="float-right">Sign Up</span>
                 </div>
             </div>
-            <div class="ba-page-name text-center mg-bottom-40 mg-top-10" style="padding-top: 50px;">
-                <h3>Sign Up</h3>
+            <div class="ba-page-name text-center mg-bottom-40 mg-top-3" style="padding-top: 30px; padding-bottom: 15px;">
+                <img src="{{ asset('assets/img/bp3.png') }}" alt="logo" class="logo-small" style="height: 122px; width: 100px;">
+
+{{--                <h3>Sign Up</h3>--}}
             </div>
             <!-- page-title end -->
 
