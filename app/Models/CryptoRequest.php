@@ -13,7 +13,9 @@ class CryptoRequest extends Model
      * @var array
      */
     protected $fillable = [
-        'transaction_id', 'amount', 'type', 'user_id', 'request_id', 'proof_file', 'hash_code'
+        'transaction_id', 'amount_crypto', 'type', 'user_id',
+        'request_id', 'proof_file', 'hash_code', 'amount_usd', 'amount_ngn',
+        'current_rate'
     ];
 
 

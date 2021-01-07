@@ -19,104 +19,19 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="16bfd71f-e91a-42d6-bc60-21af61c80471" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/partials/breadcrumbs.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/partials/header.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/partials/navs.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/users/profile/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/users/profile/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/users/profile/password.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/users/vcard/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/breadcrumbs.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/billspay.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/billspay.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="16bfd71f-e91a-42d6-bc60-21af61c80471" name="Default Changelist" comment="-user migration edited, pin column changed from integer to string, so that the column can store its hashed value. to be refreshed on pull">
+      <change afterPath="$PROJECT_DIR$/public/assets/js/jquery.mask.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/images/ui-icons_444444_256x240.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/images/ui-icons_555555_256x240.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/images/ui-icons_777620_256x240.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/images/ui-icons_777777_256x240.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/images/ui-icons_cc0000_256x240.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/images/ui-icons_ffffff_256x240.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/owl.video.play.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/responsive.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/vendor.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/fonts/fontawesome-webfont3e6e.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/fonts/fontawesome-webfont3e6e.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/fonts/fontawesome-webfont3e6e.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/fonts/fontawesome-webfont3e6e.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/fonts/fontawesome-webfont3e6e.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/fonts/fontawesome-webfontd41d.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/fonts/la-brands-400.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/fonts/la-brands-400.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/fonts/la-brands-400.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/fonts/la-brands-400.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/fonts/la-brands-400d41d.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/fonts/la-brands-401.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/fonts/la-regular-400.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/fonts/la-regular-400.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/fonts/la-regular-400.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/fonts/la-regular-400.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/fonts/la-regular-400d41d.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/fonts/la-regular-401.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/fonts/la-solid-900.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/fonts/la-solid-900.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/fonts/la-solid-900.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/fonts/la-solid-900.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/fonts/la-solid-900d41d.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/fonts/la-solid-901.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/bg/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/bg/10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/bg/11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/bg/12.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/bg/13.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/bg/14.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/bg/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/bg/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/bg/4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/bg/5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/bg/6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/bg/7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/bg/8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/bg/9.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/blog/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/blog/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/blog/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/blog/4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/blog/5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/blog/6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/blog/7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/icon/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/icon/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/icon/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/icon/4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/icon/5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/icon/6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/icon/7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/img/logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/other/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/other/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/send-money/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/send-money/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/send-money/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/send-money/4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/user.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/notifications/notifications.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/noty/noty.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/vendor.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/landingpage/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/landingpage/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/landingpage/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/landingpage/master.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/partials/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/footer.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/partials/meta.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/meta.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Users/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Users/DashboardController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Users/TransactionsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Users/TransactionsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/CryptoRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/CryptoRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_07_171853_create_admins_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_07_171853_create_admins_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_11_202026_crypto_requests_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_11_202026_crypto_requests_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/partials/scripts.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/scripts.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/partials/styles.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/styles.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/users/dashboard/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/dashboard/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/users/profile/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/profile/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/users/transactions/crypto-request.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/transactions/crypto-request.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/users/transactions/crypto-transactions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/transactions/crypto-transactions.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/users/transactions/crypto-transfer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/transactions/crypto-transfer.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,10 +40,32 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution />
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="develop" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -231,6 +168,9 @@
       <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
       <path value="$PROJECT_DIR$/vendor/davejamesmiller/laravel-breadcrumbs" />
       <path value="$PROJECT_DIR$/vendor/facade/ignition-contracts" />
+      <path value="$PROJECT_DIR$/vendor/realrashid/sweet-alert" />
+      <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-debugbar" />
+      <path value="$PROJECT_DIR$/vendor/maximebf/debugbar" />
     </include_path>
   </component>
   <component name="ProjectId" id="1eYCxGwnyHvvhfT2qJKYd3nVjBz" />
@@ -245,7 +185,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/assets/js" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -257,6 +197,10 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\laravel_projects\billspay.ng\public\assets\js" />
+      <recent name="C:\xampp\htdocs\laravel_projects\billspay.ng\public\assets\img" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/resources/views/layouts" />
     </key>
@@ -267,7 +211,7 @@
       <method v="2" />
     </configuration>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -290,22 +234,107 @@
       <workItem from="1601916230392" duration="35000" />
       <workItem from="1601916275872" duration="25580000" />
       <workItem from="1607202704013" duration="16449000" />
+      <workItem from="1609767246989" duration="4471000" />
+      <workItem from="1609933000527" duration="28248000" />
     </task>
+    <task id="LOCAL-00001" summary="-crypto exchange&#10;-profile edit and view updated">
+      <created>1608646005009</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1608646005009</updated>
+    </task>
+    <task id="LOCAL-00002" summary="-fixed the pin column on users migration&#10;-made some imporvements to the signup page">
+      <created>1608708489316</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1608708489316</updated>
+    </task>
+    <task id="LOCAL-00003" summary="-peofile edit pin control fixed">
+      <created>1609937169448</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1609937169448</updated>
+    </task>
+    <task id="LOCAL-00004" summary="-PIN text correction on profile edit">
+      <created>1609937487653</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1609937487653</updated>
+    </task>
+    <task id="LOCAL-00005" summary="-logo update">
+      <created>1609986360750</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1609986360750</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="-crypto exchange&#10;-profile edit and view updated" />
+    <MESSAGE value="-fixed the pin column on users migration&#10;-made some imporvements to the signup page" />
+    <MESSAGE value="-peofile edit pin control fixed" />
+    <MESSAGE value="-PIN text correction on profile edit" />
+    <MESSAGE value="-logo update" />
+    <option name="LAST_COMMIT_MESSAGE" value="-logo update" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="33" y="0" key="CommitChangelistDialog2" timestamp="1609986359849">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="33" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1609986359849" />
+    <state x="129" y="54" key="DiffContextDialog" timestamp="1609986317167">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="129" y="54" key="DiffContextDialog/0.0.1366.738@0.0.1366.738" timestamp="1609986317167" />
+    <state x="463" y="122" key="FileChooserDialogImpl" timestamp="1608826832384">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="463" y="122" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1608826832384" />
+    <state x="129" y="54" key="MergeDialog" timestamp="1609059518351">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="129" y="54" key="MergeDialog/0.0.1366.738@0.0.1366.738" timestamp="1609059518351" />
+    <state x="395" y="83" key="MultipleFileMergeDialog" timestamp="1609059520989">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="395" y="83" key="MultipleFileMergeDialog/0.0.1366.738@0.0.1366.738" timestamp="1609059520989" />
+    <state x="275" y="100" key="Vcs.Push.Dialog.v2" timestamp="1609986396246">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="275" y="100" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1609986396246" />
+    <state x="378" y="191" key="com.intellij.ide.util.TipDialog" timestamp="1609933034934">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="378" y="191" key="com.intellij.ide.util.TipDialog/0.0.1366.738@0.0.1366.738" timestamp="1609933034934" />
+    <state x="492" y="284" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1609983594926">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="492" y="284" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.738@0.0.1366.738" timestamp="1609983594926" />
+    <state x="339" y="10" width="672" height="676" key="search.everywhere.popup" timestamp="1610040984792">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="339" y="10" width="672" height="676" key="search.everywhere.popup/0.0.1366.738@0.0.1366.738" timestamp="1610040984792" />
   </component>
 </project>

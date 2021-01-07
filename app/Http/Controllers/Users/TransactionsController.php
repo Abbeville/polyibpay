@@ -27,7 +27,8 @@ class TransactionsController extends Controller
 
     public function cryptoRequest()
     {
-        return view('users.transactions.crypto-request');
+        $btc_rate = DB::table('settings')->where('name', '=', 'btc_rate')->first();
+        return view('users.transactions.crypto-request', compact('btc_rate'));
 
     }
 
@@ -35,7 +36,8 @@ class TransactionsController extends Controller
     {
 
             $data = request()->validate([
-                'amount' => 'required|max:11'
+                'amount_crypto' => 'required|max:11',
+                'amount_usd' => 'required'
             ]);
 
             $request_id = mt_rand(111111, 999999);
@@ -44,25 +46,30 @@ class TransactionsController extends Controller
                 $request_id = mt_rand(111111, 999999);
             }
 
+            $rate = DB::table('settings')->where('name', '=', 'btc_rate')->first();
+            $amount_naira = (float)$rate->value * (float)$data['amount_usd'];
+
             $transaction = Transaction::create([
                 'user_id' => Auth::id(),
                 'type' => 'credit',
                 'custom_ref' => generateCustomRef(auth()->user()->id),
                 'occurred_on' => 'wallet',
                 'category' => 'crypto',
-                'amount' => $data['amount'],
+                'amount' => $amount_naira,
                 'reference' => 'BTC_'.$request_id,
                 'narration' => 'Bitcoin',
                 'status' => 'pending',
                 'created_at' => Carbon::now()
             ]);
 
-            $reqeuest = CryptoRequest::create([
+            $request = CryptoRequest::create([
                 'user_id' => Auth::id(),
                 'transaction_id' => $transaction->id,
-                'amount' => $data['amount'],
+                'amount_crypto' => $data['amount_crypto'],
+                'amount_usd' => $data['amount_usd'],
+                'amount_ngn' => $amount_naira,
+                'current_rate' => $rate->value,
                 'type' => 'btc',
-                'hash_code' => ' ',
                 'request_id' => $request_id,
                 'created_at' => Carbon::now()
             ]);
@@ -84,7 +91,10 @@ class TransactionsController extends Controller
                 session()->flash('warning', 'Invalid Crypto Transfer Url');
                 return redirect('/dashboard/transactions/crypto');
         }
-        return view('users.transactions.crypto-transfer', compact('request'));
+        $crypto_request = CryptoRequest::where('request_id', $request)->first();
+//        dd($crypto_request);
+        $wallet = DB::table('settings')->where('key', '=', 'btc_wallet_address')->first()->value;
+        return view('users.transactions.crypto-transfer', compact('request', 'crypto_request', 'wallet'));
     }
 
     public function saveTransfer()
@@ -111,7 +121,7 @@ class TransactionsController extends Controller
 
     public function cryptoTransactions()
     {
-        $transactions = DB::table('crypto_requests')->where('user_id', Auth::id())->get();
+        $transactions = DB::table('crypto_requests')->where('user_id', Auth::id())->latest()->paginate(15);
         return view('users.transactions.crypto-transactions', compact('transactions'));
     }
 }
