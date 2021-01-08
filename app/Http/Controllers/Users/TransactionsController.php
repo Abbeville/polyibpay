@@ -65,9 +65,9 @@ class TransactionsController extends Controller
             $request = CryptoRequest::create([
                 'user_id' => Auth::id(),
                 'transaction_id' => $transaction->id,
-                'amount_crypto' => $data['amount_crypto'],
-                'amount_usd' => $data['amount_usd'],
-                'amount_ngn' => $amount_naira,
+                'amount_crypto' => (float)$data['amount_crypto'],
+                'amount_usd' => (float)$data['amount_usd'],
+                'amount_ngn' => (float)$amount_naira,
                 'current_rate' => $rate->value,
                 'type' => 'btc',
                 'request_id' => $request_id,
