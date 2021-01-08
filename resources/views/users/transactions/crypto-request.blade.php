@@ -31,8 +31,8 @@
 
                             <div class="form-group float-label active">
                                 <label class="form-control-label">Amount (in USD)</label>
-                                <input type="text" inputmode="numeric" name="amount_usd" class="form-control money" id="amount_usd"  value="{{ old('amount') }}" id="money">
-
+                                <input type="text" inputmode="numeric" name="amount_d" class="form-control money" id="amount_d"  value="{{ old('amount') }}" id="money">
+                                <input type="hidden" name="amount_usd" id="amount_usd">
                                <p>
                                    <small class="text-danger">
                                        @error('amount')
@@ -61,7 +61,7 @@
 
 
                         <hr>
-                            <button type="submit" class="btn btn-lg btn-default text-white btn-block btn-rounded shadow mt-50">Submit</button>
+                            <button type="submit"id="submit" class="btn btn-lg btn-default text-white btn-block btn-rounded shadow mt-50">Submit</button>
                         </div>
 
 
@@ -84,13 +84,15 @@
 @section('scripts')
     <script type="text/javascript">
         $(document).ready( () => {
-            $('.money').mask('000,000.00', {reverse: true});
+            $('.money').mask('00,000.00', {reverse: true});
             function fetch(){
-                var amount_usd = $('#amount_usd').val();
+                var amount_usd = $('#amount_d').val();
                 if(amount_usd.indexOf(',') !== -1){
                     amount_usd = amount_usd.replace(',', '');
                 }
-                // let amount_crypto = $('#amount_crypto').val();
+
+                $('#amount_usd').val(amount_usd);
+
 
                 $.get(`https://blockchain.info/tobtc?currency=USD&value=${amount_usd}`, (data)=>{
                     $('#amount_crypto').val(data);
@@ -99,9 +101,11 @@
                 });
             }
 
-            $('#amount_usd').keyup(()=>{
+            $('#amount_d').keyup(()=>{
                 fetch();
             });
+
+
         });
 
 

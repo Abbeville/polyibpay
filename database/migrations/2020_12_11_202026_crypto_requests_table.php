@@ -19,9 +19,9 @@ class CryptoRequestsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('request_id');
            $table->double('amount_crypto', 10, 8)->default(0)->comment('amount in crypto'); //eg 0.73637232
-            $table->float('amount_usd');
-            $table->float('amount_ngn');
-            $table->float('current_rate');
+            $table->double('amount_usd', 15, 2);
+            $table->double('amount_ngn', 15, 2);
+            $table->double('current_rate', 15, 2);
             $table->enum('type', ['btc', 'eth']);
            $table->string('proof_file')->nullable();
            $table->string('hash_code')->nullable();
