@@ -79,4 +79,15 @@ class Transaction extends Model
     public function bill(){
         return $this->hasOne('App\Models\BillTransaction');
     }
+
+    public function scopetrasactWithPeriod($query, $date)
+    {
+        return $query->whereDate('created_at', '>=' , $date);
+    }
+
+    public function scopetrasactWithLastMonth($query, $date)
+    {
+        return $query->whereMonth('created_at', '=' , $date);
+    }
+
 }
