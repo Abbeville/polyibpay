@@ -42,9 +42,9 @@
                                </p>
                             </div>
 
-                        <div class="form-group float-label active">
-                            <input type="text" name="amount_crypto" class="form-control" id="amount_crypto"  value="{{ old('amount') }}" placeholder="0.638427357">
+                        <div class="form-group">
                             <label class="form-control-label">Amount (in crypto)</label>
+                            <input type="text" name="amount_crypto" class="form-control" readonly id="amount_crypto"  value="{{ old('amount') }}" placeholder="0.638427357">
 
                             <p>
                                 <small class="text-danger">
@@ -53,6 +53,10 @@
                                     @enderror
                                 </small>
                             </p>
+                        </div>
+                        <div class="form-group">
+                            <label for="amount_ngn" class="form-control-label">Amount (NGN)</label>
+                            <input type="text" class="money form-control " id="amount_ngn" readonly>
                         </div>
 
 
@@ -90,7 +94,8 @@
 
                 $.get(`https://blockchain.info/tobtc?currency=USD&value=${amount_usd}`, (data)=>{
                     $('#amount_crypto').val(data);
-                    console.log(data);
+                    let amount_ngn = amount_usd * {{ $btc_rate->value }} ;
+                    $('#amount_ngn').val(parseFloat(amount_ngn));
                 });
             }
 
