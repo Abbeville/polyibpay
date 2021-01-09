@@ -28,7 +28,7 @@
                         </div>
                         <div class="col pl-0 align-self-center">
                             <h5 class="mb-1">{{  auth()->user()->firstname.' '.auth()->user()->lastname }}</h5>
-                            <p class="text-mute small">Good morning</p>
+                            <p class="text-mute small">Good day</p>
                         </div>
                     </div>
                 </div>
@@ -143,7 +143,7 @@
                                         {{ 'No transaction today' }}
                                     </div>
                                     <div class="col-auto">
-                                        
+
                                     </div>
                                 </div>
                             </li>
@@ -196,7 +196,7 @@
                                         {{ 'No transaction' }}
                                     </div>
                                     <div class="col-auto">
-                                        
+
                                     </div>
                                 </div>
                             </li>
@@ -249,7 +249,7 @@
                                         {{ 'No transaction' }}
                                     </div>
                                     <div class="col-auto">
-                                        
+
                                     </div>
                                 </div>
                             </li>
@@ -277,22 +277,22 @@
                 </div>
                 <form method="POST" action="{{ route('fund-wallet') }}" id="paymentForm">
                     <div class="modal-body text-center pt-0">
-                        <img src="img/infomarmation-graphics2.png" alt="logo" class="logo-small">
-                        
-                            {{ csrf_field() }} 
-                            <input type="hidden" name="payment_method" value="both" /> 
-                            <input type="hidden" name="description" value="No description" /> 
-                            <input type="hidden" name="country" value="NG" /> 
-                            <input type="hidden" name="currency" value="NGN" /> 
+                        <img src="{{ asset('assets/img/bp3.png') }}" alt="logo" class="logo-small" style="height: 122px; width: 100px;">
+
+                        {{ csrf_field() }}
+                            <input type="hidden" name="payment_method" value="both" />
+                            <input type="hidden" name="description" value="No description" />
+                            <input type="hidden" name="country" value="NG" />
+                            <input type="hidden" name="currency" value="NGN" />
                             <input type="hidden" name="email" value="{{ auth()->user()->email }}" />
                             <input type="hidden" name="firstname" value="{{ auth()->user()->firstname }}" />
                             <input type="hidden" name="lastname" value="{{ auth()->user()->firstname }}" />
                             {{-- <input type="hidden" name="metadata" value="{{ json_encode($array) }}" >  --}}<!-- Meta data that might be needed to be passed to the Rave Payment Gateway -->
-                            <input type="hidden" name="phonenumber" value="{{ auth()->user()->phone_number }}" /> 
-                            <input type="hidden" name="ref" value="{{ $txref }}" /> 
-                            <input type="hidden" name="category" value="wallet" /> 
+                            <input type="hidden" name="phonenumber" value="{{ auth()->user()->phone_number }}" />
+                            <input type="hidden" name="ref" value="{{ $txref }}" />
+                            <input type="hidden" name="category" value="wallet" />
                             <input type="hidden" name="logo" value="https://pbs.twimg.com/profile_images/915859962554929153/jnVxGxVj.jpg" /> <!-- Replace the value with your logo url (Optional, present in .env)-->
-                            <input type="hidden" name="title" value="BillsPay" /> 
+                            <input type="hidden" name="title" value="BillsPay" />
                             {{-- <input type="referrer" name="location" value="empty"> --}}
 
                             <div class="form-group mt-4">
@@ -326,21 +326,21 @@
                 </div>
                 <form method="POST" action="{{ route('users.create.bill') }}" id="paymentForm">
                     <div class="modal-body text-center pt-0">
-                        <img src="img/infomarmation-graphics2.png" alt="logo" class="logo-small">
-                        
-                            {{ csrf_field() }} 
-                            <input type="hidden" name="item_code" value="{{ Session::has('pending_bill') ? session('pending_bill')['item_code'] : '' }}" /> 
-                            <input type="hidden" name="country" value="{{ Session::has('pending_bill') ? session('pending_bill')['country'] : '' }}" /> 
-                            <input type="hidden" name="customer" value="{{ Session::has('pending_bill') ? session('pending_bill')['customer'] : '' }}" /> 
-                            <input type="hidden" name="amount" value="{{ Session::has('pending_bill') ? session('pending_bill')['amount'] : '' }}" /> 
-                            <input type="hidden" name="recurrence" value="{{ Session::has('pending_bill') ? session('pending_bill')['recurrence'] : '' }}" /> 
-                            <input type="hidden" name="type" value="{{ Session::has('pending_bill') ? session('pending_bill')['type'] : '' }}" /> 
-                            <input type="hidden" name="biller_code" value="{{ Session::has('pending_bill') ? session('pending_bill')['biller_code'] : '' }}" /> 
-                            
-                            <p class="text-mute">We notice a pending transaction on your account </p>       
-                            <p class="text-mute">Transaction Details: </p>       
-                            <p class="text-mute">Amount :  {{ Session::has('pending_bill') ? session('pending_bill')['amount'] : '' }}</p>       
-                            <p class="text-mute">Number : {{ Session::has('pending_bill') ? session('pending_bill')['customer'] : '' }} </p>       
+                        <img src="{{ asset('assets/img/bp3.png') }}" alt="logo" class="logo-small" style="height: 122px; width: 100px;">
+
+                        {{ csrf_field() }}
+                            <input type="hidden" name="item_code" value="{{ Session::has('pending_bill') ? session('pending_bill')['item_code'] : '' }}" />
+                            <input type="hidden" name="country" value="{{ Session::has('pending_bill') ? session('pending_bill')['country'] : '' }}" />
+                            <input type="hidden" name="customer" value="{{ Session::has('pending_bill') ? session('pending_bill')['customer'] : '' }}" />
+                            <input type="hidden" name="amount" value="{{ Session::has('pending_bill') ? session('pending_bill')['amount'] : '' }}" />
+                            <input type="hidden" name="recurrence" value="{{ Session::has('pending_bill') ? session('pending_bill')['recurrence'] : '' }}" />
+                            <input type="hidden" name="type" value="{{ Session::has('pending_bill') ? session('pending_bill')['type'] : '' }}" />
+                            <input type="hidden" name="biller_code" value="{{ Session::has('pending_bill') ? session('pending_bill')['biller_code'] : '' }}" />
+
+                            <p class="text-mute">We notice a pending transaction on your account </p>
+                            <p class="text-mute">Transaction Details: </p>
+                            <p class="text-mute">Amount :  {{ Session::has('pending_bill') ? session('pending_bill')['amount'] : '' }}</p>
+                            <p class="text-mute">Number : {{ Session::has('pending_bill') ? session('pending_bill')['customer'] : '' }} </p>
                     </div>
                     <div class="modal-footer border-0">
                         <input type="submit" class="btn btn-default btn-lg btn-rounded shadow btn-block" value="Next" class="close">
@@ -507,7 +507,7 @@
 
 @section('scripts')
     <script type="text/javascript">
-        $(document).ready(function(){ 
+        $(document).ready(function(){
             $("#addmoney").modal("show");
          });
     </script>
@@ -519,7 +519,7 @@
 
 @section('scripts')
     <script type="text/javascript">
-        $(document).ready(function(){ 
+        $(document).ready(function(){
             $("#completeTransaction").modal("show");
          });
     </script>

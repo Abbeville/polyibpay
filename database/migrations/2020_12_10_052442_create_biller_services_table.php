@@ -30,7 +30,7 @@ class CreateBillerServicesTable extends Migration
 
             $table->timestamps();
 
-            $table->foreign('biller_id')->references('id')->on('billers');
+            $table->foreign('biller_id')->references('id')->on('billers')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

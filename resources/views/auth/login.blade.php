@@ -21,7 +21,9 @@
         <div class="row no-gutters login-row">
             <div class="col align-self-center px-3 text-center">
                 <br>
-                <img src="{{ asset('assets/img/logo-login.png') }}" alt="logo" class="logo-small">
+
+                    <img src="{{ asset('assets/img/bp3.png') }}" alt="logo" class="logo-small" style="height: 122px; width: 100px;">
+
 
 
                 <form class="form-signin mt-3 " action="{{ route('login') }}" method="POST">

@@ -80,6 +80,7 @@ class Transaction extends Model
         return $this->hasOne('App\Models\BillTransaction');
     }
 
+
     /**
      * Scope a query to only include user status.
      *
@@ -90,4 +91,15 @@ class Transaction extends Model
     {
         return $query->where('category', $category)->where('status', 'success')->latest()->paginate(15);
     }
+
+    public function scopetrasactWithPeriod($query, $date)
+    {
+        return $query->whereDate('created_at', '>=' , $date);
+    }
+
+    public function scopetrasactWithLastMonth($query, $date)
+    {
+        return $query->whereMonth('created_at', '=' , $date);
+    }
+
 }
