@@ -67,26 +67,26 @@ Breadcrumbs::for('users.profile', function ($trail) {
 
 Breadcrumbs::for('users.transactions.crypto-request', function ($trail) {
     $trail->push('Home', route('users.dashboard'));
-    $trail->push('Transactions', route('users.transactions'));
+    $trail->push('Transactions', route('users.transactions', 'all'));
     $trail->push('Crypto Exchange Request', '');
 });
 
 Breadcrumbs::for('users.transactions.crypto-transfer', function ($trail) {
     $trail->push('Home', route('users.dashboard'));
-    $trail->push('Transactions', route('users.transactions'));
+    $trail->push('Transactions', route('users.transactions', 'all'));
     $trail->push('Crypto Transfer', '');
 
 });
 
 Breadcrumbs::for('users.transactions.crypto', function ($trail) {
     $trail->push('Home', route('users.dashboard'));
-    $trail->push('Transactions', route('users.transactions'));
+    $trail->push('Transactions', route('users.transactions', 'all'));
     $trail->push('Crypto', '');
 });
 
 Breadcrumbs::for('users.transactions.crypto-transactions', function ($trail) {
     $trail->push('Home', route('users.dashboard'));
-    $trail->push('Transactions', route('users.transactions'));
+    $trail->push('Transactions', route('users.transactions', 'all'));
     $trail->push('Cryptocurrency Transactions', '');
 });
 
@@ -95,6 +95,12 @@ Breadcrumbs::for('users.settings.password', function ($trail) {
     $trail->push('Settings', route('users.settings.index'));
     $trail->push('Change Password', '');
 });
+
+Breadcrumbs::for('users.transactions', function ($trail) {
+    $trail->push('Home', route('users.dashboard'));
+    $trail->push('Transactions', route('users.transactions', 'all'));
+});
+
 
 
 

@@ -79,4 +79,15 @@ class Transaction extends Model
     public function bill(){
         return $this->hasOne('App\Models\BillTransaction');
     }
+
+    /**
+     * Scope a query to only include user status.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopePaginateByCategory($query, $category)
+    {
+        return $query->where('category', $category)->where('status', 'success')->latest()->paginate(15);
+    }
 }

@@ -1,5 +1,6 @@
 <div class="row">
     <input name="biller_code" type="hidden">
+    <input type="hidden" name="parent_category" value="bill">
     <div class="col-12 col-md-6">
         <div class="form-group float-label active">
             <select class="form-control form-control-lg text-center" name="biller_name" id="biller_name">

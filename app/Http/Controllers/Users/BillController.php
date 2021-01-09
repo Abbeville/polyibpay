@@ -53,6 +53,7 @@ class BillController extends Controller
         $data['type'] = $request->biller_name;
         $data['biller_code'] = $request->biller_code;
         $data['reference'] = generateTransactionRef($data['category']);
+        $data['parent_category'] = $request->parent_category;
 
     	$this->validateBill($request->item_code, $request->biller_code, $request->customer);
 
@@ -93,7 +94,7 @@ class BillController extends Controller
                 'custom_ref' => generateCustomRef(auth()->user()->id),
     			'user_id' => auth()->user()->id,
     			'type' => 'debit',
-    			'category' => 'bill',
+    			'category' => $data['parent_category'],
     			'reference' => generateTransactionRef($data['category']),
     			'amount' => $response->data->amount,
     			'narration' => 'Purchased '.$data["type"].' for #'.$response->data->amount,

@@ -61,12 +61,13 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
     Route::post('/profile/update', [ProfileController::class, 'update'])->name('users.profile.update');
 
 
-    Route::get('/transactions/crypto', [TransactionsController::class, 'crypto'])->name('users.transactions.crypto');
+    Route::get('/transactions/crypto/index', [TransactionsController::class, 'crypto'])->name('users.transactions.crypto');
     Route::get('/transactions/crypto-request', [TransactionsController::class, 'cryptoRequest'])->name('users.transactions.crypto-request');
     Route::post('/transactions/crypto-request-update', [TransactionsController::class, 'crypto_request_save'])->name('users.transactions.crypto-request.save');
     Route::get('/transactions/crypto-transfer/{request}', [TransactionsController::class, 'cryptoTransfer'])->name('users.transactions.crypto-transfer');
     Route::post('/transactions/crypto-transfer/save', [TransactionsController::class, 'saveTransfer'])->name('users.transactions.crypto-transfer.save');
     Route::get('/transactions/crypto-transactions', [TransactionsController::class, 'cryptoTransactions'])->name('users.transactions.crypto-transactions');
+    Route::get('/transactions/{category?}', [TransactionsController::class, 'index'])->name('users.transactions')->where('category', 'all|bill|wallet|vcard|airtime|data_bundle|crypto');
 
 
 

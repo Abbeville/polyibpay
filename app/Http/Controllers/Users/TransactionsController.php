@@ -12,12 +12,19 @@ use Illuminate\Support\Facades\DB;
 
 class TransactionsController extends Controller
 {
-    public function index()
+    public function index($category)
     {
-        $transactions = DB::table('transactions')->where('user_id', auth()->user()->id)->get();
-        $bitcoin  = DB::table('crypto_requests')->
-        where('user_id', auth()->user()->id)->get();
-        //return view('');
+        $user = auth()->user();
+        if ($category == 'all') {
+            $transactions = $user->transactions()
+                                    ->where('status', 'success')
+                                    ->latest()
+                                    ->paginate(15);
+        }else{
+            $transactions = $user->transactions()->paginateByCategory($category);
+        }
+
+        return view('users.transactions.index', compact('transactions', 'category'));
     }
 
     public function crypto()
