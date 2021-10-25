@@ -3,4 +3,4 @@
 <meta name="description" content="">
 <meta name="author" content="Maxartkiller">
 
-<title>Billspay</title>
+<title>PolyIb Pay</title>

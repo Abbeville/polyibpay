@@ -85,13 +85,13 @@
                             </div>
                             <p class="small mt-2">Electricity</p>
                         </a>
-                        <a href="{{ route('users.transactions.crypto') }}" class="swiper-slide text-center">
+                        {{-- <a href="{{ route('users.transactions.crypto') }}" class="swiper-slide text-center">
                             <div class="avatar avatar-60 no-shadow border-0">
                                 <div class="overlay bg-template"></div>
                                 <i class="material-icons text-template">monetization_on</i>
                             </div>
                             <p class="small mt-2">Bitcoin</p>
-                        </a>
+                        </a> --}}
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>
@@ -277,7 +277,8 @@
                 </div>
                 <form method="POST" action="{{ route('fund-wallet') }}" id="paymentForm">
                     <div class="modal-body text-center pt-0">
-                        <img src="{{ asset('assets/img/bp3.png') }}" alt="logo" class="logo-small" style="height: 122px; width: 100px;">
+                        {{-- <img src="{{ asset('assets/img/bp3.png') }}" alt="logo" class="logo-small" style="height: 122px; width: 100px;"> --}}
+                        <h4>PolyIb Pay</h4>
 
                         {{ csrf_field() }}
                             <input type="hidden" name="payment_method" value="both" />
@@ -326,7 +327,8 @@
                 </div>
                 <form method="POST" action="{{ route('users.create.bill') }}" id="paymentForm">
                     <div class="modal-body text-center pt-0">
-                        <img src="{{ asset('assets/img/bp3.png') }}" alt="logo" class="logo-small" style="height: 122px; width: 100px;">
+                        {{-- <img src="{{ asset('assets/img/bp3.png') }}" alt="logo" class="logo-small" style="height: 122px; width: 100px;"> --}}
+                        <h3>PolyIb Pay</h3>
 
                         {{ csrf_field() }}
                             <input type="hidden" name="item_code" value="{{ Session::has('pending_bill') ? session('pending_bill')['item_code'] : '' }}" />

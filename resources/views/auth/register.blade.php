@@ -12,9 +12,9 @@
                 </div>
             </div>
             <div class="ba-page-name text-center mg-bottom-40 mg-top-3" style="padding-top: 30px; padding-bottom: 15px;">
-                <img src="{{ asset('assets/img/bp3.png') }}" alt="logo" class="logo-small" style="height: 122px; width: 100px;">
+                {{-- <img src="{{ asset('assets/img/logo-login.png') }}" alt="logo" class="logo-small" style="height: 122px; width: 100px;"> --}}
 
-{{--                <h3>Sign Up</h3>--}}
+                <h2>PolyIb Pay</h2>
             </div>
             <!-- page-title end -->
 

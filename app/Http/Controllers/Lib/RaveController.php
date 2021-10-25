@@ -44,7 +44,7 @@ class RaveController extends Controller
   {
     // dd(json_decode(request()->resp));
     // $resp = Rave::verifyTransaction(json_decode(request()->resp)->data->data->txRef);
-    $resp = Rave::verifyTransaction(json_decode(request()->resp)->data->tx->txRef);
+    $resp = Rave::verifyTransaction(json_decode(request()->resp)->tx->txRef);
 
     $transaction = Transaction::where('reference', $resp->data->txref)->first();
 

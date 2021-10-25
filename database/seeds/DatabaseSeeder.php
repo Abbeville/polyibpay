@@ -15,17 +15,17 @@ class DatabaseSeeder extends Seeder
 
       DB::statement('SET FOREIGN_KEY_CHECKS=0;');
       DB::table('billers')->truncate();
-      // DB::table('service_categories')->truncate();
-      // DB::table('admins')->truncate();
-      // DB::table('biller_services')->truncate();
+      DB::table('service_categories')->truncate();
+      DB::table('admins')->truncate();
+      DB::table('biller_services')->truncate();
       DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
-      // $this->call(ServiceCategorySeeder::class);
-      // $this->call(AdminSeeder::class);
+      $this->call(ServiceCategorySeeder::class);
+      $this->call(AdminSeeder::class);
       $this->call(BillersTableSeeder::class);
-      // $this->call(BillerServicesSeeder::class);
-      // $this->call(UserSeeder::class);
-      // $this->call(NigeriaStatesTableSeeder::class);
+      $this->call(BillerServicesSeeder::class);
+      $this->call(UserSeeder::class);
+      $this->call(NigeriaStatesTableSeeder::class);
 
     }
 }

@@ -4,6 +4,7 @@
     <input type="hidden" name="biller_code" value="{{ $packages[0]->biller_code }}">
     <input type="hidden" name="item_code" value="{{ $packages[0]->item_code }}">
     <input type="hidden" name="parent_category" value="airtime">
+    <input type="hidden" name="category" value="airtime">
     <div class="col-12 col-md-6">
         <div class="form-group float-label active">
             <input type="number" class="form-control" required="" value="" name="amount" >

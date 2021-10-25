@@ -44,7 +44,6 @@ class BillController extends Controller
 
     public function createBill(Request $request)
     {
-        // dd($request->all());
         $data['category'] = $request->category;
         $data['item_code'] = $request->item_code;
         $data['country'] = $request->country;
@@ -79,7 +78,7 @@ class BillController extends Controller
     		]
     	]);
     	
-    	/*$url = 'https://api.flutterwave.com/v3/bills';
+    	$url = 'https://api.flutterwave.com/v3/bills';
         try{
             $request = $client->post($url, ['json' => $data]);
             $response = $request->getBody()->getContents();
@@ -87,11 +86,9 @@ class BillController extends Controller
         }catch(\Exception $e){
             session()->flash('error', $e->getMessage());
             return redirect()->back();
-        }*/
+        }
         
-        $response = true;
-
-    	if ($response) {
+    	if ($response->status == 'success') {
     		//Save the transaction
     		$transaction = Transaction::create([
                 'custom_ref' => generateCustomRef(auth()->user()->id),
@@ -99,8 +96,8 @@ class BillController extends Controller
     			'type' => 'debit',
     			'category' => $data['parent_category'],
     			'reference' => generateTransactionRef($data['category']),
-    			'amount' => $data['amount'],
-    			'narration' => 'Purchased '.$data["type"].' for #'.$data['amount'],
+    			'amount' => $response->data->amount,
+    			'narration' => 'Purchased '.$data["type"].' for #'.$response->data->amount,
     			'status' => 'success'
     		]);
 

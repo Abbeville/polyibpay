@@ -2,9 +2,10 @@
 <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
         <div class="sidebar-brand-icon">
-            <img src="{{ asset('assets/img/logo-login.png') }}" alt="logo">
+            {{-- <img src="{{ asset('assets/img/logo-login.png') }}" alt="logo"> --}}
         </div>
-        <div class="sidebar-brand-text mx-3">{{ config('app.name', $default = 'BillsPay') }}</div>
+        {{-- <div class="sidebar-brand-text mx-3">{{ config('app.name', $default = 'BillsPay') }}</div> --}}
+        <div class="sidebar-brand-text mx-3">PolyIb Pay</div>
     </a>
     <hr class="sidebar-divider my-0">
     <li class="nav-item active">

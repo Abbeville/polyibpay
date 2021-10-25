@@ -42,10 +42,10 @@ class AppServiceProvider extends ServiceProvider
         }
 
         //register observers
-        /*$observers = ['Wallet'];
+        $observers = ['Wallet'];
         foreach ($observers as $c) {
             ("App\\Models\\$c")::observe("App\\Observers\\{$c}Observer");
-        }*/
+        }
 
     }
 }

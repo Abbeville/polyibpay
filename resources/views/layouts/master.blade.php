@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="deeppurple-theme">
+<html lang="en" class="black-theme">
 <head>
 
     @include('partials.meta')
@@ -10,8 +10,8 @@
 
 <div class="row no-gutters vh-100 loader-screen">
     <div class="col align-self-center text-white text-center">
-        <img src="{{ asset('assets/img/logo.png') }}" alt="logo">
-        <h1 class="mt-3"><span class="font-weight-light ">Bills</span>Pay</h1>
+        {{-- <img src="{{ asset('assets/img/logo.png') }}" alt="logo"> --}}
+        <h1 class="mt-3"><span class="font-weight-light ">Online</span>Monetary</h1>
         <p class="text-mute text-uppercase small">All transactions in one place</p>
         <div class="laoderhorizontal">
             <div></div>
@@ -51,8 +51,8 @@
 <!-- Loader -->
 <div class="row no-gutters vh-100 loader-screen">
     <div class="col align-self-center text-white text-center">
-        <img src="{{ asset('assets/img/bp3.png') }}" alt="logo">
-{{--        <h1 class="mt-3"><span class="font-weight-light ">Bills</span>Pay</h1>--}}
+        {{-- <img src="{{ asset('assets/img/bp3.png') }}" alt="logo"> --}}
+        <h1 class="mt-3">PolyIb<span class="font-weight-light "> Pay</span></h1>
         <p class="text-mute text-uppercase small">All transactions in one place</p>
         <div class="laoderhorizontal">
             <div></div>

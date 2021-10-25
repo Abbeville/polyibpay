@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title','Login - Billspay')
+@section('title','Login - PolyIb Pay')
 @section('contents')
 
 
@@ -22,8 +22,9 @@
             <div class="col align-self-center px-3 text-center">
                 <br>
 
-                    <img src="{{ asset('assets/img/bp3.png') }}" alt="logo" class="logo-small" style="height: 122px; width: 100px;">
-
+                    {{-- <img src="{{ asset('assets/img/logo-login.png') }}" alt="logo" class="logo-small" style="height: 122px; width: 100px;"> --}}
+                    <h2>PolyIb Pay</h2>
+                    {{-- <h3>Sign In</h3> --}}
 
 
                 <form class="form-signin mt-3 " action="{{ route('login') }}" method="POST">

@@ -16,7 +16,8 @@ class BillerServicesSeeder extends Seeder
 
     	$client = new \GuzzleHttp\Client();
 
-		$apiKey = config('rave.secretKey');
+		// $apiKey = config('rave.secretKey');
+        $apiKey = 'FLWSECK_TEST-3271edff45fdeff49120a73b08dbdc3f-X';
     	$url = 'https://api.flutterwave.com/v3/bill-categories?biller_code=';
 
     	$headers = [ 'Authorization' => 'Bearer ' . $apiKey, 'Accept' => 'application/json', ];

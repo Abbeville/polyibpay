@@ -60,7 +60,8 @@ function generateWalletId()
 }
 
 function generateTransactionRef($category){
-	$prefix = strtoupper($category[0]);
+	// $prefix = strtoupper($category[0]);
+	$prefix = 'POL';
 
 	$overrideRefWithPrefix = false;
 
@@ -71,8 +72,6 @@ function generateTransactionRef($category){
 	    $txref = $transactionPrefix;
 	} else {
 	    $txref = uniqid($transactionPrefix);
-
-	    dd(substr($txref, 0, 11));
 	}
 
 	return $txref;

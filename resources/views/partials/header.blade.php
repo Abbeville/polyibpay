@@ -4,7 +4,8 @@
             <button class="btn  btn-link text-dark menu-btn"><i class="material-icons">menu</i></button>
         </div>
         <div class="col text-center">
-            <img src="{{ asset('assets/img/bp3.png') }}" alt="logo" class="logo-small" style="height: 122px; width: 100px;">
+            {{-- <img src="{{ asset('assets/img/bp3.png') }}" alt="logo" class="logo-small" style="height: 122px; width: 100px;"> --}}
+            PolyIb Pay
 
         </div>
         <div class="col-auto">

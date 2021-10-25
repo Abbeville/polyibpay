@@ -15,13 +15,15 @@ return [
      * Public Key: Your Rave publicKey. Sign up on https://rave.flutterwave.com/ to get one from your settings page
      *
      */
-    'publicKey' => env('RAVE_PUBLIC_KEY', ''),
+    // 'publicKey' => env('RAVE_PUBLIC_KEY', 'FLWPUBK_TEST-e091d2070e761ca054e1e6fbaa586f27-X'),
+    'publicKey' => 'FLWPUBK_TEST-e091d2070e761ca054e1e6fbaa586f27-X',
 
     /**
      * Secret Key: Your Rave secretKey. Sign up on https://rave.flutterwave.com/ to get one from your settings page
      *
      */
-    'secretKey' => env('RAVE_SECRET_KEY', ''),
+    // 'secretKey' => env('RAVE_SECRET_KEY', 'FLWSECK_TEST-3271edff45fdeff49120a73b08dbdc3f-MX'),
+    'secretKey' => 'FLWSECK_TEST-3271edff45fdeff49120a73b08dbdc3f-X',
 
     /**
      * Company/Business/Store Name: The name of your store
@@ -51,5 +53,6 @@ return [
      * Prefix: This is added to the front of your transaction reference numbers
      *
      */
-    'secretHash' => env('RAVE_SECRET_HASH', ''),
+    // 'secretHash' => env('RAVE_SECRET_HASH', 'FLWSECK_TESTfe4a1ac00578'),
+    'secretHash' => 'FLWSECK_TESTfe4a1ac00578',
 ];

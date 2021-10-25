@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Hash;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,7 +23,9 @@ use App\Http\Controllers\Users\TransactionsController;
 
 Route::get('test', 'TestController@test')->name('test');
 
-
+Route::get('/password', function(){
+    return Hash::make('adminpass');
+});
 
 Route::get('/', 'HomeController@index')->name('home');
 
